@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
-{ //testing comments on git and added DB credentials
+{
    
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
