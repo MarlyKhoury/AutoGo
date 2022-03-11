@@ -25,7 +25,10 @@ Route::group([
 ], function ($router) {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout']); 
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+    Route::get('/user-profile', [AuthController::class, 'userProfile']); 
+    Route::post('/ban', [AuthController::class, 'ban']);   
+    Route::get('/bannedStatus', [AuthController::class, 'bannedStatus']);
+    Route::post('/unban', [AuthController::class, 'unban']);
 });

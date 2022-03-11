@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Models\User;
+use Carbon\Carbon;
 use Validator;
 
 class AuthController extends Controller
@@ -62,6 +64,26 @@ class AuthController extends Controller
             'user' => $user
         ], 201);
     }
+
+    // Create a Ride
+    public function createRide(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:100|unique:users',
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors(), 400);
+        }
+    }
+    
+
+    // Ban User
+    public function ban()
+{
+    // Get id from token
+    $id = auth()->user()->id;
+    if ($id->user_types_id){
+
+
 
     /**
      * Log the user out (Invalidate the token).
