@@ -100,7 +100,20 @@ class AuthController extends Controller
     return response()->json(['error' => 'Unauthorized'], 401);
 }
     
+    // Check Banned Status
 
+    public function bannedStatus()
+{
+    $user_id = $id;
+    $user = User::find($user_id);
+
+    $message = "The user is not banned";
+    if ($user->banned_till != null) {
+        if ($user->banned_till == 0) {
+            $message = "Banned Permanently";
+        }
+
+       
 
     /**
      * Log the user out (Invalidate the token).
