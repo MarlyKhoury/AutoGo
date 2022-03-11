@@ -120,6 +120,26 @@ class AuthController extends Controller
         }
     }
 
+    $this->unban();
+    return response()->json(['message' => $message]);
+
+}
+
+
+    // Unban a User
+
+    public function unban()
+{
+    //  Get id from token
+    $id = auth()->user()->id;
+    if ($id->user_types_id){
+
+    $user_id = $id;
+    $user = User::find($user_id);
+    $user->banned_till = null;
+    $user->save();
+}
+}
 
     /**
      * Log the user out (Invalidate the token).
