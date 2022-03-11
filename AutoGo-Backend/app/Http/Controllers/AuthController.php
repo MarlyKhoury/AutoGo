@@ -83,6 +83,11 @@ class AuthController extends Controller
     $id = auth()->user()->id;
     if ($id->user_types_id){
 
+    // ban for days
+    $ban_for_next_7_days = Carbon::now()->addDays(7);
+    $ban_for_next_14_days = Carbon::now()->addDays(14);
+    $ban_permanently = 0;
+
 
 
     /**
