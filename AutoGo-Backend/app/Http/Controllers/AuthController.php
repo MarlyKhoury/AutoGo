@@ -88,6 +88,18 @@ class AuthController extends Controller
     $ban_for_next_14_days = Carbon::now()->addDays(14);
     $ban_permanently = 0;
 
+    // ban user
+    $user_id = $id;
+    $user = User::find($user_id);
+    $user->banned_till = $ban_for_next_7_days;
+    $user->save();
+    return response()->json(['message' => 'User banned successfully']);
+    
+}
+
+    return response()->json(['error' => 'Unauthorized'], 401);
+}
+    
 
 
     /**
