@@ -65,6 +65,7 @@ class AuthController extends Controller
         ], 201);
     }
 
+
     // Create a Ride
     public function createRide(Request $request){
         $validator = Validator::make($request->all(), [
