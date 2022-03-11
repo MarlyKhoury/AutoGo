@@ -113,7 +113,13 @@ class AuthController extends Controller
             $message = "Banned Permanently";
         }
 
-       
+        if (now()->lessThan($user->banned_till)) { 
+
+            $banned_days = now()->diffInDays($user->banned_till) + 1;
+            $message = "Suspended for " . $banned_days . ' ' . Str::plural('day', $banned_days);
+        }
+    }
+
 
     /**
      * Log the user out (Invalidate the token).
