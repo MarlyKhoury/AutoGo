@@ -423,15 +423,22 @@ class AuthController extends Controller
   
 
     // Get User Info
-    public function getuserInfo(Request $request){
-
-        $id= $request->input('id');
+    public function getuserInfo($id){
+        $user_id = auth()->user()->id;
         $user= User::find($id, ['first_name','last_name']);
         $profile=Profile::find($id,['address','education','workplace']);
         $review= Review::find($id,['rating','comment']);
+        return response()->json([
+            'user'=> $user,
+            'profile'=> $profile,
+            'review'=> $review
+            
+
+   ], 200);
     }
 
 
+    // Post Review
 
 
     /**
