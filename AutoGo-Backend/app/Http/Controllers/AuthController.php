@@ -200,4 +200,8 @@ class AuthController extends Controller
             ['is_booked' => 1],
 
         ));
-     
+         return response()->json([
+         'message' => 'Ride booked successfully',
+         'booked_ride' => $booked
+], 201);
+    }
