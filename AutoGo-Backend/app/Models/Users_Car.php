@@ -11,7 +11,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User_Car extends Model
+class Users_Car extends Model
 {
     use HasFactory;
     use HasApiTokens, HasFactory, Notifiable;
@@ -23,6 +23,8 @@ class User_Car extends Model
      */
     protected $fillable = [
         'model',
+        'license_plate',
+     'seats_available',
 
     ];
 }

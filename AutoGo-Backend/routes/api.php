@@ -29,6 +29,13 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']); 
     Route::post('/ban', [AuthController::class, 'ban']);   
-    Route::get('/bannedStatus', [AuthController::class, 'bannedStatus']);
-    Route::post('/unban', [AuthController::class, 'unban']);
+    Route::get('/bannedStatus/{id}', [AuthController::class, 'bannedStatus']);
+    Route::get('/unban/{id}', [AuthController::class, 'unban']);
+    Route::post('/createCar', [AuthController::class, 'createCar']);
+    Route::delete('/deleteCar', [AuthController::class, 'deleteCar']);
+    Route::post('/createRide', [AuthController::class, 'createRide']);
+    Route::post('/bookRide', [AuthController::class, 'bookRide']);
+    Route::get('/getRides', [AuthController::class, 'getRides']);
+    Route::post('/cancelBooking', [AuthController::class, 'cancelBooking']);
+    Route::get('/getUsers', [AuthController::class, 'getUsers']);
 });
