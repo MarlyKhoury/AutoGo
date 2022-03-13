@@ -188,3 +188,10 @@ class AuthController extends Controller
                 'message' => 'You already booked a ride!!'
        ], 400);
         }
+
+    
+        $ride= Ride::findOrFail($validator->validated()['ride_id']);
+         $ride->remaining_seats=$ride->remaining_seats-1;
+         $ride->save();
+
+    
