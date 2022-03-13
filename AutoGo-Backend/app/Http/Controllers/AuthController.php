@@ -386,7 +386,7 @@ class AuthController extends Controller
     ], 200);
     }
 
-    //Get all Users
+    //Get all Users for Admin
     public function getUsers(){
         $user_type = auth()->user()->user_types_id;
         $admin_id=User_Type::findOrFail($user_type)->id;
@@ -420,6 +420,19 @@ class AuthController extends Controller
         }
     }
   
+
+    // Get User Info
+    public function getuserInfo(Request $request){
+
+        $id= $request->input('id');
+        $user= User::find($id, ['first_name','last_name']);
+        $profile=Profile::find($id,['address','education','workplace']);
+        $review= 
+    }
+
+
+
+
     /**
      * Log the user out (Invalidate the token).
      *
