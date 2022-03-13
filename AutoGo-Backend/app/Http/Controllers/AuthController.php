@@ -431,17 +431,18 @@ class AuthController extends Controller
         return response()->json([
             'user'=> $user,
             'profile'=> $profile,
-            'review'=> $review
-            
-
+            'review'=> $review        
    ], 200);
     }
 
 
     // Post Review
-    
+    public function postReview(Request $request)
+    {
+        
 
 
+    }
     /**
      * Log the user out (Invalidate the token).
      *
