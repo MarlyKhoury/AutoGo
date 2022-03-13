@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
+    public $fillable = ['from_id', 'to_id', 'rating', 'comment'];
 }
