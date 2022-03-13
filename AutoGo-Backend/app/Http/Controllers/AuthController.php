@@ -205,3 +205,11 @@ class AuthController extends Controller
          'booked_ride' => $booked
 ], 201);
     }
+
+    public function count_bookings($user_id){
+        $bookings_count=Book::all()->where('user_id',$user_id)
+                                   ->where('is_booked',1)
+                                   ->count();
+        return $bookings_count;
+    }
+
