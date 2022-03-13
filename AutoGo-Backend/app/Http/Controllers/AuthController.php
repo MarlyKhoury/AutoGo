@@ -365,4 +365,8 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 400);
         }
        
+    //  Get id mn token
+      $id = auth()->user()->id;
     
+ 
+}
