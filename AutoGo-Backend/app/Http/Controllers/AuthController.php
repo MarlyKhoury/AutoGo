@@ -467,8 +467,10 @@ class AuthController extends Controller
     // Get all Reviews
     public function getallReviews($id){
 
-    $id = auth()->user()->id;
-    $reviews=Review::all();
+    $to_id = auth()->user()->id;
+    $user=User::find($id);
+    $reviews=Review::where('to_id','=',$user->id)->get();
+
         return response()->json([
                 'review' => $reviews
             ], 200);
