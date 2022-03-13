@@ -152,5 +152,13 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 400);
         }
     
-       
+        $car= Car::findOrFail($validator->validated()['user_car_id']);
+        $seats_available=  $car->seats_available;
+
+        $ride = Ride::create(array_merge(
+            $validator->validated(),
+            ['remaining_seats'=>$seats_available]
+
+        ));
+      
 }
