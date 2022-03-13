@@ -248,3 +248,13 @@ class AuthController extends Controller
         $user_id = auth()->user()->id;
         $user = User::findOrFail($user_id);
         $gender = $user->gender;
+
+        $bookings_count=Book::all()->where('user_id',$user_id)
+                                   ->where('is_booked',1)
+                                   ->count();
+        if($bookings_count){
+            $number_of_bookings=$bookings_count;
+        }
+        
+
+}
