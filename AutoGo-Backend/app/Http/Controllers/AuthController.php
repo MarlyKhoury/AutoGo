@@ -405,7 +405,16 @@ class AuthController extends Controller
 
         if ($request->hasFile('picture_path')) {
             if($request->file('picture_path')->isValid()) {
-              
+                try {
+                    $file = $request->file('picture_path');
+                    $image = base64_encode(file_get_contents($request->file('picture_path')));
+                    echo $image;
+    
+                    
+                
+            }
+   
+        }
     }
   
     /**
