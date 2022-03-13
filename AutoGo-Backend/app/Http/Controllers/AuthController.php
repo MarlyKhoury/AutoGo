@@ -368,22 +368,22 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 400);
         }
        
-    //  Get id mn token
-      $id = auth()->user()->id;
+        //  Get id mn token
+        $id = auth()->user()->id;
     
-      $user = $request->isMethod('post') ? User::findOrFail($id) : new User;
+        $user = $request->isMethod('post') ? User::findOrFail($id) : new User;
  
-      $user->name = $request->input('name');
-      $user->email = $request->input('email');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
       
-     // save the changes   
-     $user->save();
+        // save the changes   
+        $user->save();
 
-     //Return message + the new user info
+        //Return message + the new user info
        
-    return response()->json([
-        'message' => 'User successfully updated',
-        'user' => $user
+        return response()->json([
+           'message' => 'User successfully updated',
+           'user' => $user
     ], 200);
     }
 
