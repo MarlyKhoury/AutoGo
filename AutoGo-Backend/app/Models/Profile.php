@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    
+    public $fillable = ['user_id', 'address', 'education', 'workplace', 'picture_path'];
 }
