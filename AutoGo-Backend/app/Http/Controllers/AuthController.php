@@ -409,11 +409,17 @@ class AuthController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);                        
          }  
   
-        // if condition
+   
         if ($profile = $request->profile('profile')) {
             $picture_path = $profile->store('public/profiles');
   
-        
+            //store file into directory and db
+            $save = new Profile();
+            $save->store_path= $picture_path;
+            $save->save();
+               
+           
+        }
   
    
     }
