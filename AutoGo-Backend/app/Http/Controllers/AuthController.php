@@ -464,7 +464,7 @@ class AuthController extends Controller
 
     }
 
-    // Get all Reviews
+    // Get all Reviews by Id
     public function getallReviews($id){
 
     $to_id = auth()->user()->id;
