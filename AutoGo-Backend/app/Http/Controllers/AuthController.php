@@ -223,5 +223,8 @@ class AuthController extends Controller
        
         $user_id = auth()->user()->id;
 
-     
-}
+        $booked= Book::where('ride_id',$validator->validated()['ride_id'])
+                      ->where('user_id',$user_id)
+                      ->get()->first();
+        
+      
