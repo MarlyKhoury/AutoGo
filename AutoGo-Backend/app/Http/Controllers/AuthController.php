@@ -241,3 +241,8 @@ class AuthController extends Controller
 ], 201);
     }
 
+    // Get all Rides
+    public function getRides(){
+        $number_of_bookings=0;
+
+     
