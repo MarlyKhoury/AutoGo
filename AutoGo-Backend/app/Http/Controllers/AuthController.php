@@ -418,7 +418,12 @@ class AuthController extends Controller
             $save->store_path= $picture_path;
             $save->save();
                
-           
+            return response()->json([
+                "success" => true,
+                "message" => "File successfully uploaded",
+                "profile" => $profile
+            ]);
+   
         }
   
    
