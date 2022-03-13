@@ -404,6 +404,12 @@ class AuthController extends Controller
             'file'  => 'required|mimes:png,jpg,jpeg,gif|max:2305',
         ]);   
   
+        if($validator->fails()) {          
+             
+            return response()->json(['error'=>$validator->errors()], 401);                        
+         }  
+  
+   
         
   
    
