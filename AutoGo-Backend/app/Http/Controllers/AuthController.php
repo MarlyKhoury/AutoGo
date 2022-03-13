@@ -236,3 +236,8 @@ class AuthController extends Controller
             }
             echo $ride->remaining_seats;
 
+         return response()->json([
+         'message' => 'Book deleted successfully'
+], 201);
+    }
+
