@@ -396,6 +396,18 @@ class AuthController extends Controller
             ], 200);
     }
 }  
+
+    // Upload Image
+    public function uploadImg(Request $request) 
+    { 
+        $validator = Validator::make($request->all(),[ 
+            'file'  => 'required|mimes:png,jpg,jpeg,gif|max:2305',
+        ]);   
+  
+        
+  
+   
+    }
     /**
      * Log the user out (Invalidate the token).
      *

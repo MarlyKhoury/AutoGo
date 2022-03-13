@@ -38,4 +38,5 @@ Route::group([
     Route::get('/getRides', [AuthController::class, 'getRides']);
     Route::post('/cancelBooking', [AuthController::class, 'cancelBooking']);
     Route::get('/getUsers', [AuthController::class, 'getUsers']);
+    Route::post('/uploadImg', [AuthController::class, 'uploadImg']);
 });
