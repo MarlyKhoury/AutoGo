@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Car;
@@ -400,34 +401,13 @@ class AuthController extends Controller
     // Upload Image
     public function uploadImg(Request $request) 
     { 
-        $validator = Validator::make($request->all(),[ 
-            'profile'=> 'required|mimes:png,jpg,jpeg,gif|max:2305',
-        ]);   
-  
-        if($validator->fails()) {          
-             
-            return response()->json(['error'=>$validator->errors()], 401);                        
-         }  
-  
-   
-        if ($profile = $request->profile('profile')) {
-            $picture_path = $profile->store('public/profiles');
-  
-            //store file into directory and db
-            $save = new Profile();
-            $save->store_path= $picture_path;
-            $save->save();
-               
-            return response()->json([
-                "success" => true,
-                "message" => "File successfully uploaded",
-                "profile" => $profile
-            ]);
-   
-        }
-  
-   
+         $parametre =$request->all();
+
+        if ($request->hasFile('picture_path')) {
+            if($request->file('picture_path')->isValid()) {
+              
     }
+  
     /**
      * Log the user out (Invalidate the token).
      *
