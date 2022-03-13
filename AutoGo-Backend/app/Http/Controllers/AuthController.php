@@ -160,5 +160,12 @@ class AuthController extends Controller
             ['remaining_seats'=>$seats_available]
 
         ));
-      
-}
+         return response()->json([
+         'message' => 'Ride successfully created',
+         'ride' => $ride
+], 201);
+    }
+    
+
+
+
