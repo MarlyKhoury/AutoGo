@@ -245,4 +245,6 @@ class AuthController extends Controller
     public function getRides(){
         $number_of_bookings=0;
 
-     
+        $user_id = auth()->user()->id;
+        $user = User::findOrFail($user_id);
+        $gender = $user->gender;
