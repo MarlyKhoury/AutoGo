@@ -384,7 +384,17 @@ class AuthController extends Controller
     ], 200);
     }
 
-  
+    //Get all Users
+    public function getUsers(){
+        $user_type = auth()->user()->user_types_id;
+        $admin_id=User_Type::findOrFail($user_type)->id;
+        if ($admin_id!=0 && $user_type==$admin_id){
+            $users=User::all();
+        return response()->json([
+                'user' => $users
+            ], 200);
+    }
+}  
     /**
      * Log the user out (Invalidate the token).
      *
