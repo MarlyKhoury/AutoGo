@@ -306,4 +306,35 @@ class AuthController extends Controller
     return response()->json(['error' => 'Unauthorized'], 401);
 }
     
-  
+    // Check Banned Status
+
+    public function bannedStatus($id)
+{
+    $user_type = auth()->user()->user_types_id;
+    $admin_id=User_Type::findOrFail($user_type)->id;
+    if ($admin_id!=0 && $user_type==$admin_id){
+    $user_id = $id;
+    $user = User::findOrFail($user_id);
+
+    $message = "The user is not banned";
+    if ($user->banned_till != null) {
+        if ($user->banned_till == 0) {
+            $message = "Banned Permanently";
+        }
+
+        if (now()->lessThan($user->banned_till)) { 
+
+            $banned_days = now()->diffInDays($user->banned_till) + 1;
+            $message = "Suspended for " . $banned_days . ' ' . Str::plural('day', $banned_days);
+        }
+        
+        if( now()->lessThan($user->banned_till)==0){
+            $this->unban($id);
+        }
+    }
+    return response()->json(['message' => $message]);
+
+}
+}
+
+ 
