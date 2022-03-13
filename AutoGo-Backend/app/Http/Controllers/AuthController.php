@@ -180,5 +180,6 @@ class AuthController extends Controller
         }
 
 
- 
-}
+        $user_id = auth()->user()->id;
+
+        
