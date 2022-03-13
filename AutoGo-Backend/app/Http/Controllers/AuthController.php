@@ -212,7 +212,7 @@ class AuthController extends Controller
                                    ->count();
         return $bookings_count;
     }
-    //Cancel Booking
+    // Cancel Booking
     public function cancelBooking(Request $request){
         $validator = Validator::make($request->all(), [
             'ride_id' => 'required|integer',
