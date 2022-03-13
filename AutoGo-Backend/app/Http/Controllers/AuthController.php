@@ -450,7 +450,7 @@ class AuthController extends Controller
         }
 
         $from_id = auth()->user()->id;
-        $to_id = 
+        $to_id = User::findOrFail($validator->validated()['to_id']);
         $input = $request->all();
         $input['user_id'] = auth()->user()->id;
         echo $input['user_id'];
