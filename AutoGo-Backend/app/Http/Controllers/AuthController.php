@@ -194,4 +194,10 @@ class AuthController extends Controller
          $ride->remaining_seats=$ride->remaining_seats-1;
          $ride->save();
 
-    
+        $booked = Book::create(array_merge(
+            $validator->validated(),
+            ['user_id' =>$user_id],
+            ['is_booked' => 1],
+
+        ));
+     
