@@ -337,4 +337,20 @@ class AuthController extends Controller
 }
 }
 
- 
+    // Unban a User
+
+    public function unban($id)
+{
+    //  Get id from token
+    $user_type = auth()->user()->user_types_id;
+    $admin_id=User_Type::findOrFail($user_type)->id;
+    if ($admin_id!=0 && $user_type==$admin_id){
+
+    $user_id =$id;
+    $user = User::findOrFail($user_id);
+    $user->banned_till = null;
+    $user->save();
+}
+}
+
+
