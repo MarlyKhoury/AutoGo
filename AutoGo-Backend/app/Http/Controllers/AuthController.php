@@ -452,15 +452,30 @@ class AuthController extends Controller
         $from_id = auth()->user()->id;
         $to_id = User::findOrFail($validator->validated()['to_id']);
         $input = $request->all();
-        $input['user_id'] = auth()->user()->id;
-        echo $input['user_id'];
+        // $input['from_id'] = auth()->user()->id;
     
         Review::create($input);
    
-        return back();
+        return response()->json([
+            'message' => 'Your review is posted successfully',
+            'input' => $input
+        ], 200);
 
 
     }
+
+    // Get all Reviews
+    public function getallReviews($id){
+
+    $id = auth()->user()->id;
+    $reviews=Review::all();
+        return response()->json([
+                'review' => $reviews
+            ], 200);
+
+    }
+
+
     /**
      * Log the user out (Invalidate the token).
      *
