@@ -427,7 +427,7 @@ class AuthController extends Controller
         $id= $request->input('id');
         $user= User::find($id, ['first_name','last_name']);
         $profile=Profile::find($id,['address','education','workplace']);
-        $review= 
+        
     }
 
 
