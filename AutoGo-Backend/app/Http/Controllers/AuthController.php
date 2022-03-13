@@ -227,4 +227,7 @@ class AuthController extends Controller
                       ->where('user_id',$user_id)
                       ->get()->first();
         
-      
+         $ride= Ride::findOrFail($validator->validated()['ride_id']);
+    
+       
+}
