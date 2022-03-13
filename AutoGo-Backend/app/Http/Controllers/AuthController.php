@@ -439,6 +439,13 @@ class AuthController extends Controller
     // Post Review
     public function postReview(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'rating' => 'required|integer',
+            'comment' => 'required|string',
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors(), 400);
+        }
         
 
 
