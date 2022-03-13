@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Car;
 use App\Models\Ride;
 use App\Models\Book;
+use App\Models\Profile;
 use App\Models\User_Type;
 use Carbon\Carbon;
 use Validator;
