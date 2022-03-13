@@ -376,7 +376,15 @@ class AuthController extends Controller
      // save the changes   
      $user->save();
 
-    
+     //Return message + the new user info
+       
+    return response()->json([
+        'message' => 'User successfully updated',
+        'user' => $user
+    ], 200);
+    }
+
+  
     /**
      * Log the user out (Invalidate the token).
      *
