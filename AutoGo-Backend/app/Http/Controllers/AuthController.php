@@ -354,3 +354,11 @@ class AuthController extends Controller
 }
 
 
+    // Edit User Info
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|between:2,100',
+            'email' => 'required|string|email|max:100|unique:users',
+        ]);
+    
