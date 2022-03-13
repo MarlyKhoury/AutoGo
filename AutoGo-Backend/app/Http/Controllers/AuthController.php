@@ -256,5 +256,5 @@ class AuthController extends Controller
             $number_of_bookings=$bookings_count;
         }
         
-
-}
+        $rides = Ride::all()->whereIn('gender_preferences',['NA',$gender])
+        ->whereNotIn('remaining_seats',0);
