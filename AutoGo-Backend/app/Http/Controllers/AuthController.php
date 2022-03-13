@@ -268,20 +268,6 @@ class AuthController extends Controller
 
     }
 
-    
-    //test
-
-    public function test()
-{
-    // Get id from token
-    $user_type = auth()->user()->user_types_id;
-    $admin_id=User_Type::find($user_type);
-    if ($admin_id!=0 && $user_type==$admin_id){
-        echo 'is admin';
-    }
-    echo 'not admin';
-}
-
 
     // Ban User
     public function ban(Request $request)
