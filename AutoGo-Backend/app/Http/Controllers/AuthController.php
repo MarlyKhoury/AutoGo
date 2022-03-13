@@ -182,4 +182,9 @@ class AuthController extends Controller
 
         $user_id = auth()->user()->id;
 
-        
+        $bookings_count=$this->count_bookings($user_id);
+        if( $bookings_count){
+            return response()->json([
+                'message' => 'You already booked a ride!!'
+       ], 400);
+        }
