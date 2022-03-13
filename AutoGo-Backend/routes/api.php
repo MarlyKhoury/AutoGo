@@ -42,4 +42,5 @@ Route::group([
     Route::get('/getuserInfo/{id}', [AuthController::class, 'getuserInfo']);
     Route::get('/getallReviews/{id}', [AuthController::class, 'getallReviews']);
     Route::delete('/deleteCar', [AuthController::class, 'deleteCar']);
+    Route::delete('/deleteReview', [AuthController::class, 'deleteReview']);
 });
