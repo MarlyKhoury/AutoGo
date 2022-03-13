@@ -215,6 +215,8 @@ class AuthController extends Controller
                                    ->count();
         return $bookings_count;
     }
+
+
     // Cancel Booking
     public function cancelBooking(Request $request){
         $validator = Validator::make($request->all(), [
@@ -447,9 +449,8 @@ class AuthController extends Controller
             'message' => 'Your review is posted successfully',
             'input' => $input
         ], 200);
-
-
     }
+
 
     // Get all Reviews by Id
     public function getallReviews($id){
@@ -463,6 +464,18 @@ class AuthController extends Controller
             ], 200);
 
     }
+
+
+    // Delete Review
+    public function deleteReview(Request $request)
+    {
+    
+        if (Auth::user() && (Auth::user()->id == $comment->user_id)) {
+            Review::where('id',$id)->delete();
+            return back();
+        }else
+        return 'you dont have permission';
+        }
 
 
     /**
