@@ -229,5 +229,10 @@ class AuthController extends Controller
         
          $ride= Ride::findOrFail($validator->validated()['ride_id']);
     
-       
-}
+         if( $booked){
+            $booked->delete();
+             $ride->remaining_seats=$ride->remaining_seats+1;
+             $ride->save();
+            }
+            echo $ride->remaining_seats;
+
