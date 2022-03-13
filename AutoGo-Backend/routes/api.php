@@ -40,5 +40,6 @@ Route::group([
     Route::get('/getRides', [AuthController::class, 'getRides']);
     Route::get('/getUsers', [AuthController::class, 'getUsers']);
     Route::get('/getuserInfo/{id}', [AuthController::class, 'getuserInfo']);
+    Route::get('/getallReviews/{id}', [AuthController::class, 'getallReviews']);
     Route::delete('/deleteCar', [AuthController::class, 'deleteCar']);
 });
