@@ -411,7 +411,10 @@ class AuthController extends Controller
                     echo $image;
     
                     
-                
+                } catch (FileNotFoundException $e) {
+                    echo "catch";
+    
+                }
             }
    
         }
