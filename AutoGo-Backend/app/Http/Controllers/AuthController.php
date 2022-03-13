@@ -373,8 +373,10 @@ class AuthController extends Controller
       $user->name = $request->input('name');
       $user->email = $request->input('email');
       
-   
-}  
+     // save the changes   
+     $user->save();
+
+    
     /**
      * Log the user out (Invalidate the token).
      *
