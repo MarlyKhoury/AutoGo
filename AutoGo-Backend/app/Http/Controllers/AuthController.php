@@ -220,4 +220,8 @@ class AuthController extends Controller
         if($validator->fails()){
             return response()->json($validator->errors(), 400);
         }
-   
+       
+        $user_id = auth()->user()->id;
+
+     
+}
