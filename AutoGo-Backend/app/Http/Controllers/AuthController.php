@@ -169,3 +169,16 @@ class AuthController extends Controller
 
 
 
+    // Book a Ride
+    public function bookRide(Request $request){
+        $validator = Validator::make($request->all(), [
+            'ride_id' => 'required|integer',
+
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors(), 400);
+        }
+
+
+ 
+}
