@@ -148,5 +148,9 @@ class AuthController extends Controller
             'gender_preferences' => 'required|string|between:2,100',
 
         ]);
- 
+        if($validator->fails()){
+            return response()->json($validator->errors(), 400);
+        }
+    
+       
 }
