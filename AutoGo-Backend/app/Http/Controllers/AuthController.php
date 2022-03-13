@@ -108,5 +108,45 @@ class AuthController extends Controller
     }
 
     
-  
+    // Delete API
+
+    // public function deleteCar($id)
+    // {
+    //     $car = Car::findOrFail($id);
+    // if($car)
+    //    $car->delete(); 
+    // else
+    //     return response()->json(error);
+    // return response()->json(null); 
+    // }
+
+    public function deleteCar(Request $request){
+
+         //  Get id mn token
+      $id = auth()->car()->id;
+      $car= Car::findOrFail($id);
+      if ($car)
+      $car->delete();
+      else
+      return response()->json(error);
+      return response()->json(null);
+
+
+    }
+
+
+
+    // Create a Ride
+    public function createRide(Request $request){
+        $validator = Validator::make($request->all(), [
+            'user_car_id' => 'required|integer',
+            'travel_date' => 'required|date|between:2,100',
+            'travel_time' => 'required',
+            'origin_city' => 'required|string|between:2,100',
+            'destination_city' => 'required|string|between:2,100',
+            'fees' => 'required|string|between:2,100',
+            'gender_preferences' => 'required|string|between:2,100',
+
+        ]);
+ 
 }
