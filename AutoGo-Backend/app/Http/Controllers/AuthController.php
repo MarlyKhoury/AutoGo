@@ -401,7 +401,7 @@ class AuthController extends Controller
     public function uploadImg(Request $request) 
     { 
         $validator = Validator::make($request->all(),[ 
-            'file'  => 'required|mimes:png,jpg,jpeg,gif|max:2305',
+            'profile'=> 'required|mimes:png,jpg,jpeg,gif|max:2305',
         ]);   
   
         if($validator->fails()) {          
@@ -409,7 +409,10 @@ class AuthController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);                        
          }  
   
-   
+        // if condition
+        if ($profile = $request->profile('profile')) {
+            $picture_path = $profile->store('public/profiles');
+  
         
   
    
