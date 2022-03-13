@@ -265,7 +265,7 @@ class AuthController extends Controller
 
     }
 
-
+    
     //test
 
     public function test()
@@ -280,4 +280,30 @@ class AuthController extends Controller
 }
 
 
+    // Ban User
+    public function ban(Request $request)
+{
+    // Get id from token
+
+    $user_type = auth()->user()->user_types_id;
+    $admin_id=User_Type::findOrFail($user_type)->id;
+    if ($admin_id!=0 && $user_type==$admin_id){
+
+    // ban for days
+    $ban_for_next_7_days = Carbon::now()->addDays(7);
+    $ban_for_next_14_days = Carbon::now()->addDays(14);
+    $ban_permanently = 0;
+
+    // ban user
+    $user_id = $request->input('id');
+    $user = User::find($user_id);
+    $user->banned_till = $ban_for_next_7_days;
+    $user->save();
+    return response()->json(['message' => 'User banned successfully']);
     
+}
+
+    return response()->json(['error' => 'Unauthorized'], 401);
+}
+    
+  
