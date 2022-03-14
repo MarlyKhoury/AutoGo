@@ -457,7 +457,7 @@ class AuthController extends Controller
 
     $to_id = auth()->user()->id;
     $user=User::find($id);
-    $reviews=Review::where('to_id','=',$user->id)->get();
+    $reviews=Review::where('to_id','=',$id)->get();
 
         return response()->json([
                 'review' => $reviews
