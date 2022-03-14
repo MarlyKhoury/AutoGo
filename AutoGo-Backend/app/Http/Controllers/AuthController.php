@@ -482,6 +482,14 @@ class AuthController extends Controller
     
 
     // Edit Review
+    public function editReview($id){
+
+        $review= Review::findOrFail($id);
+        if (Auth::user() && (Auth::user()->id == $review->from_id)) {
+           $review= $request->isMethod('post')? Review::findOrFail($id): new Review;
+           
+       } 
+    
 
 
     /**
