@@ -30,6 +30,7 @@ Route::group([
     Route::post('/postReview', [AuthController::class, 'postReview']);
     Route::post('/ban', [AuthController::class, 'ban']);   
     Route::post('/createCar', [AuthController::class, 'createCar']);
+    Route::post('/updateInfo', [AuthController::class, 'updateInfo']);
     Route::post('/createRide', [AuthController::class, 'createRide']);
     Route::post('/bookRide', [AuthController::class, 'bookRide']);
     Route::post('/cancelBooking', [AuthController::class, 'cancelBooking']);

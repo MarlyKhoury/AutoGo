@@ -347,7 +347,7 @@ class AuthController extends Controller
 
 
     // Edit User Info
-    public function update(Request $request)
+    public function updateInfo(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
@@ -470,8 +470,6 @@ class AuthController extends Controller
     public function deleteReview($id){
 
         $review= Review::findOrFail($id);
-
-        
         if (Auth::user() && (Auth::user()->id == $review->from_id)) {
            $review->delete();
            return response()->json([
@@ -482,6 +480,9 @@ class AuthController extends Controller
         return 'you dont have permission';
        } 
     
+
+    // Edit Review
+
 
     /**
      * Log the user out (Invalidate the token).
