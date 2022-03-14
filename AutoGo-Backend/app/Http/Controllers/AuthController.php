@@ -467,23 +467,8 @@ class AuthController extends Controller
 
 
     // Delete Review
-    public function deleteReview($id)
-    {
-        // $review= Review::findOrFail($id);
-//         $review=Review::find($id,[])->delete();
-//   if ($review){
-//     $data=[
-//     'status'=>'1',
-//     'msg'=>'success'
-//   ];
-//   }else{
-//     $data=[
-//     'status'=>'0',
-//     'msg'=>'fail'
-//   ];
-//   return response()->json($data);
-// }
-//     }
+    public function deleteReview($id){
+
         $review= Review::findOrFail($id);
 
         
