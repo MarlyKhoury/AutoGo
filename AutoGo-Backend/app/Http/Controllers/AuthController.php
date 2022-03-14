@@ -467,16 +467,30 @@ class AuthController extends Controller
 
 
     // Delete Review
-    public function deleteReview(Request $request)
+    public function deleteReview($id)
     {
-    
-        if (Auth::user() && (Auth::user()->id == $comment->user_id)) {
-            Review::where('id',$id)->delete();
-            return back();
-        }else
-        return 'you dont have permission';
-        }
+        // $review= Review::findOrFail($id);
+//         $review=Review::find($id,[])->delete();
+//   if ($review){
+//     $data=[
+//     'status'=>'1',
+//     'msg'=>'success'
+//   ];
+//   }else{
+//     $data=[
+//     'status'=>'0',
+//     'msg'=>'fail'
+//   ];
+//   return response()->json($data);
+// }
+//     }
+        $review= Review::findOrFail($id);
 
+        
+        if (Auth::user() && (Auth::user()->id == $review->from_id)) {
+           
+       } 
+    
 
     /**
      * Log the user out (Invalidate the token).
@@ -518,4 +532,6 @@ class AuthController extends Controller
             'user' => auth()->user()
         ]);
     }
+
+    
 }
