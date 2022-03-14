@@ -24,7 +24,7 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]); 
     }
     /**
      * Get a JWT via given credentials.
@@ -234,7 +234,7 @@ class AuthController extends Controller
         
          $ride= Ride::findOrFail($validator->validated()['ride_id']);
     
-         if( $booked){
+         if( $booked){ 
             $booked->delete();
              $ride->remaining_seats=$ride->remaining_seats+1;
              $ride->save();
@@ -415,8 +415,8 @@ class AuthController extends Controller
     public function getuserInfo($id){
         $user_id = auth()->user()->id;
         $user= User::find($id, ['first_name','last_name']);
-        $profile=Profile::find($id,['address','education','workplace']);
-        $review= Review::find($id,['rating','comment']);
+        $profile=Profile::where('user_id',$id)->get(['address','education','workplace']);
+        $review= Review::where('to_id',$id)->get(['rating','comment']);
         return response()->json([
             'user'=> $user,
             'profile'=> $profile,
@@ -482,17 +482,31 @@ class AuthController extends Controller
     
 
     // Edit Review
-    public function editReview($id){
+    public function editReview(Request $request){
 
-        $review= Review::findOrFail($id);
-        if (Auth::user() && (Auth::user()->id == $review->from_id)) {
-           $review= $request->isMethod('post')? Review::findOrFail($id): new Review;
+        $validator = Validator::make($request->all(), [
+            'rating' => 'integer',
+            'comment' => 'required|string',
+            'post_id' =>'required',
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors(), 400);
+        }
+        $id= auth()->user()->id;
+         $post_id = $validator->validated()['post_id'];
+        // $review= Review::findOrFail($id);
+        // if (Auth::user() && (Auth::user()->id == $review->from_id)) {
+           
+           $review= $request->isMethod('post')? Review::findOrFail($post_id): new Review;
+           $review->rating = $request ->input('rating');
+           $review->comment = $request ->input('comment');
+           $review->save();
            return response()->json([
             'message' => 'Your review was updated successfully',
         ], 200);
         
-        }else
-        return 'you dont have permission';
+    
+        return 'you dont have permission'; 
        } 
     
 
