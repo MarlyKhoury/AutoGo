@@ -488,7 +488,6 @@ class AuthController extends Controller
 
         
         if (Auth::user() && (Auth::user()->id == $review->from_id)) {
-            // Review::where('id',$id)->delete();
            $review->delete();
            return response()->json([
             'message' => 'Your review was deleted successfully',
