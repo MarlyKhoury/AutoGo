@@ -487,7 +487,12 @@ class AuthController extends Controller
         $review= Review::findOrFail($id);
         if (Auth::user() && (Auth::user()->id == $review->from_id)) {
            $review= $request->isMethod('post')? Review::findOrFail($id): new Review;
-           
+           return response()->json([
+            'message' => 'Your review was updated successfully',
+        ], 200);
+        
+        }else
+        return 'you dont have permission';
        } 
     
 
