@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 
 const Map = () => {
   return (
