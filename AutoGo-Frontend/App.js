@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {Provider} from 'react-redux';
 
 // Set up redux
 // Test
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Let's build autoGo!</Text>
+      <Text>Let's build AutoGo!</Text>
       
     </View>
   );
