@@ -3,13 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import {Provider} from 'react-redux';
 
 // Set up redux
-// Test
+
 export default function App() {
   return (
+    <Provider>
     <View style={styles.container}>
-      <Text>Let's build AutoGo!</Text>
-      
+      <Text>Let's build AutoGo!</Text> 
     </View>
+    </Provider>
   );
 }
 
