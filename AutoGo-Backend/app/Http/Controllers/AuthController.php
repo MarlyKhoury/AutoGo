@@ -111,21 +111,11 @@ class AuthController extends Controller
     }
 
     
-    // Delete API
-
-    // public function deleteCar($id)
-    // {
-    //     $car = Car::findOrFail($id);
-    // if($car)
-    //    $car->delete(); 
-    // else
-    //     return response()->json(error);
-    // return response()->json(null); 
-    // }
+    // Delete a Car API
 
     public function deleteCar(Request $request){
 
-         //  Get id mn token
+      //  Get id mn token
       $id = auth()->car()->id;
       $car= Car::findOrFail($id);
       if ($car)
@@ -133,8 +123,6 @@ class AuthController extends Controller
       else
       return response()->json(error);
       return response()->json(null);
-
-
     }
 
 
@@ -170,6 +158,8 @@ class AuthController extends Controller
     }
     
 
+
+    // Cancel a Ride
 
 
     // Book a Ride
@@ -209,6 +199,7 @@ class AuthController extends Controller
 ], 201);
     }
 
+    // Count Bookings
     public function count_bookings($user_id){
         $bookings_count=Book::all()->where('user_id',$user_id)
                                    ->where('is_booked',1)
