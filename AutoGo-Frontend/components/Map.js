@@ -3,9 +3,14 @@ import React from 'react'
 
 const Map = () => {
   return (
-    <View>
-      <Text>I am a Map</Text>
-    </View>
+    <MapView
+    initialRegion={{
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    }}
+  />
   )
 }
 

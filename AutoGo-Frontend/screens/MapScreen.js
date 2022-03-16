@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native"; 
 import tw from 'tailwind-react-native-classnames';
 import Map from "../components/Map";
+import MapView from 'react-native-maps';
 
 const MapScreen = () => {
     return (
