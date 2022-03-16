@@ -7,9 +7,9 @@ const MapScreen = () => {
     return (
         <View>
             <Text>Here is the map stuff</Text>
-            <View></View>
+            <View style={tw`h-1/2`}></View>
 
-            <View></View>
+            <View style={tw`h-1/2`}></View>
         </View>
     );
 };
