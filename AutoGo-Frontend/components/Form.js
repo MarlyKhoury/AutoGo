@@ -49,6 +49,12 @@ const MyForm = () => {
     
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    height:35,
+    paddingTop:1,
+    paddingBottom:1,
+  }
+});
 
-<Text></Text>
 export default MyForm;
