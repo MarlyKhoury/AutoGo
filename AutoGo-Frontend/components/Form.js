@@ -60,6 +60,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#eaeaea",
   },
 
+  button:{
+      width:250,
+      marginTop:10,
+      backgroundColor:"#454545",
+  }
 });
 
 export default MyForm;
