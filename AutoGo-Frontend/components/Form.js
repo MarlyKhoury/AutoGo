@@ -29,5 +29,11 @@ const MyForm = () => {
       onChangeText={email => setEmail(email)}
     />
 
-  
+    <TextInput style={styles.container}
+      label="Password"
+      secureTextEntry={true}
+      value={password}
+      onChangeText={password => setPassword(password)}
+  />
+
 export default MyForm;
