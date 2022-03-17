@@ -2,14 +2,17 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import {Provider} from 'react-redux';
 import { store } from './store';
-
+import MyComponent from './components/Header';
+import MyForm from './components/Form';
 // Set up redux
 
 export default function App() {
   return (
     <Provider store={store}>
     <View style={styles.container}>
-      <Text>Let's build AutoGo!</Text> 
+      <MyComponent />
+      <MyForm />
+      <Text>Let's build AutoGo!</Text>
     </View>
     </Provider>
   );
