@@ -23,5 +23,11 @@ const MyForm = () => {
       onChangeText={lastname => setLastname(lastname)}
     />
 
- 
+    <TextInput style={styles.container}
+      label="Email"
+      value={email}
+      onChangeText={email => setEmail(email)}
+    />
+
+  
 export default MyForm;
