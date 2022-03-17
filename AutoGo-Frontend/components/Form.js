@@ -17,5 +17,11 @@ const MyForm = () => {
       onChangeText={firstname => setFirstname(firstname)}
     />
 
+    <TextInput style={styles.container}
+      label="Last Name"
+      value={lastname}
+      onChangeText={lastname => setLastname(lastname)}
+    />
 
+ 
 export default MyForm;
