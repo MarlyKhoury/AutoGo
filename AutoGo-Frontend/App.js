@@ -12,7 +12,6 @@ export default function App() {
     <View style={styles.container}>
       <MyComponent />
       <MyForm />
-      <Text>Let's build AutoGo!</Text>
     </View>
     </Provider>
   );

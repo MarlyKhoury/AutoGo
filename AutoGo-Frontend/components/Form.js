@@ -9,6 +9,7 @@ const MyForm = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [phone_number, setPhone_Number] = React.useState("");
+  const [gender, setGender] = React.useState("");
 
   return (
       <>
@@ -31,6 +32,12 @@ const MyForm = () => {
     />
 
     <TextInput style={styles.container}
+      label="Gender"
+      value={gender}
+      onChangeText={gender => setGender(gender)}
+    />
+
+    <TextInput style={styles.container}
       label="Email"
       value={email}
       onChangeText={email => setEmail(email)}
@@ -46,6 +53,8 @@ const MyForm = () => {
     <Button style={styles.button} mode="contained" onPress={() => console.log('Pressed')}>
       Log In
     </Button>
+
+    <Text>Already have an account?</Text><Text>Log in</Text>
 </>
     
   );
