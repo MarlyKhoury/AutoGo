@@ -35,5 +35,20 @@ const MyForm = () => {
       value={password}
       onChangeText={password => setPassword(password)}
   />
+{/*  */}
+    {/* <TextInput style={styles.container.pass}
+      label="Password"
+      secureTextEntry
+      right={<TextInput.Icon name="eye" />}
+    /> */}
 
+    <Button style={styles.button} mode="contained" onPress={() => console.log('Pressed')}>
+      Log In
+    </Button>
+</>
+    
+  );
+}
+
+<Text></Text>
 export default MyForm;
