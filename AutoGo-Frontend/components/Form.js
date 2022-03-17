@@ -8,6 +8,7 @@ const MyForm = () => {
   const [lastname, setLastname] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [phone_number, setPhone_Number] = React.useState("");
 
   return (
       <>
@@ -21,6 +22,12 @@ const MyForm = () => {
       label="Last Name"
       value={lastname}
       onChangeText={lastname => setLastname(lastname)}
+    />
+
+    <TextInput style={styles.container}
+      label="Phone Number"
+      value={phone_number}
+      onChangeText={phone_number => setPhone_Number(phone_number)}
     />
 
     <TextInput style={styles.container}
