@@ -54,7 +54,12 @@ const styles = StyleSheet.create({
     height:35,
     paddingTop:1,
     paddingBottom:1,
-  }
+    padding: 15,
+    marginTop:10,
+    borderRadius:5,
+    backgroundColor: "#eaeaea",
+  },
+
 });
 
 export default MyForm;
