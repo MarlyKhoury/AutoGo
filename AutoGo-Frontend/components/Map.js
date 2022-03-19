@@ -14,10 +14,20 @@ const Map = () => {
     initialRegion={{
       latitude: origin.location.lat,
       longitude: origin.location.lng,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
+      latitudeDelta: 0.005,
+      longitudeDelta: 0.005,
     }}
-  />
+  >
+      {origin?.location && (
+          <Marker
+            coordinate={{
+                latitude: origin.location.lat,
+                longitude: origin.location.lng,
+            }}
+          
+          />
+      )}
+      </MapView>
   )
 }
 
