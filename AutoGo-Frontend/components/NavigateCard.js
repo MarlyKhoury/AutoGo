@@ -13,6 +13,7 @@ const NavigateCard = () => {
           <View>
              <GooglePlacesAutocomplete 
                 placeholder='Where To?'
+                styles={toInputBoxStyles}
                 nearbyPlacesAPI='GooglePlacesSearch'
                 debounce={400}             
              />
@@ -24,4 +25,19 @@ const NavigateCard = () => {
 
 export default NavigateCard
 
-const styles = StyleSheet.create({})
+const toInputBoxStyles = StyleSheet.create({
+    container: {
+        backgroundColor: "white",
+        paddingTop: 20,
+        flex: 0,
+    },
+    textInput: {
+        backgroundColor: "#DDDDDF",
+        borderRadius: 0,
+        fontSize: 18,
+    },
+    textInputContainer: {
+        paddingHorizontal: 20,
+        paddingBottom: 0,
+    }
+})
