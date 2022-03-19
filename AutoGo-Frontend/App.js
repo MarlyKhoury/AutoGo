@@ -4,10 +4,11 @@ import { Provider } from "react-redux";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Let's build AutoGo!!</Text>
-      
-    </View>
+    <Provider>
+       <View style={styles.container}>
+          <Text>Let's build AutoGo!!</Text>
+       </View>
+    </Provider>
   );
 }
 
