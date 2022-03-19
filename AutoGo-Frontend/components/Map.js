@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import tw from 'tailwind-react-native-classnames';
 import { useSelector } from 'react-redux';
@@ -12,8 +12,17 @@ const Map = () => {
     const destination = useSelector(selectDestination);
     const mapRef = useRef(null);
 
+    useEffect(()=>{
+        if (!origin || !destination) return;
+
+        // Zoom & Fit markers
+        mapRef.current.fitToSuppliedMarkers([origin, destination])
+
+    },[origin, destination])
+
   return (
     <MapView
+    ref={mapRef}
     style={tw`flex-1`}
     mapType="mutedStandard"
     initialRegion={{
@@ -41,6 +50,19 @@ const Map = () => {
             title="Origin"
             description={origin.description}
             identifier="origin"
+          
+          />
+      )}
+
+       {destination?.location && (
+          <Marker
+            coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+            }}
+            title="Destination"
+            description={destination.description}
+            identifier="Destination"
           
           />
       )}
