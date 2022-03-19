@@ -32,6 +32,12 @@ const HomeScreen = () => {
                 }
 
               }}
+              onPress={(data, details = null) => {
+                console.log(data);
+                console.log(details);
+              }}
+              fetchDetails={true}
+              returnKeyType={"search"}
               enablePoweredByContainer={false}
               minLength={2}
               query= {{
