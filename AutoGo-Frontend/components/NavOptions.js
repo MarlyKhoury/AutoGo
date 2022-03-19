@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { FlatList, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React from 'react';
+
 
 const data = [
 {
@@ -18,9 +19,17 @@ const data = [
 
 const NavOptions = () => {
   return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
+    <FlatList 
+       data={data}
+       horizontal
+       renderItem={({ item }) => (
+           <TouchableOpacity>
+               <Text>{item.title}</Text>
+           </TouchableOpacity>
+       )}
+       
+    
+    />
   )
 }
 
