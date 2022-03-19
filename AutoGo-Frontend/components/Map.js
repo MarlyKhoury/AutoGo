@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectDestination, selectOrigin } from '../slices/navSlice';
 import MapViewDirections from 'react-native-maps-directions';
 import { GOOGLE_MAPS_APIKEY } from "@env";
+import { useRef } from 'react';
 
 const Map = () => {
     const origin = useSelector(selectOrigin);
@@ -16,9 +17,11 @@ const Map = () => {
         if (!origin || !destination) return;
 
         // Zoom & Fit markers
-        mapRef.current.fitToSuppliedMarkers([origin, destination])
+        mapRef.current.fitToSuppliedMarkers(["origin", "destination"],{
+            edgePadding: {top:50, right:50, bottom:50, left:50}
+        });
 
-    },[origin, destination])
+    },[origin, destination]);
 
   return (
     <MapView
@@ -62,7 +65,7 @@ const Map = () => {
             }}
             title="Destination"
             description={destination.description}
-            identifier="Destination"
+            identifier="destination"
           
           />
       )}
