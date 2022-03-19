@@ -14,6 +14,8 @@ const NavigateCard = () => {
              <GooglePlacesAutocomplete 
                 placeholder='Where To?'
                 styles={toInputBoxStyles}
+                fetchDetails={true}
+                enablePoweredByContainer={false}
                 nearbyPlacesAPI='GooglePlacesSearch'
                 debounce={400}             
              />
