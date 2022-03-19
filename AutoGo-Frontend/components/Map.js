@@ -4,7 +4,7 @@ import React from 'react'
 const Map = () => {
   return (
     <View>
-      <Text>Map</Text>
+      <Text>I am a Map</Text>
     </View>
   )
 }
