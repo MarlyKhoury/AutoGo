@@ -3,6 +3,7 @@ import React from 'react';
 import tw from 'tailwind-react-native-classnames';
 import Map from '../components/Map';
 import NavigateCard from '../components/NavigateCard';
+import RideOptionsCard from '../components/RideOptionsCard';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const MapSreen = () => {
