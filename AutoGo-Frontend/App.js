@@ -15,8 +15,8 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
       <SafeAreaProvider>
-        <KeyboardAvoidingView>
-          
+        <KeyboardAvoidingView style={{flex:1}}>
+
         <Stack.Navigator>
           <Stack.Screen 
           name = "HomeScreen"
