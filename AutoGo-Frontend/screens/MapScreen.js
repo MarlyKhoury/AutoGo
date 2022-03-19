@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import tw from 'tailwind-react-native-classnames'
 
 const MapSreen = () => {
   return (
