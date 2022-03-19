@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import { Icon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
+import { FlatList } from 'react-native-gesture-handler'
 
 
 const data = [
@@ -43,6 +44,23 @@ const RideOptionsCard = () => {
             </TouchableOpacity>
       <Text style={tw`text-center py-5 text-xl`}>Select a Ride</Text>
         </View>
+        <FlatList 
+          data = {data}
+          keyExtractor = {(item) => item.id}
+          renderItem={({item: {id, title, multiplyer, image}, item}) =>(
+              <TouchableOpacity>
+                  <Image
+                  style={{
+                      width:100,
+                      height:100,
+                      resizeMode: "contain",
+                  }}
+                  source = {{uri: image}}
+                  />
+              </TouchableOpacity>
+          )}
+        
+        />
     </SafeAreaView>
   );
 };
