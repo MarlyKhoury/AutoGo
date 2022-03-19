@@ -7,11 +7,13 @@ import { useDispatch } from 'react-redux';
 import { setDestination } from '../slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
 import NavFavourites from './NavFavourites';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Icon } from 'react-native-elements';
 
 
 const NavigateCard = () => {
     const dispatch = useDispatch();
-    const navigation = useNavigation;
+    const navigation = useNavigation();
 
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
@@ -41,6 +43,13 @@ const NavigateCard = () => {
              />
           </View>
           <NavFavourites />
+      </View>
+      <View>
+          <TouchableOpacity>
+              <Icon name="car" type="font-awesome" color="white" size={16}/>
+              
+
+          </TouchableOpacity>
       </View>
     </SafeAreaView>
   )
