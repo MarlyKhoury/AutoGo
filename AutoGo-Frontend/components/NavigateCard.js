@@ -27,7 +27,8 @@ const NavigateCard = () => {
                     dispatch(setDestination({
                         location: details.geometry.location,
                         description: data.description,
-                    }))
+                    }));
+                    navigation.navigate("RideOptionsCard");
                 }}
                 enablePoweredByContainer={false}
                 query= {{
