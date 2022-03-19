@@ -15,7 +15,14 @@ const NavigateCard = () => {
                 placeholder='Where To?'
                 styles={toInputBoxStyles}
                 fetchDetails={true}
+                returnKeyType={"search"}
+                minLength={2}
+                
                 enablePoweredByContainer={false}
+                query= {{
+                    key: GOOGLE_MAPS_APIKEY,
+                    language:'en'
+                  }}
                 nearbyPlacesAPI='GooglePlacesSearch'
                 debounce={400}             
              />
