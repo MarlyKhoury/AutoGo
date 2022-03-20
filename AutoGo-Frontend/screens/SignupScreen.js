@@ -1,8 +1,8 @@
 import * as React from 'react';
-
 import { TextInput } from 'react-native-paper';
 import { View } from 'react-native';
 import Header from '../components/Header';
+import Button from '../components/Button';
 
 const SignUpScreen = () => {
   const [first_name, setFirst_name] = React.useState("");
@@ -46,6 +46,8 @@ const SignUpScreen = () => {
       value={password}
       onChangeText={password => setPassword(password)}
       />
+      <Button />
+      
       </View>
   );
 };
