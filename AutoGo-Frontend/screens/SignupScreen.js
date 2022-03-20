@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { TextInput, Text } from 'react-native-paper';
+import { TextInput, Text, Button } from 'react-native-paper';
 import { View } from 'react-native';
 import Header from '../components/Header';
-import Button from '../components/Button';
+
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -51,9 +51,9 @@ const SignUpScreen = () => {
       value={password}
       onChangeText={password => setPassword(password)}
       />
-      <Button 
-       onPress={() => navigation.navigate("LoginScreen")}
-      />
+       <Button icon="camera" mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
+    Sign Up
+  </Button>
       <Text>Already have an account?</Text><Text>Login</Text>
       </View>
   );

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { TextInput, Text } from 'react-native-paper';
+import { TextInput, Text, Button } from 'react-native-paper';
 import { View } from 'react-native';
 import Header from '../components/Header';
-import Button from '../components/Button';
+
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -10,7 +10,7 @@ const CreateCar = () => {
   const navigation = useNavigation();
 
 
-  const [Car_model, setCar_model] = React.useState("");
+  const [car_model, setCar_model] = React.useState("");
   const [license_plate, setLicense_plate] = React.useState("");
   const [seats_available, setSeats_available] = React.useState("");
 
@@ -18,40 +18,24 @@ const CreateCar = () => {
       <View>
       <Header />
     <TextInput
-      label="First Name"
-      value={first_name}
-      onChangeText={first_name => setFirst_name(first_name)}
+      label="Car Model"
+      value={car_model}
+      onChangeText={car_model => setCar_model(car_model)}
       />
       <TextInput
-      label="Last Name"
-      value={last_name}
-      onChangeText={last_name => setLast_name(last_name)}
+      label="License Plate"
+      value={license_plate}
+      onChangeText={license_plate => setLicense_plate(license_plate)}
       />
       <TextInput
-      label="Gender"
-      value={gender}
-      onChangeText={gender => setGender(gender)}
+      label="Seats Available"
+      value={seats_available}
+      onChangeText={seats_available => setSeats_available(seats_available)}
       />
-      <TextInput
-      label="Phone Number"
-      value={phone_number}
-      onChangeText={phone_number => setPhone_number(phone_number)}
-      />
-      <TextInput
-      label="Email"
-      value={email}
-      onChangeText={email => setEmail(email)}
-      />
-      <TextInput
-      label="Password"
-      secureTextEntry
-      value={password}
-      onChangeText={password => setPassword(password)}
-      />
-      <Button 
-       onPress={() => navigation.navigate("LoginScreen")}
-      />
-      <Text>Already have an account?</Text><Text>Login</Text>
+      
+      <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
+    Create Car
+  </Button>
       </View>
   );
 };
