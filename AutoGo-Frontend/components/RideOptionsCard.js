@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import tw from 'tailwind-react-native-classnames'
 import { Icon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
@@ -32,6 +32,8 @@ const data = [
 ]
 const RideOptionsCard = () => {
     const navigation = useNavigation();
+    //keep track of what is selected
+    const [selected, setSelected] = useState(null);
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -48,7 +50,9 @@ const RideOptionsCard = () => {
           data = {data}
           keyExtractor = {(item) => item.id}
           renderItem={({item: {id, title, multiplyer, image}, item}) =>(
-              <TouchableOpacity style ={tw`flex-row justify-between items-center px-10`}>
+              <TouchableOpacity
+              onPress={() => setSelected(item)}
+              style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
                   <Image
                   style={{
                       width:100,
