@@ -6,16 +6,13 @@ import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
 
 
-const SignUpScreen = () => {
+const CreateCar = () => {
   const navigation = useNavigation();
 
 
-  const [first_name, setFirst_name] = React.useState("");
-  const [last_name, setLast_name] = React.useState("");
-  const [gender, setGender] = React.useState("");
-  const [phone_number, setPhone_number] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [Car_model, setCar_model] = React.useState("");
+  const [license_plate, setLicense_plate] = React.useState("");
+  const [seats_available, setSeats_available] = React.useState("");
 
   return (
       <View>
@@ -59,4 +56,4 @@ const SignUpScreen = () => {
   );
 };
 
-export default SignUpScreen;
+export default CreateCar;

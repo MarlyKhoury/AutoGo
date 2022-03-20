@@ -9,6 +9,9 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import SignUpScreen from "./screens/SignupScreen";
+import LoginScreen from "./screens/LoginScreen";
+import ProfilePic from "./screens/ProfilePic";
+import CreateCar from "./screens/CreateCar";
 
 
 export default function App() {
@@ -23,9 +26,30 @@ export default function App() {
         keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
         >
         <Stack.Navigator>
-        <Stack.Screen 
+        {/* <Stack.Screen 
           name = "SignupScreen"
           component={SignUpScreen} 
+          options={{
+            headerShown:false,
+          }}
+          /> */}
+          {/* <Stack.Screen 
+          name = "LoginScreen"
+          component={LoginScreen} 
+          options={{
+            headerShown:false,
+          }}
+          /> */}
+           {/* <Stack.Screen 
+          name = "ProfilePic"
+          component={ProfilePic} 
+          options={{
+            headerShown:false,
+          }}
+          /> */}
+           <Stack.Screen 
+          name = "CreateRide"
+          component={CreateCar} 
           options={{
             headerShown:false,
           }}
