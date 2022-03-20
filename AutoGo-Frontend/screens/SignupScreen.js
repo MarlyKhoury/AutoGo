@@ -5,40 +5,46 @@ import { View } from 'react-native';
 import Header from '../components/Header';
 
 const SignUpScreen = () => {
-  const [text, setText] = React.useState("");
+  const [first_name, setFirst_name] = React.useState("");
+  const [last_name, setLast_name] = React.useState("");
+  const [gender, setGender] = React.useState("");
+  const [phone_number, setPhone_number] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   return (
       <View>
       <Header />
     <TextInput
       label="First Name"
-      value={text}
-      onChangeText={text => setText(text)}
+      value={first_name}
+      onChangeText={first_name => setFirst_name(first_name)}
       />
       <TextInput
       label="Last Name"
-      value={text}
-      onChangeText={text => setText(text)}
+      value={last_name}
+      onChangeText={last_name => setLast_name(last_name)}
       />
       <TextInput
       label="Gender"
-      value={text}
-      onChangeText={text => setText(text)}
+      value={gender}
+      onChangeText={gender => setGender(gender)}
       />
       <TextInput
       label="Phone Number"
-      value={text}
-      onChangeText={text => setText(text)}
+      value={phone_number}
+      onChangeText={phone_number => setPhone_number(phone_number)}
       />
       <TextInput
       label="Email"
-      value={text}
-      onChangeText={text => setText(text)}
+      value={email}
+      onChangeText={email => setEmail(email)}
       />
       <TextInput
       label="Password"
-      value={text}
-      onChangeText={text => setText(text)}
+      secureTextEntry
+      value={password}
+      onChangeText={password => setPassword(password)}
       />
       </View>
   );
