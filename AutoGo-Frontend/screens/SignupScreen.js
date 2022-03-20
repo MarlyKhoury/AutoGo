@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextInput } from 'react-native-paper';
+import { TextInput, Text } from 'react-native-paper';
 import { View } from 'react-native';
 import Header from '../components/Header';
 import Button from '../components/Button';
@@ -47,7 +47,7 @@ const SignUpScreen = () => {
       onChangeText={password => setPassword(password)}
       />
       <Button />
-      
+      <Text>Already have an account?</Text><Text>Login</Text>
       </View>
   );
 };
