@@ -1,21 +1,15 @@
-import * as React from 'react';
-import { Appbar } from 'react-native-paper';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import Header from '../components/Header'
 
-const MyComponent = () => {
-  const _goBack = () => console.log('Went back');
-
-  const _handleSearch = () => console.log('Searching');
-
-  const _handleMore = () => console.log('Shown more');
-
+const LoginScreen = () => {
   return (
-    <Appbar.Header>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Title" subtitle="Subtitle" />
-      <Appbar.Action icon="magnify" onPress={_handleSearch} />
-      <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-    </Appbar.Header>
-  );
-};
+    <View>
+      <Header />
+    </View>
+  )
+}
 
-export default MyComponent;
+export default LoginScreen
+
+const styles = StyleSheet.create({})
