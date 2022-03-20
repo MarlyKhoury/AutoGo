@@ -27,7 +27,7 @@ export default function App() {
         keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
         >
         <Stack.Navigator>
-          <Stack.Screen 
+          {/* <Stack.Screen 
          name = "ProfilePic"
          component={ProfilePic} 
          options={{
@@ -47,7 +47,7 @@ export default function App() {
           options={{
             headerShown:false,
           }}
-          />
+          /> */}
            {/* <Stack.Screen 
           name = "CreateRide"
           component={CreateCar} 
