@@ -4,6 +4,9 @@ import tw from 'tailwind-react-native-classnames'
 import { Icon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native-gesture-handler'
+import { useSelector } from 'react-redux'
+import { selectTravelTimeInformation } from '../slices/navSlice'
+
 
 
 const data = [
@@ -34,6 +37,7 @@ const RideOptionsCard = () => {
     const navigation = useNavigation();
     //keep track of what is selected
     const [selected, setSelected] = useState(null);
+    const travelTimeInformation = useSelector(selectTravelTimeInformation);
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -44,7 +48,7 @@ const RideOptionsCard = () => {
             >
             <Icon name="chevron-left" type="fontawesome" />
             </TouchableOpacity>
-      <Text style={tw`text-center py-5 text-xl`}>Select a Ride</Text>
+      <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance.text}</Text>
         </View>
         <FlatList 
           data = {data}
