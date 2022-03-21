@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextInput, Text, Button } from 'react-native-paper';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 
 import { useNavigation } from '@react-navigation/native';
@@ -60,3 +60,7 @@ const SignUpScreen = () => {
 };
 
 export default SignUpScreen;
+
+const styles = StyleSheet.create({
+  
+})

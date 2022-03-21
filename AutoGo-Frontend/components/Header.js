@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Appbar } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
 
 const Header = () => {
   const _goBack = () => console.log('Went back');
@@ -9,7 +10,7 @@ const Header = () => {
   const _handleMore = () => console.log('Shown more');
 
   return (
-    <Appbar.Header>
+    <Appbar.Header style={styles.header}>
       <Appbar.BackAction onPress={_goBack} />
       <Appbar.Content title="Title" subtitle="Subtitle" />
       <Appbar.Action icon="magnify" onPress={_handleSearch} />
@@ -19,3 +20,9 @@ const Header = () => {
 };
 
 export default Header;
+
+const styles = StyleSheet.create({
+  header:{
+      backgroundColor: "#454545",
+  }
+})
