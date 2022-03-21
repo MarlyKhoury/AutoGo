@@ -2,7 +2,6 @@ import * as React from 'react';
 import { TextInput, Text, Button } from 'react-native-paper';
 import { View, StyleSheet } from 'react-native';
 import Header from '../components/Header';
-
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -51,9 +50,9 @@ const SignUpScreen = () => {
       value={password}
       onChangeText={password => setPassword(password)}
       />
-       <Button icon="camera" mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
-    Sign Up
-  </Button>
+       <Button style={styles.button} icon="camera" mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
+        Sign Up
+      </Button>
       <Text>Already have an account?</Text><Text>Login</Text>
       </View>
   );
@@ -62,5 +61,7 @@ const SignUpScreen = () => {
 export default SignUpScreen;
 
 const styles = StyleSheet.create({
-  
+  button:{
+     backgroundColor: "#454545",
+  }
 })
