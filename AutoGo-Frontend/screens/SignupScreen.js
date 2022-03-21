@@ -60,7 +60,7 @@ const SignUpScreen = () => {
        <Button style={styles.button} icon="camera" mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
         Sign Up
       </Button>
-      <Text style={styles.acctext}>Already have an account?</Text><Text>Login</Text>
+      <Text style={styles.acctext}>Already have an account?<Text>Log In</Text></Text>
       </View>
   );
 };
@@ -70,9 +70,10 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   button:{
      backgroundColor: "#454545",
-     marginTop:10,
+     marginTop:12,
   },
   acctext:{
     color: "#58BD29",
+    textAlign:"center"
   }
 })
