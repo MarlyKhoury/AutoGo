@@ -3,6 +3,7 @@ import { TextInput, Text, Button } from 'react-native-paper';
 import { View, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import { useNavigation } from '@react-navigation/native';
+import tw from 'tailwind-react-native-classnames';
 
 
 const SignUpScreen = () => {
@@ -19,32 +20,38 @@ const SignUpScreen = () => {
   return (
       <View>
       <Header />
-    <TextInput
+      <TextInput
+      style={tw`mt-5`}
       label="First Name"
       value={first_name}
       onChangeText={first_name => setFirst_name(first_name)}
       />
       <TextInput
+      style={tw`mt-3`}
       label="Last Name"
       value={last_name}
       onChangeText={last_name => setLast_name(last_name)}
       />
       <TextInput
+      style={tw`mt-3`}
       label="Gender"
       value={gender}
       onChangeText={gender => setGender(gender)}
       />
       <TextInput
+      style={tw`mt-3`}
       label="Phone Number"
       value={phone_number}
       onChangeText={phone_number => setPhone_number(phone_number)}
       />
       <TextInput
+      style={tw`mt-3`}
       label="Email"
       value={email}
       onChangeText={email => setEmail(email)}
       />
       <TextInput
+      style={tw`mt-3`}
       label="Password"
       secureTextEntry
       value={password}
@@ -63,6 +70,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   button:{
      backgroundColor: "#454545",
+     marginTop:10,
   },
   acctext:{
     color: "#58BD29",
