@@ -45,12 +45,12 @@ const Map = () => {
     ref={mapRef}
     style={tw`flex-1`}
     mapType="mutedStandard"
-    initialRegion={{
-      latitude: origin.location.lat,
-      longitude: origin.location.lng,
-      latitudeDelta: 0.005,
-      longitudeDelta: 0.005,
-    }}
+    // initialRegion={{
+    //   latitude: origin.location.lat,
+    //   longitude: origin.location.lng,
+    //   latitudeDelta: 0.005,
+    //   longitudeDelta: 0.005,
+    // }}
   >
       {origin && destination &&(
           <MapViewDirections

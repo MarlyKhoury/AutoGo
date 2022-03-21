@@ -34,20 +34,20 @@ export default function App() {
            headerShown:false,
          }}
          /> */}
-        <Stack.Screen 
+        {/* <Stack.Screen 
           name = "SignupScreen"
           component={SignUpScreen} 
           options={{
             headerShown:false,
           }}
-          />
-          <Stack.Screen 
+          /> */}
+          {/* <Stack.Screen 
           name = "LoginScreen"
           component={LoginScreen} 
           options={{
             headerShown:false,
           }}
-          />
+          /> */}
            {/* <Stack.Screen 
           name = "CreateRide"
           component={CreateCar} 

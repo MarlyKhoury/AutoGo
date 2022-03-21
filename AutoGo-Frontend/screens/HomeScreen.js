@@ -25,7 +25,7 @@ const HomeScreen = () => {
           
           />
 
-          <GooglePlacesAutocomplete
+          {/* <GooglePlacesAutocomplete
               placeholder='Where From?'
               styles={{
                 container: {
@@ -39,10 +39,10 @@ const HomeScreen = () => {
               onPress={(data, details = null) => {
                 dispatch(setOrigin({
                   location: details.geometry.location,
-                  description: data.description
-                  // console.log(data);
+                  description: data.description,
                   // console.log(details);
                 }))
+                // console.log(location),
                 dispatch(setDestination(null))
               }}
               fetchDetails={true}
@@ -55,7 +55,7 @@ const HomeScreen = () => {
               }}
               nearbyPlacesAPI='GooglePlacesSearch'
               debounce={400}
-           />
+           /> */}
           <NavOptions />
           <NavFavourites />
       </View>

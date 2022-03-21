@@ -56,10 +56,10 @@ const SignUpScreen = () => {
       value={password}
       onChangeText={password => setPassword(password)}
       />
-      <Button style={styles.button} icon="camera" mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
+      <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
         Sign Up
       </Button>
-      <Text style={styles.acctext}>Already have an account?<Text>Log In</Text></Text>
+      <Text style={styles.acctext}>Already have an account?<Text style={[tw`font-bold`,{color:"#58BD29"}]}> Log In</Text></Text>
       </View>
   );
 };
@@ -69,12 +69,13 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   button:{
      backgroundColor: "#454545",
-     marginTop:12,
+     marginTop:20,
      width:336,
      marginLeft:20,
   },
   acctext:{
     color: "#58BD29",
-    textAlign:"center"
+    textAlign:"center",
+    marginTop:8,
   }
 })

@@ -9,17 +9,52 @@ import { useNavigation } from '@react-navigation/native';
 import NavFavourites from './NavFavourites';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
-
+import { useSelector } from 'react-redux';
+import { selectOrigin } from '../slices/navSlice';
+import { setOrigin } from '../slices/navSlice';
 
 const NavigateCard = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    const origin = useSelector(selectOrigin);
+    // console.log(origin)
 
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
-      <Text style={tw`text-center py-5 text-xl`}>Good Morning</Text>
+      {/* <Text style={tw`text-center py-5 text-xl`}>Good Morning</Text> */}
       <View style={tw`border-t border-gray-200 flex-shrink`}>
           <View>
+          <GooglePlacesAutocomplete
+              placeholder='Where From?'
+              styles={{
+                container: {
+                  flex:0,
+                },
+                textInput:{
+                  fontSize:18,
+                }
+
+              }}
+              onPress={(data, details = null) => {
+                dispatch(setOrigin({
+                  location: details.geometry.location,
+                  description: data.description,
+                  // console.log(details);
+                }))
+                // console.log(location),
+                dispatch(setDestination(null))
+              }}
+              fetchDetails={true}
+              returnKeyType={"search"}
+              enablePoweredByContainer={false}
+              minLength={2}
+              query= {{
+                key: GOOGLE_MAPS_APIKEY,
+                language:'en'
+              }}
+              nearbyPlacesAPI='GooglePlacesSearch'
+              debounce={400}
+           />
              <GooglePlacesAutocomplete 
                 placeholder='Where To?'
                 styles={toInputBoxStyles}
