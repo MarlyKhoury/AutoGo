@@ -34,8 +34,8 @@ const CreateCar = () => {
       />
       
       <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-    Create Car
-  </Button>
+          Create Car
+      </Button>
       </View>
   );
 };

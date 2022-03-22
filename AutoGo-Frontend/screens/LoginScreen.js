@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View, SafeAreaView, TextInput } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView, TextInput } from 'react-native';
+import React from 'react';
 import tw from 'tailwind-react-native-classnames';
 import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // const LoginScreen = () => {
 //   return (
@@ -47,7 +48,7 @@ const LoginScreen = () => {
         Log In
     </Button>
   <View style={styles.square}/>
-  <Text style={styles.acctext}>Don't have an account?<Text style={[tw`font-bold`,{color:"#454545"}]}> Sign Up</Text></Text>
+  <Text style={styles.acctext}>Don't have an account?<TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}><Text style={[tw`font-bold`,{color:"#454545"}]}> Sign Up</Text></TouchableOpacity></Text>
   </View>
  
   </SafeAreaView>

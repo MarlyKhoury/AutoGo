@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import { useNavigation } from '@react-navigation/native';
 import tw from 'tailwind-react-native-classnames';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const SignUpScreen = () => {
@@ -59,7 +60,7 @@ const SignUpScreen = () => {
       <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
         Sign Up
       </Button>
-      <Text style={styles.acctext}>Already have an account?<Text style={[tw`font-bold`,{color:"#58BD29"}]}> Log In</Text></Text>
+      <Text style={styles.acctext}>Already have an account?<TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} ><Text style={[tw`font-bold`,{color:"#58BD29"}]}> Log In</Text></TouchableOpacity></Text>
       </View>
   );
 };

@@ -18,7 +18,7 @@ const data = [
     id: "456",
     title: "Create a Ride",
     image: "https://links.papareact.com/7pf",
-    screen: "EatScreen",
+    screen: "CreateCar",
 },
 ];
 
@@ -37,7 +37,7 @@ const NavOptions = () => {
             // disabled={!origin}
             >
             
-               <View style={tw`${!origin && "opacity-20"}`}>
+               <View >
                    <Image 
                      style= {{ width:120, height:120, resizeMode:'contain'}}
                      source={{ uri: item.image}}
