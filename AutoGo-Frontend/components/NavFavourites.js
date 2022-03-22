@@ -16,7 +16,7 @@ const data = [
         icon: "briefcase",
         location: "Work",
         destination: "London Eye, London, UK",
-        },
+        }
 
 ];
 
