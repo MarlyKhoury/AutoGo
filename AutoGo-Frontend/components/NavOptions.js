@@ -16,8 +16,8 @@ const data = [
 },
 {
     id: "456",
-    title: "Order Food",
-    image: "https://links.papareact.com/28w",
+    title: "Create a Ride",
+    image: "https://links.papareact.com/7pf",
     screen: "EatScreen",
 },
 ];
