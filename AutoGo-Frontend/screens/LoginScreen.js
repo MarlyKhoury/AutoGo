@@ -30,13 +30,14 @@ const LoginScreen = () => {
         navigation.navigate('HomeScreen')
       } else {
         setErrorMessage('error occured, Please login again')
-      
+        
       }
       
       
       
     })
     .catch(function (error) {
+      navigation.navigate('HomeScreen') // for testing
       setErrorMessage(error.response.data.error)
     })
 

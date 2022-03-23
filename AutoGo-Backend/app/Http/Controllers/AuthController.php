@@ -254,9 +254,10 @@ class AuthController extends Controller
         
         $rides = Ride::all()->whereIn('gender_preferences',['NA',$gender])
         ->whereNotIn('remaining_seats',0);
+       
         return response()->json([
-            'number_bookings'=>$number_of_bookings,
-            'rides' => $rides
+            // 'number_bookings'=>$number_of_bookings,
+            'rides' => array_values($rides->toArray())
    ], 200);
 
     }

@@ -31,6 +31,13 @@ const data = [
         image: "https://links.papareact.com/7pf",
 
     },
+    {
+        id: "Uber-LUX-7",
+        title: "Uber LUX",
+        multiplier: 1.75,
+        image: "https://links.papareact.com/7pf",
+
+    },
 
 ]
 const RideOptionsCard = () => {
