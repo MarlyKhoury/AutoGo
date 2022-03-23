@@ -42,7 +42,7 @@ const NavigateCard = () => {
           let ride= response.data.rides
           ride.filter(ride=>{
             if ("female" === rides.gender_preferences ){
-                    console.log(rides)
+                    console.log(response.data.rides)
                 }
             } ) 
           // getSenderRec('female', 'female')
@@ -59,7 +59,7 @@ const NavigateCard = () => {
     <SafeAreaView style={tw`bg-white flex-1`}>
       {/* <Text style={tw`text-center py-5 text-xl`}>Good Morning</Text> */}
       <View style={tw`border-t border-gray-200 flex-shrink`}>
-          <View>
+          <View >
           <GooglePlacesAutocomplete
               placeholder='Where From?'
               styles={{

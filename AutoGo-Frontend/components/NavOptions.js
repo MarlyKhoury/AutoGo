@@ -37,7 +37,7 @@ const NavOptions = () => {
             // disabled={!origin}
             >
             
-               <View >
+               <View>
                    <Image 
                      style= {{ width:120, height:120, resizeMode:'contain'}}
                      source={{ uri: item.image}}

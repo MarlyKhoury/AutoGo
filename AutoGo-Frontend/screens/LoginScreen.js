@@ -4,31 +4,54 @@ import tw from 'tailwind-react-native-classnames';
 import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
-// const LoginScreen = () => {
-//   return (
-//     <View>
-//       <Text>LoginScreen</Text>
-//     </View>
-//   )
-// }
-
-// export default LoginScreen
-
-// const styles = StyleSheet.create({})
+import axios from 'react-native-axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
- 
+  const[errorMessage, setErrorMessage] = React.useState('');
+
+  const login=()=>{
+
+    axios
+    .post('http://172.20.10.4:8000/api/auth/login',{
+      email: email,
+      password: password,
+  })
+    .then(async function (response) {
+      // handle success
+      let token = response.data.access_token;
+      AsyncStorage.setItem('token',token);
+
+      const data = await AsyncStorage.getItem('token');
+      if (data){
+        navigation.navigate('HomeScreen')
+      } else {
+        setErrorMessage('error occured, Please login again')
+      
+      }
+      
+      
+      
+    })
+    .catch(function (error) {
+      setErrorMessage(error.response.data.error)
+    })
+
+
+
+  
+  }
   return (
   <SafeAreaView>
     <Text style={[tw`font-bold text-center mt-20 pt-5`,{color:"#58BD29",fontSize:30}]}>AutoGo.</Text>
     <Text style={[tw`text-center font-semibold mt-5`,{color:"#58BD29"}]}>Where You Can Split a Ride</Text>
-  
   <View>
   <View style={styles.TriangleCorner} />
+  <View>
+  <Text>{errorMessage && <Text className="error">{errorMessage}</Text >}</Text></View>
     <TextInput
      style={[tw`items-center max-w-md p-2 mx-auto bg-gray-200 rounded-lg`,{width:300,height: 60, marginTop:230,zIndex:1}]}
      placeholder="Email"
@@ -43,12 +66,18 @@ const LoginScreen = () => {
      onChangeText={password => setPassword(password)}
     />
     <Button 
-    onPress={() => navigation.navigate('HomeScreen')}
+    onPress={
+      login
+      // () => navigation.navigate('HomeScreen')
+    }
     style={[tw`items-center rounded-md mt-4 max-w-md mx-auto`,{zIndex:1, width:300, backgroundColor:'#454545'}]} mode="contained">
         Log In
     </Button>
+
   <View style={styles.square}/>
-  <Text style={styles.acctext}>Don't have an account?<TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}><Text style={[tw`font-bold`,{color:"#454545"}]}> Sign Up</Text></TouchableOpacity></Text>
+  <Text style={styles.acctext}>Don't have an account?<TouchableOpacity onPress={() =>
+    
+    navigation.navigate('SignupScreen')}><Text style={[tw`font-bold`,{color:"#454545"}]}> Sign Up</Text></TouchableOpacity></Text>
   </View>
  
   </SafeAreaView>
