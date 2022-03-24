@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextInput, Text, Button } from 'react-native-paper';
+import { TextInput, Text, Button} from 'react-native-paper';
 import { View, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import { useNavigation } from '@react-navigation/native';
@@ -36,7 +36,7 @@ const CreateCar = () => {
       onChangeText={seats_available => setSeats_available(seats_available)}
       />
       
-      <Button style={styles.btn} icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
+      <Button style={styles.btn} mode="contained" onPress={() => navigation.navigate('CreateRide')}>
           Create Car
       </Button>
       </View>

@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View} from 'react-native'
 import React from 'react'
 import Header from '../components/Header'
-import { TextInput } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames';
 import RadioBtn from '../components/RadioBtn';
+import { useNavigation } from '@react-navigation/native';
 
 const CreateRide = () => {
+  const navigation = useNavigation();
   const [origin_city, setOrigin_city] = React.useState("");
   const [destination_city, setDestination_city] = React.useState("");
   const [travel_date, setTravel_date] = React.useState("");
@@ -16,7 +18,9 @@ const CreateRide = () => {
 
   return (
     <View>
-        <Header />
+        <Header 
+        
+        />
 
         <TextInput
         style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
@@ -43,12 +47,15 @@ const CreateRide = () => {
         onChangeText={travel_time => setTravel_time(travel_time)}
         />
         <TextInput
-        style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
+        style={[tw`mt-3 mb-5 justify-center rounded-xl`,{marginLeft:20,width:336}]}
         label="Fees"
         value={fees}
         onChangeText={fees => setFees(fees)}
         />
        <RadioBtn />
+       <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('HomeScreen')}>
+        Create Ride
+      </Button>
 
       
     </View>
@@ -57,4 +64,11 @@ const CreateRide = () => {
 
 export default CreateRide
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    button:{
+     backgroundColor: "#58BD29",
+     marginTop:20,
+     width:336,
+     marginLeft:20,
+    }
+})

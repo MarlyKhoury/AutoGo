@@ -29,21 +29,14 @@ export default function App() {
         keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
         >
         <Stack.Navigator>
-          {/* <Stack.Screen 
-         name = "CreateCar"
-         component={CreateCar} 
+          <Stack.Screen 
+         name = "AdminScreen"
+         component={AdminScreen} 
          options={{
            headerShown:false,
          }}
-         /> */}
+         />
 
-          <Stack.Screen 
-          name = "CreateRide"
-          component={CreateRide} 
-          options={{
-          headerShown:false,
-          }}
-          />
           <Stack.Screen 
           name = "LoginScreen"
           component={LoginScreen} 
@@ -65,6 +58,13 @@ export default function App() {
             headerShown:false,
           }}
         />
+          <Stack.Screen 
+          name = "CreateRide"
+          component={CreateRide} 
+          options={{
+          headerShown:false,
+          }}
+          />
         <Stack.Screen 
        name = "ProfilePic"
        component={ProfilePic} 
@@ -72,13 +72,6 @@ export default function App() {
          headerShown:false,
        }}
        />
-           <Stack.Screen 
-          name = "AdminScreen"
-          component={AdminScreen} 
-          options={{
-            headerShown:false,
-          }}
-          />
           <Stack.Screen 
           name = "HomeScreen"
           component={HomeScreen} 
