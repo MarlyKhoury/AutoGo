@@ -6,45 +6,94 @@ import { useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useSelector } from 'react-redux'
 import { selectTravelTimeInformation } from '../slices/navSlice'
+import axios from 'react-native-axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
+// const data = [
+//     {
+//         id: "Uber-X-123",
+//         title: "UberX",
+//         multiplier: 1,
+//         image: "https://links.papareact.com/3pn",
 
-const data = [
-    {
-        id: "Uber-X-123",
-        title: "UberX",
-        multiplier: 1,
-        image: "https://links.papareact.com/3pn",
+//     },
+//     {
+//         id: "Uber-XL-456",
+//         title: "Uber XL",
+//         multiplier: 1.2,
+//         image: "https://links.papareact.com/5w8",
 
-    },
-    {
-        id: "Uber-XL-456",
-        title: "Uber XL",
-        multiplier: 1.2,
-        image: "https://links.papareact.com/5w8",
+//     },
+//     {
+//         id: "Uber-LUX-789",
+//         title: "Uber LUX",
+//         multiplier: 1.75,
+//         image: "https://links.papareact.com/7pf",
 
-    },
-    {
-        id: "Uber-LUX-789",
-        title: "Uber LUX",
-        multiplier: 1.75,
-        image: "https://links.papareact.com/7pf",
+//     },
+//     {
+//         id: "Uber-LUX-7",
+//         title: "Uber LUX",
+//         multiplier: 1.75,
+//         image: "https://links.papareact.com/7pf",
 
-    },
-    {
-        id: "Uber-LUX-7",
-        title: "Uber LUX",
-        multiplier: 1.75,
-        image: "https://links.papareact.com/7pf",
+//     },
 
-    },
-
-]
+// ]
 const RideOptionsCard = () => {
+    const data = [
+        {
+            id: "Uber-X-123",
+            title: "UberX",
+            multiplier: 1,
+            image: "https://links.papareact.com/3pn",
+    
+        },
+        {
+            id: "Uber-XL-456",
+            title: "Uber XL",
+            multiplier: 1.2,
+            image: "https://links.papareact.com/5w8",
+    
+        },
+        {
+            id: "Uber-LUX-789",
+            title: "Uber LUX",
+            multiplier: 1.75,
+            image: "https://links.papareact.com/7pf",
+    
+        },  
+    ]
     const navigation = useNavigation();
     //keep track of what is selected
     const [selected, setSelected] = useState(null);
+    const [dataa, setDataa] = React.useState("");
+
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
+    const headers = {
+        'Content-Type': 'application/json', 
+        'Authorization': 'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuNDo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4MDcwMzM3LCJleHAiOjE2NDgwNzM5MzcsIm5iZiI6MTY0ODA3MDMzNywianRpIjoibUs5WnBVV3RaWFRsOG9xMiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.OeJ1NehuV4IOHVvSRf6bVh7jwJlbfKx1EVC7rA470no'
+
+      }
+    axios
+    .get('http://172.20.10.2:8000/api/auth/getRides',
+    {headers:headers})
+    .then(function (response) {
+      // handle success
+      console.log(JSON.stringify(response.data.rides[0]))
+      setDataa(JSON.stringify(response.data.rides[0]))
+
+      
+    })
+    .catch(function (error) {
+        //   setErrorMessage(error.response.data.error)
+        console.log(error)
+        console.log(error.message=='Request failed with status code 401')
+
+    })
+
+
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -58,7 +107,7 @@ const RideOptionsCard = () => {
       <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance?.text}</Text>
         </View>
         <FlatList 
-          data = {data}
+          data = {dataa}
           keyExtractor = {(item) => item.id}
           renderItem={({item: {id, title, multiplyer, image}, item}) =>(
               <TouchableOpacity

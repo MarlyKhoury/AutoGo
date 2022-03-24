@@ -69,13 +69,13 @@ export default SignUpScreen;
 
 const styles = StyleSheet.create({
   button:{
-     backgroundColor: "#454545",
+     backgroundColor: "#58BD29",
      marginTop:20,
      width:336,
      marginLeft:20,
   },
   acctext:{
-    color: "#58BD29",
+    color: "#454545",
     textAlign:"center",
     marginTop:8,
   }

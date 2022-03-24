@@ -13,6 +13,7 @@ import LoginScreen from "./screens/LoginScreen";
 import ProfilePic from "./screens/ProfilePic";
 import CreateCar from "./screens/CreateCar";
 import AdminScreen from "./screens/AdminScreen";
+import CreateRide from "./screens/CreateRide";
 
 
 
@@ -28,6 +29,21 @@ export default function App() {
         keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
         >
         <Stack.Navigator>
+          {/* <Stack.Screen 
+         name = "CreateCar"
+         component={CreateCar} 
+         options={{
+           headerShown:false,
+         }}
+         /> */}
+
+          <Stack.Screen 
+          name = "CreateRide"
+          component={CreateRide} 
+          options={{
+          headerShown:false,
+          }}
+          />
           <Stack.Screen 
           name = "LoginScreen"
           component={LoginScreen} 
@@ -43,7 +59,7 @@ export default function App() {
             }}
           />
            <Stack.Screen 
-          name = "CreateRide"
+          name = "CreateCar"
           component={CreateCar} 
           options={{
             headerShown:false,

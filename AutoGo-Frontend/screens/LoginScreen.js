@@ -11,12 +11,12 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
-  const[errorMessage, setErrorMessage] = React.useState('');
+  const[errorMessage, setErrorMessage] = React.useState("");
 
   const login=()=>{
 
     axios
-    .post('http://172.20.10.4:8000/api/auth/login',{
+    .post('http://192.168.16.104:8000/api/auth/login',{
       email: email,
       password: password,
   })
@@ -32,8 +32,6 @@ const LoginScreen = () => {
         setErrorMessage('error occured, Please login again')
         
       }
-      
-      
       
     })
     .catch(function (error) {
