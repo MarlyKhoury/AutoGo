@@ -7,16 +7,14 @@ const DropBtn = () => {
   const handlePress = () => setExpanded(!expanded);
 
   return (
-  
       <List.Accordion
-        title="Controlled Accordion"
+        title="Uncontrolled Accordion"
         left={props => <List.Icon {...props} icon="folder" />}
         expanded={expanded}
         onPress={handlePress}>
-        <List.Item title="BMW" />
-        <List.Item title="Mercedes" />
+        <List.Item title="First item" />
+        <List.Item title="Second item" />
       </List.Accordion>
-    
   );
 };
 
