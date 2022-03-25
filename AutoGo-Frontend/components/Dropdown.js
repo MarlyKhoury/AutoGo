@@ -1,23 +1,23 @@
-import DropDownPicker from 'react-native-dropdown-picker';
+import * as React from 'react';
+import { List } from 'react-native-paper';
 
-function dropDown() {
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'}
-  ]);
+const DropBtn = () => {
+  const [expanded, setExpanded] = React.useState(true);
+
+  const handlePress = () => setExpanded(!expanded);
 
   return (
-    <DropDownPicker
-      open={open}
-      value={value}
-      items={items}
-      setOpen={setOpen}
-      setValue={setValue}
-      setItems={setItems}
-    />
+  
+      <List.Accordion
+        title="Controlled Accordion"
+        left={props => <List.Icon {...props} icon="folder" />}
+        expanded={expanded}
+        onPress={handlePress}>
+        <List.Item title="BMW" />
+        <List.Item title="Mercedes" />
+      </List.Accordion>
+    
   );
-}
+};
 
-export default dropDown()
+export default DropBtn;

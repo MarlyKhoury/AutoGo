@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View, useState} from 'react-native'
-import {React} from 'react'
+import { StyleSheet, Text, View} from 'react-native'
+import React from 'react'
 import Header from '../components/Header'
 import { TextInput, Button } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames';
 import RadioBtn from '../components/RadioBtn';
 import { useNavigation } from '@react-navigation/native';
-import Dropdown from '../components/Dropdown';
-import DropDownPicker from 'react-native-dropdown-picker';
+import DropBtn from '../components/Dropdown';
+
+
+
+
 
 const CreateRide = () => {
   const navigation = useNavigation();
@@ -16,14 +19,12 @@ const CreateRide = () => {
   const [travel_time, setTravel_time] = React.useState("");
   const [fees, setFees] = React.useState("");
   const [gender_preferences, setGender_preferences] = React.useState("");
-  const [checked, setChecked] = React.useState('first');
+ 
 
   return (
     <View>
-        <Header 
-        
-        />
-        <Dropdown />
+        <Header />
+        <DropBtn />
         <TextInput
         style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
         label="Origin City"
