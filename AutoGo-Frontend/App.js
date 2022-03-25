@@ -29,13 +29,6 @@ export default function App() {
         keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
         >
         <Stack.Navigator>
-          <Stack.Screen 
-         name = "AdminScreen"
-         component={AdminScreen} 
-         options={{
-           headerShown:false,
-         }}
-         />
 
           <Stack.Screen 
           name = "LoginScreen"
@@ -62,12 +55,19 @@ export default function App() {
           name = "CreateRide"
           component={CreateRide} 
           options={{
-          headerShown:false,
+            headerShown:false,
           }}
           />
         <Stack.Screen 
        name = "ProfilePic"
        component={ProfilePic} 
+       options={{
+         headerShown:false,
+        }}
+       />
+        <Stack.Screen 
+       name = "AdminScreen"
+       component={AdminScreen} 
        options={{
          headerShown:false,
        }}

@@ -43,57 +43,66 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // ]
 const RideOptionsCard = () => {
     const data = [
-        {
-            id: "Uber-X-123",
-            title: "UberX",
-            multiplier: 1,
-            image: "https://links.papareact.com/3pn",
+        // {
+        //     id: "Uber-X-123",
+        //     title: "UberX",
+        //     multiplier: 1,
+        //     image: "https://links.papareact.com/3pn",
     
-        },
-        {
-            id: "Uber-XL-456",
-            title: "Uber XL",
-            multiplier: 1.2,
-            image: "https://links.papareact.com/5w8",
+        // },
+        // {
+        //     id: "Uber-XL-456",
+        //     title: "Uber XL",
+        //     multiplier: 1.2,
+        //     image: "https://links.papareact.com/5w8",
     
-        },
+        // },
+        // {
+        //     id: "Uber-LUX-789",
+        //     title: "Uber LUX",
+        //     multiplier: 1.75,
+        //     image: "https://links.papareact.com/7pf",
+    
+        // },  
         {
-            id: "Uber-LUX-789",
-            title: "Uber LUX",
-            multiplier: 1.75,
-            image: "https://links.papareact.com/7pf",
+            id: "1",
+            user_car_id: "2",
+            travel_date: "2022-12-03",
+            travel_time:"12:00:00",
+            origin_city:"jbeil",
+            destination_city:"dbayeh",
+            fees:"700000LBP",
+            gender_prefrences:"female",
+            remaining_seats:"3",
     
         },  
     ]
+
+    
     const navigation = useNavigation();
     //keep track of what is selected
     const [selected, setSelected] = useState(null);
-    const [dataa, setDataa] = React.useState("");
+    const [setdata, setData] = React.useState("");
 
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
     const headers = {
         'Content-Type': 'application/json', 
-        'Authorization': 'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuNDo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4MDcwMzM3LCJleHAiOjE2NDgwNzM5MzcsIm5iZiI6MTY0ODA3MDMzNywianRpIjoibUs5WnBVV3RaWFRsOG9xMiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.OeJ1NehuV4IOHVvSRf6bVh7jwJlbfKx1EVC7rA470no'
-
+        'Authorization': 'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4MjMyOTM2LCJleHAiOjE2NDgyMzY1MzYsIm5iZiI6MTY0ODIzMjkzNiwianRpIjoiYkgyN08ydDVVNE5WcTJ3byIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.iqU3SgKzg_nYhAmZBKW98slqU5pvVevc9vELxiQZXIE'
       }
     axios
-    .get('http://172.20.10.2:8000/api/auth/getRides',
+    .get('http://192.168.16.102:8000/api/auth/getRides',
     {headers:headers})
     .then(function (response) {
       // handle success
       console.log(JSON.stringify(response.data.rides[0]))
-      setDataa(JSON.stringify(response.data.rides[0]))
-
-      
+      setData(JSON.stringify(response.data.rides[0]))
     })
     .catch(function (error) {
-        //   setErrorMessage(error.response.data.error)
+        // setErrorMessage(error.response.data.error)
         console.log(error)
         console.log(error.message=='Request failed with status code 401')
 
     })
-
-
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -107,7 +116,7 @@ const RideOptionsCard = () => {
       <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance?.text}</Text>
         </View>
         <FlatList 
-          data = {dataa}
+          data = {data}
           keyExtractor = {(item) => item.id}
           renderItem={({item: {id, title, multiplyer, image}, item}) =>(
               <TouchableOpacity

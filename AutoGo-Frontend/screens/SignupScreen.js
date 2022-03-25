@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import { useNavigation } from '@react-navigation/native';
 import tw from 'tailwind-react-native-classnames';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import axios from 'react-native-axios';
+
 
 
 const SignUpScreen = () => {
@@ -16,6 +18,40 @@ const SignUpScreen = () => {
   const [phone_number, setPhone_number] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
+
+  const signUp =() =>{
+    axios 
+    .post('http://192.168.16.101:8000/api/auth/register',{
+
+      first_name :first_name,
+      last_name: last_name,
+      gender: gender,
+      phone_number: phone_number,
+      email: email,
+      password: password,
+     
+  })
+   .then((response) => {
+    setErrorMessage('')
+     console.log (response.message.data)
+     navigation.navigate('LoginScreen')
+    
+   })
+   .catch(function (error) {//brke 3m t3abe gher chi?:no
+    console.log(phone_number)
+
+    console.log (JSON.stringify(error.response.data))//hay should be undefined?
+    let first_name_err= error.response.data.first_name==undefined?'':error.response.data.first_name
+    let last_name_err= error.response.data.last_name==undefined?'':error.response.data.last_name
+    let phone_number_err= error.response.data.phone_number==undefined?'':error.response.data.phone_number
+    let gender_err= error.response.data.gender==undefined?'':error.response.data.gender
+    let email_err= error.response.data.email==undefined?'':error.response.data.email
+    let password_err= error.response.data.password==undefined?'':error.response.data.password
+    setErrorMessage(first_name_err+last_name_err+phone_number_err+gender_err+email_err+password_err) 
+   
+  }) 
+  }
 
   return (
       <View>
@@ -57,7 +93,9 @@ const SignUpScreen = () => {
       value={password}
       onChangeText={password => setPassword(password)}
       />
-      <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
+      <View>
+  <Text>{errorMessage && <Text className="error">{errorMessage}</Text >}</Text></View>
+      <Button style={styles.button} mode="contained" onPress={signUp}>
         Sign Up
       </Button>
       <Text style={styles.acctext}>Already have an account?<TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} ><Text style={[tw`font-bold`,{color:"#58BD29"}]}> Log In</Text></TouchableOpacity></Text>
