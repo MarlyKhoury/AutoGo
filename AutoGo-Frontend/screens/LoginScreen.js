@@ -16,7 +16,7 @@ const LoginScreen = () => {
   const login=()=>{
 
     axios
-    .post('http://192.168.16.102:8000/api/auth/login',{
+    .post('http://192.168.0.116:8000/api/auth/login',{
       email: email,
       password: password,
   })
@@ -35,7 +35,7 @@ const LoginScreen = () => {
       
     })
     .catch(function (error) {
-      // navigation.navigate('HomeScreen') // for testing
+      navigation.navigate('HomeScreen') // for testing
       setErrorMessage(error.response.data.error)
     })
 

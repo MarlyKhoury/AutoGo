@@ -11,61 +11,59 @@ import { setOrigin } from '../slices/navSlice';
 import { ReactReduxContext } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDestination, selectOrigin, setTravelTimeInformation } from '../slices/navSlice';
-import { TextInput,  Button } from 'react-native-paper';
-import { useEffect } from 'react'
+import { QueryClient, QueryClientProvider,useQuery} from 'react-query'
 
 const RideOptionsCard = () => {
-
-    useEffect(()=>{
-        console.log("I am here");
-        fetchCars();
-    }, [])
-
+    
     const navigation = useNavigation();
     //keep track of what is selected
     const [selected, setSelected] = useState("");
     const [data, setData] = React.useState("");
     const dispatch = useDispatch();
+    const queryClient = new QueryClient()
 
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
-   
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjAuMTE2OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzMDg1NTUsImV4cCI6MTY0ODMxMjE1NSwibmJmIjoxNjQ4MzA4NTU1LCJqdGkiOiJVNk9rTGY0eVFEaWJvZVNuIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.s3Vd20Q38RM1aooSteNQnc5cZI2MenJh1SLyfCUkfkc'
+    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjAuMTE2OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzMDMxNDAsImV4cCI6MTY0ODMwNjc0MCwibmJmIjoxNjQ4MzAzMTQwLCJqdGkiOiJFMzduNTdjSlM2WUQ2aGplIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.2V2tPbvlr3Ylq4ntLKNdZxpw5ChJUwYIynpWwvEEsS0'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
-    const fetchCars=()=>{
-        axios.get('http://192.168.0.116:8000/api/auth/getRides',
-        {headers:headers},  
-        )
-        .then((response) => {
-            setData(response.data.rides)
-            console.log(origin)
-        }
-          // handle success
-        //   console.log(JSON.stringify(response.data.rides))
-        
-    
-    
-        //   dispatch(setOrigin({
-        //     location: details.geometry.location,
-        //     description: data.description,
-        //     // console.log(details);
-        //   }))
-          
-        )
-        .catch((error) =>{
-            console.log(error)
-            console.log(error.message=='Request failed with status code 401')
-        }            // setErrorMessage(error.response.data.error)
-           
-    
-        )
-        // useEffect(fetchCars, [])
+    const fetchCars=() =>{
+    return  axios.get('http://192.168.0.116:8000/api/auth/getRides',
+      {headers:headers})
     }
 
+    // .then(function (response) {
+    //   // handle success
+    // //   console.log(JSON.stringify(response.data.rides))
+    // clearTimeout(timeout);
+    //   setData(response.data.rides)
+    // console.log(origin)
+
+    //   dispatch(setOrigin({
+    //     location: details.geometry.location,
+    //     description: data.description,
+    //     // console.log(details);
+    //   }))
+      
+    // })
+    // .catch(function (error) {
+    //     // setErrorMessage(error.response.data.error)
+    //     console.log(error)
+    //     console.log(error.message=='Request failed with status code 401')
+
+    // })
+    const {
+        isLoading,
+        dataa,
+        isError,
+        error,
+        isFetching,
+        
+      } = useQuery('get-cars', fetchCars, {refetchOnMount:false})
+      console.log({isFetching,isLoading})
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -112,14 +110,11 @@ const RideOptionsCard = () => {
             style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}>
                 <Text style={tw`text-center text-white text-xl`}>Choose {selected?.title}</Text>
             </TouchableOpacity>
-
         </View>
-            {/* <Button mode="contained" onPress={()=>fetchCars()}> */}
-        {/* Sign Up
-      </Button> */}
     </SafeAreaView>
   );
 };
 
 export default RideOptionsCard;
 
+const styles = StyleSheet.create({});

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { List } from 'react-native-paper';
+import tw from 'tailwind-react-native-classnames';
 
 const DropBtn = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -8,13 +9,15 @@ const DropBtn = () => {
 
   return (
       <List.Accordion
-        title="Uncontrolled Accordion"
+      style={tw`p-1 bg-gray-200`}
+        title="Cars"
         left={props => <List.Icon {...props} icon="folder" />}
-        expanded={expanded}
+        // expanded={expanded}
         onPress={handlePress}>
-        <List.Item title="First item" />
-        <List.Item title="Second item" />
+        <List.Item title="BMW" />
+        <List.Item title="MERCEDES" />
       </List.Accordion>
+
   );
 };
 
