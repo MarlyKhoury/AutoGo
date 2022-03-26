@@ -8,7 +8,6 @@ import { selectTravelTimeInformation } from '../slices/navSlice'
 import axios from 'react-native-axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setOrigin } from '../slices/navSlice';
-import { ReactReduxContext } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDestination, selectOrigin, setTravelTimeInformation } from '../slices/navSlice';
 import { TextInput,  Button } from 'react-native-paper';
@@ -42,7 +41,8 @@ const RideOptionsCard = () => {
         )
         .then((response) => {
             setData(response.data.rides)
-            console.log(origin)
+            console.log(origin.description)
+            console.log(destination.description)
         }
           // handle success
         //   console.log(JSON.stringify(response.data.rides))

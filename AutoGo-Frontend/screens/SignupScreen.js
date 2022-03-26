@@ -35,14 +35,11 @@ const SignUpScreen = () => {
   })
    .then((response) => {
     setErrorMessage('')
-     console.log (response.message.data)
      navigation.navigate('LoginScreen')
     
    })
    .catch(function (error) {//brke 3m t3abe gher chi?:no
-    console.log(phone_number)
-
-    console.log (JSON.stringify(error.response.data))//hay should be undefined?
+    if(error.message=='Request failed with status code 410'){
     let first_name_err= error.response.data.first_name==undefined?'':error.response.data.first_name
     let last_name_err= error.response.data.last_name==undefined?'':error.response.data.last_name
     let phone_number_err= error.response.data.phone_number==undefined?'':error.response.data.phone_number
@@ -50,7 +47,11 @@ const SignUpScreen = () => {
     let email_err= error.response.data.email==undefined?'':error.response.data.email
     let password_err= error.response.data.password==undefined?'':error.response.data.password
     setErrorMessage(first_name_err+last_name_err+phone_number_err+gender_err+email_err+password_err) 
-   
+    }
+    else {
+      setErrorMessage('An error occured. Please try again later')
+      console.log(error)
+    }
   }) 
   }
 
