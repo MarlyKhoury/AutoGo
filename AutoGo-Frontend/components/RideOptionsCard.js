@@ -36,7 +36,7 @@ const RideOptionsCard = () => {
         'Authorization': 'Bearer '+token,
     }
     const fetchCars=()=>{
-        axios.get('http://192.168.0.116:8000/api/auth/getRides',
+        axios.get('http://192.168.16.103:8000/api/auth/getRides',
         {headers:headers},  
         )
         .then((response) => {

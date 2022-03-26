@@ -110,6 +110,30 @@ class AuthController extends Controller
         ], 201);
     }
 
+
+    //get all cars by user
+    public function getCar(){
+        $user_id = auth()->user()->id;
+        $cars = Car::all()->where('user_id',$user_id);
+
+        // ->whereNotIn('remaining_seats',0);
+        // $user = Car::findOrFail('user_id',$user_id);
+        // $gender = $user->gender;
+
+        // $bookings_count=Book::all()->where('user_id',$user_id)
+        //                            ->where('is_booked',1)
+        //                            ->count();
+        
+        // $rides = Ride::all()->whereIn('gender_preferences',['OTHER',$gender])
+        // ->whereNotIn('remaining_seats',0);
+       
+        return response()->json([
+            // 'number_bookings'=>$number_of_bookings,
+            'cars' => array_values($cars->toArray())
+   ], 200);
+
+    }
+
     
     // Delete a Car API
 
@@ -136,7 +160,7 @@ class AuthController extends Controller
             'origin_city' => 'required|string|between:2,100',
             'destination_city' => 'required|string|between:2,100',
             'fees' => 'required|string|between:2,100',
-            'gender_preferences' => 'required|string|between:2,100',
+            'gender_preferences' => 'required|string',
 
         ]);
         if($validator->fails()){

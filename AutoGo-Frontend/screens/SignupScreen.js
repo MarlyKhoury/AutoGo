@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import tw from 'tailwind-react-native-classnames';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'react-native-axios';
+import RadioBtn from '../components/RadioBtn';
+import {value} from '../components/RadioBtn'
 
 
 
@@ -72,12 +74,6 @@ const SignUpScreen = () => {
       />
       <TextInput
       style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
-      label="Gender"
-      value={gender}
-      onChangeText={gender => setGender(gender)}
-      />
-      <TextInput
-      style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
       label="Phone Number"
       value={phone_number}
       onChangeText={phone_number => setPhone_number(phone_number)}
@@ -95,6 +91,7 @@ const SignUpScreen = () => {
       value={password}
       onChangeText={password => setPassword(password)}
       />
+      <RadioBtn />
       <View>
   <Text>{errorMessage && <Text className="error">{errorMessage}</Text >}</Text></View>
       <Button style={styles.button} mode="contained" onPress={signUp}>
