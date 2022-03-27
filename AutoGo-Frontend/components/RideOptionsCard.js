@@ -30,7 +30,7 @@ const RideOptionsCard = () => {
     const destination = useSelector(selectDestination);
    
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzODYyNDcsImV4cCI6MTY0ODM4OTg0NywibmJmIjoxNjQ4Mzg2MjQ3LCJqdGkiOiJ3cEN0QUxtbmFmRjdsYTNaIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.403bUa2kE2cg8F9RfBNGzPc3fkvJ7g2vcnV7Z_3yZsU'
+    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzODk2NzEsImV4cCI6MTY0ODM5MzI3MSwibmJmIjoxNjQ4Mzg5NjcxLCJqdGkiOiJTSFdhVWRlSXU5ZDlQT2JvIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gCNB4ROAuj_ma0oH8Qs3bU3u_uHfKD-sERTqXlrVg7Q'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -44,28 +44,27 @@ const RideOptionsCard = () => {
             console.log(origin.description)
             console.log(destination.description)
         }
-          // handle success
-        //   console.log(JSON.stringify(response.data.rides))
         
-    
-    
-        //   dispatch(setOrigin({
-        //     location: details.geometry.location,
-        //     description: data.description,
-        //     // console.log(details);
-        //   }))
-          
         )
         .catch((error) =>{
             console.log(error)
             console.log(error.message=='Request failed with status code 401')
-        }            // setErrorMessage(error.response.data.error)
-           
-    
-        )
+        }            // setErrorMessage(error.response.data.error)     
+    )
         // useEffect(fetchCars, [])
     }
-
+    const bookRide=()=>{
+        axios.post('http://192.168.70.28:8000/api/auth/bookRide',{ride_id:selected.id},
+        {headers:headers}
+        )
+        .then((response) => {
+            console.log(response.data)
+        })
+        .catch((error) =>{
+            console.log(error.response.data)
+        })
+      
+    }
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -81,11 +80,13 @@ const RideOptionsCard = () => {
         <FlatList 
           data = {data}
           keyExtractor = {(item) => item.id}
-          renderItem={({item: {id,title, fees}, item}) =>(
+          renderItem={({item: {id,title, fees,travel_date,travel_time}, item}) =>(
               <TouchableOpacity
-              onPress={() =>
-                 setSelected(item)
-                // console.log(item)
+              onPress={() =>{
+                  setSelected(item)
+                  bookRide()
+              }
+                // console.log(item.id)
                 
                 }
               style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
@@ -98,12 +99,11 @@ const RideOptionsCard = () => {
                   source = {{uri: "https://links.papareact.com/7pf"}}
                   />
                   <View style={tw`-ml-6`}>
-                      <Text style={tw`text-xl font-semibold`}>{title}</Text>
-                      <Text style={tw`text-xl font-semibold`}>{fees}</Text>
-                      <Text style={tw`text-xl font-semibold`}>{selected.id}</Text>
+                      <Text style={tw`text-xl font-semibold`}>{travel_date}   {travel_time}</Text>
+                      {/* <Text style={tw`text-xl font-semibold`}>{title}</Text> */}
+                      <Text style={tw`text-xl font-semibold`}>  Fees/person: {fees}</Text>
                       <Text>{travelTimeInformation?.duration?.text} Travel Time</Text>
                   </View>
-                  <Text style={tw`text-xl`}>$99</Text>
               </TouchableOpacity>
           )}
         />
