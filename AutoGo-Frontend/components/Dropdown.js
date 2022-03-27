@@ -5,23 +5,21 @@ import { StyleSheet, Text, View, SafeAreaView, TextInput ,TouchableOpacity,Image
 import { FlatList } from 'react-native-gesture-handler'
 import  { useState,useEffect } from 'react'
 import axios from 'react-native-axios';
-// import { selectCar } from '../slices/carSlice';
-// import { setCar } from '../slices/carSlice';
 import { useDispatch } from 'react-redux';
 
-const DropBtn = () => {
+const DropBtn = (props) => {
   const [expanded, setExpanded] = React.useState(true);
   const handlePress = () => setExpanded(!expanded);
   const [selected, setSelected] = useState("");
   const [data, setData] = React.useState("");
-  // const car = useSelector(selectCar);
   const dispatch = useDispatch();
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzODYyNDcsImV4cCI6MTY0ODM4OTg0NywibmJmIjoxNjQ4Mzg2MjQ3LCJqdGkiOiJ3cEN0QUxtbmFmRjdsYTNaIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.403bUa2kE2cg8F9RfBNGzPc3fkvJ7g2vcnV7Z_3yZsU'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzOTY4OTUsImV4cCI6MTY0ODQwMDQ5NSwibmJmIjoxNjQ4Mzk2ODk1LCJqdGkiOiJvOTh5d0M1UXZaTVBoQjRBIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FNTS6QEHdSBf1RTI35iKBZ153Rh0kI30bqoN0gCjLek'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
+
 
   useEffect(()=>{
          console.log("I am here");
@@ -57,9 +55,13 @@ const DropBtn = () => {
           keyExtractor = {(item) => item.id}
           renderItem={({item: {id,model, fees}, item}) =>(
               <TouchableOpacity
-              onPress={() =>
+              onPress={() =>{
                 //  setSelected(item)
-                console.log(item)
+                // console.log(item)
+                props.Changedata(item.id)
+                // setExpanded(expanded)
+              }
+
                 }
               style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
                 

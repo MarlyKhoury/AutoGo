@@ -13,7 +13,7 @@ const CreateCar = () => {
   const [license_plate, setLicense_plate] = React.useState("");
   const [seats_available, setSeats_available] = React.useState("");
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzODYyNDcsImV4cCI6MTY0ODM4OTg0NywibmJmIjoxNjQ4Mzg2MjQ3LCJqdGkiOiJ3cEN0QUxtbmFmRjdsYTNaIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.403bUa2kE2cg8F9RfBNGzPc3fkvJ7g2vcnV7Z_3yZsU'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzOTY4OTUsImV4cCI6MTY0ODQwMDQ5NSwibmJmIjoxNjQ4Mzk2ODk1LCJqdGkiOiJvOTh5d0M1UXZaTVBoQjRBIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FNTS6QEHdSBf1RTI35iKBZ153Rh0kI30bqoN0gCjLek'
   const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -37,6 +37,7 @@ const CreateCar = () => {
       navigation.navigate('CreateRide')//for testing
   })
 }
+
 
   return (
       <View>

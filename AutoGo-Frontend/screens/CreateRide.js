@@ -15,10 +15,13 @@ import { useSelector } from 'react-redux';
 import { selectOrigin } from '../slices/navSlice';
 import axios from 'react-native-axios';
 import { useEffect } from 'react'
+import { useState } from 'react'
 
 
 
 const CreateRide = () => {
+  const [Name, setName] = useState("Parent");
+
   const navigation = useNavigation();
   const [travel_date, setTravel_date] = React.useState("");
   const [travel_time, setTravel_time] = React.useState("");
@@ -29,11 +32,9 @@ const CreateRide = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
  
-  const childToParent = (childdata) => {
-    setCar(childdata);
-  }
+  
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMzo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4MzIwOTg0LCJleHAiOjE2NDgzMjQ1ODQsIm5iZiI6MTY0ODMyMDk4NCwianRpIjoiOEVDQjM3MXFvenNTcVQxUCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.hjq6gSGfzfQ_VDi-2rqSMdMttZMxXHau50mwCljt1bg'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzOTc2NTEsImV4cCI6MTY0ODQwMTI1MSwibmJmIjoxNjQ4Mzk3NjUxLCJqdGkiOiJ0cFdodTg5eEViNmZrWDFDIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZvRIvCyxtEj6ubqgwgpLqNErHarojdGV2EZTcgxTC18'
   const headers = {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
@@ -42,10 +43,10 @@ const CreateRide = () => {
   console.log(car)
 
   const fetchCars=()=>{
-    axios.post('http://192.168.16.102:8000/api/auth/createRide',
+    axios.post('http://192.168.70.28:8000/api/auth/createRide',
     {
       
-      user_car_id :1,
+      user_car_id :Name,//car id from Dropdown component child
       travel_date: travel_date,
       travel_time: travel_time,
       origin_city: origin.description,
@@ -67,12 +68,14 @@ const CreateRide = () => {
         console.log(error.response.data)
       })
       
+      
   }
 
   return (
     <View>
         <Header />
-        <DropBtn />
+        <DropBtn  Changedata={(Name) => setName(Name)}/>
+        <Text>{Name}</Text>
         <GooglePlacesAutocomplete
               placeholder='Where From?'
               styles={{
@@ -169,6 +172,7 @@ const CreateRide = () => {
 }
 
 export default CreateRide
+
 
 const styles = StyleSheet.create({
     button:{
