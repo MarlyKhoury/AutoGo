@@ -5,6 +5,6 @@ import carReducer from "./slices/carSlice";
 export const store = configureStore({
     reducer: {
         nav: navReducer,
-        car:carReducer
+        // car:carReducer
     }
 });

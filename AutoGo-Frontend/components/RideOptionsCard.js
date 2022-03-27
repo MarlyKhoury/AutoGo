@@ -30,14 +30,14 @@ const RideOptionsCard = () => {
     const destination = useSelector(selectDestination);
    
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjAuMTE2OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzMDg1NTUsImV4cCI6MTY0ODMxMjE1NSwibmJmIjoxNjQ4MzA4NTU1LCJqdGkiOiJVNk9rTGY0eVFEaWJvZVNuIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.s3Vd20Q38RM1aooSteNQnc5cZI2MenJh1SLyfCUkfkc'
+    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzODYyNDcsImV4cCI6MTY0ODM4OTg0NywibmJmIjoxNjQ4Mzg2MjQ3LCJqdGkiOiJ3cEN0QUxtbmFmRjdsYTNaIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.403bUa2kE2cg8F9RfBNGzPc3fkvJ7g2vcnV7Z_3yZsU'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
     const fetchCars=()=>{
-        axios.get('http://192.168.16.103:8000/api/auth/getRides',
-        {headers:headers},  
+        axios.get('http://192.168.70.28:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        {headers:headers},
         )
         .then((response) => {
             setData(response.data.rides)

@@ -16,7 +16,7 @@ const LoginScreen = () => {
   const login=()=>{
 
     axios
-    .post('http://192.168.16.102:8000/api/auth/login',{
+    .post('http://192.168.70.28:8000/api/auth/login',{
       email: email,
       password: password,
   })

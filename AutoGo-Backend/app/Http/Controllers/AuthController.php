@@ -262,11 +262,15 @@ class AuthController extends Controller
     }
 
     // Get all Rides
-    public function getRides(){
+    public function getRides($from,$to){
+        $orig=$from;
+        $dest=$to;
         $number_of_bookings=0;
         $user_id = auth()->user()->id;
         $user = User::findOrFail($user_id);
         $gender = $user->gender;
+        $origin_city = $from;
+        $destination_city = $to;
 
         $bookings_count=Book::all()->where('user_id',$user_id)
                                    ->where('is_booked',1)
@@ -276,11 +280,15 @@ class AuthController extends Controller
         }
         
         $rides = Ride::all()->whereIn('gender_preferences',['OTHER',$gender])
+                            ->whereIn('origin_city',[$origin_city])
+                            ->whereIn('destination_city',[$destination_city])
         ->whereNotIn('remaining_seats',0);
        
         return response()->json([
             // 'number_bookings'=>$number_of_bookings,
-            'rides' => array_values($rides->toArray())
+            'rides' => array_values($rides->toArray()),
+            'from'=>$orig,
+            'to'=>$dest
    ], 200);
 
     }
