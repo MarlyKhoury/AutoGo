@@ -21,7 +21,7 @@ import { useState } from 'react'
 
 const CreateRide = () => {
   const [Name, setName] = useState("Parent");
-
+  const [gender, setGender] = useState("Parent");
   const navigation = useNavigation();
   const [travel_date, setTravel_date] = React.useState("");
   const [travel_time, setTravel_time] = React.useState("");
@@ -52,7 +52,7 @@ const CreateRide = () => {
       origin_city: origin.description,
       destination_city: destination.description,
       fees: fees,
-      gender_preferences:"M"
+      gender_preferences:gender
 
     } ,
     {headers:headers}
@@ -75,7 +75,7 @@ const CreateRide = () => {
     <View>
         <Header />
         <DropBtn  Changedata={(Name) => setName(Name)}/>
-        <Text>{Name}</Text>
+        <Text>{gender}</Text>
         <GooglePlacesAutocomplete
               placeholder='Where From?'
               styles={{
@@ -156,7 +156,7 @@ const CreateRide = () => {
         value={fees}
         onChangeText={fees => setFees(fees)}
         />
-       <RadioBtn />
+       <RadioBtn Changedata={(gender) => setGender(gender)} />
        <Button style={styles.button} mode="contained" onPress={() =>
         
         fetchCars()
