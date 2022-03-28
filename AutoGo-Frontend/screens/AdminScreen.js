@@ -62,19 +62,20 @@ const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMT
                 
                 }
               style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
-                  <Image
+                  {/* <Image
                   style={{
                       width:100,
                       height:100,
                       resizeMode: "contain",
                   }}
                   source = {{uri: "https://links.papareact.com/7pf"}}
-                  />
-                  <View style={tw`-ml-6`}>
-                      <Text style={tw`text-xl font-semibold`}>{first_name}   {last_name}</Text>
-                      {/* <Text style={tw`text-xl font-semibold`}>{title}</Text> */}
-                      {/* <Text style={tw`text-xl font-semibold`}>  Fees/person: {fees}</Text>
-                      <Text>{travelTimeInformation?.duration?.text} Travel Time</Text> */}
+                  /> */}
+                  <View style={tw`flex flex-row justify-evenly `}>
+                      
+                      <Text style={tw`text-xl font-semibold`}>{first_name}  {last_name}</Text>
+                      <Button>Block</Button>
+                      <Button>Unblock</Button>
+                     
                   </View>
               </TouchableOpacity>
           )}
