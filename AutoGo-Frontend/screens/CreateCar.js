@@ -19,7 +19,7 @@ const CreateCar = () => {
         'Authorization': 'Bearer '+token,
     }
   const fetchCars=()=>{
-  axios.post('http://192.168.70.28:8000/api/auth/createCar',{
+  axios.post('http://192.168.16.104:8000/api/auth/createCar',{
     model: car_model,
     license_plate: license_plate,
     seats_available:seats_available

@@ -36,7 +36,7 @@ const RideOptionsCard = () => {
         'Authorization': 'Bearer '+token,
     }
     const fetchCars=()=>{
-        axios.get('http://192.168.70.28:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://192.168.16.104:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
@@ -54,7 +54,7 @@ const RideOptionsCard = () => {
         // useEffect(fetchCars, [])
     }
     const bookRide=()=>{
-        axios.post('http://192.168.70.28:8000/api/auth/bookRide',{ride_id:selected.id},
+        axios.post('http://192.168.16.104:8000/api/auth/bookRide',{ride_id:selected.id},
         {headers:headers}
         )
         .then((response) => {

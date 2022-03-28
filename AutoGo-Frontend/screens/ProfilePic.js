@@ -16,18 +16,19 @@ const ProfilePic = () => {
     fetchUserInfo();
 }, [])
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzOTk4MzcsImV4cCI6MTY0ODQwMzQzNywibmJmIjoxNjQ4Mzk5ODM3LCJqdGkiOiJqZVFsSE54TUJQZFAzcE05Iiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KSAV69OoQvHKVvpXDoJ4zoTpf4PolcB_1adi2T7iGlU'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwNDo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NDU1NzAwLCJleHAiOjE2NDg0NTkzMDAsIm5iZiI6MTY0ODQ1NTcwMCwianRpIjoiTjQwaFdPM2k5clVka2JzMyIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.1SpHQJHKqGugdmSpjPwZtXTg1v5jXWlcb6cAPXyH1Z4'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
 
   const fetchUserInfo=()=>{
-    axios.get('http://192.168.70.28:8000/api/auth/getuserInfo/',
+    axios.get('http://192.168.16.104:8000/api/auth/getuserInfo/',
     {headers:headers},
     )
     .then((response) => {
       setData(response.data.review)
+      
         console.log(response.data.review)
         
     }
@@ -55,11 +56,11 @@ const ProfilePic = () => {
 <FlatList 
           data = {data}
           keyExtractor = {(item) => item.id}
-          renderItem={({item: {id,title, fees,travel_date,travel_time}, item}) =>(
+          renderItem={({item: {id,user, rating,comment}, item}) =>(
               <TouchableOpacity
               onPress={() =>{
                   setSelected(item)
-                  bookRide()
+                  fetchUserInfo()
               }
                 // console.log(item.id)
                 
@@ -74,10 +75,11 @@ const ProfilePic = () => {
                   source = {{uri: "https://links.papareact.com/7pf"}}
                   />
                   <View style={tw`-ml-6`}>
-                      {/* <Text style={tw`text-xl font-semibold`}>{travel_date}   {travel_time}</Text> */}
-                      {/* <Text style={tw`text-xl font-semibold`}>{title}</Text> */}
-                      {/* <Text style={tw`text-xl font-semibold`}>  Fees/person: {fees}</Text> */}
-                      {/* <Text>{travelTimeInformation?.duration?.text} Travel Time</Text> */}
+                      {/* <Text style={tw`text-xl font-semibold`}>{user}</Text> */}
+                      {/* <Text style={tw`text-xl font-semibold`}>{profile}</Text> */}
+                      <Text style={tw`text-xl font-semibold`}>{comment}</Text>
+                      <Text style={tw`text-xl font-semibold`}>{rating}</Text>
+                    
                   </View>
               </TouchableOpacity>
           )}

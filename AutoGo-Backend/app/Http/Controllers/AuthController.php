@@ -452,11 +452,12 @@ class AuthController extends Controller
         $user_id = auth()->user()->id;
         $user= User::find($user_id, ['first_name','last_name']);
         $profile=Profile::where('user_id',$user_id)->get(['address','education','workplace']);
-        $review= Review::where('to_id',$user_id)->get(['rating','comment']);
+        $review= Review::where('to_id',$user_id)->get(['id','rating','comment']);
+       
         return response()->json([
             'user'=> $user,
             'profile'=> $profile,
-            'review'=> $review        
+            'review'=> $review,
    ], 200);
     }
 
