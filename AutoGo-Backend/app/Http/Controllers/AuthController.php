@@ -451,13 +451,15 @@ class AuthController extends Controller
     public function getownInfo(){
         $user_id = auth()->user()->id;
         $user= User::find($user_id, ['first_name','last_name']);
-        $profile=Profile::where('user_id',$user_id)->get(['address','education','workplace']);
+        $profile= Profile::where('user_id',$user_id)->get(['address','education','workplace']);
         $review= Review::where('to_id',$user_id)->get(['id','rating','comment']);
-       
+        $user_name= User::where('id',$user_id)->get(['id','first_name','last_name']);
+        // $user_name = User::where('user_id',$user_id)->get(['first_name','last_name']);
         return response()->json([
             'user'=> $user,
             'profile'=> $profile,
             'review'=> $review,
+            // 'user_name'=>$user_name,
    ], 200);
     }
 

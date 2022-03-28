@@ -43,7 +43,7 @@ const CreateRide = () => {
   console.log(car)
 
   const fetchCars=()=>{
-    axios.post('http://192.168.70.28:8000/api/auth/createRide',
+    axios.post('http://192.168.16.100:8000/api/auth/createRide',
     {
       
       user_car_id :Name,//car id from Dropdown component child

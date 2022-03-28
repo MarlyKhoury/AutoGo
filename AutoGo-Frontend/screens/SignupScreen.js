@@ -40,7 +40,7 @@ const SignUpScreen = () => {
      navigation.navigate('LoginScreen')
     
    })
-   .catch(function (error) {//brke 3m t3abe gher chi?:no
+   .catch(function (error) {
     if(error.message=='Request failed with status code 410'){
     let first_name_err= error.response.data.first_name==undefined?'':error.response.data.first_name
     let last_name_err= error.response.data.last_name==undefined?'':error.response.data.last_name
