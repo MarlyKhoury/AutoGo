@@ -5,7 +5,7 @@ import { View, SafeAreaView, FlatList, TouchableOpacity, Image, Text } from 'rea
 import tw from 'tailwind-react-native-classnames';
 import { useEffect, useState } from 'react';
 import axios from 'react-native-axios';
-
+import { useNavigation } from '@react-navigation/native';
 
 const AdminScreen = () => {
 
@@ -13,54 +13,85 @@ const AdminScreen = () => {
     console.log("I am here");
     
     fetchUsers(); 
+    //men 7ot hone banUser? no ha y awal ma t2ali3 nsafha bt3mle functioneh sa7 sorry:p...
     
 }, [])
 
 const [selected, setSelected] = useState("");
 const [data, setData] = React.useState("");
+// const navigation = useNavigation();
 
-const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMDo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NDg3MjA1LCJleHAiOjE2NDg0OTA4MDUsIm5iZiI6MTY0ODQ4NzIwNSwianRpIjoiVjNYZ0VNb3VZMFR4UjRzZCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.FgFm4qaTs2iStEySw_OVGcUpu8E6Wo8fJXtqt9qAVr0'
+const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMDo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NDk0NjYxLCJleHAiOjE2NDg0OTgyNjEsIm5iZiI6MTY0ODQ5NDY2MSwianRpIjoiNFJWcldYZFRBRVNnWVVYTiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.eXoerpr7dILaoye3ILFhlxX3zX48xR68NsFwXmbJRao'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
     const fetchUsers=()=>{
-        axios.get('http://192.168.16.100:8000/api/auth/getUsers/',
+        axios.get('http://192.168.16.101:8000/api/auth/getUsers/',
         {headers:headers},
         )
         .then((response) => {
             setData(response.data.user)
+            // console.log(response.data.user)
             
-        }
-        
-        )
+        })
         .catch((error) =>{
             console.log(error)
             console.log(error.message=='Request failed with status code 401')
         }                
-    )
-
-    }
+    )}
   // const [searchQuery, setSearchQuery] = React.useState('');
 
   // const onChangeSearch = query => setSearchQuery(query);
 
+  const banUser=()=>{
+    axios.post('http://192.168.16.101:8000/api/auth/ban',{id:selected},
+    {headers:headers}
+    )
+    .then((response) => {
+        console.log(response.data)
+        console.log(selected)
+      })
+      .catch((error) =>{
+        console.log("i am ban")
+        console.log(selected)
+        // console.log(error.response.data)
+    })
+  
+}
 
+const unbanUser=()=>{
+  axios.get('http://192.168.16.101:8000/api/auth/unban/'+selected, //akid yala naked lap dance akidd :p
+  {headers:headers},
+  )
+  .then((response) => {
+      // setData(response.data.user)
+      
+      // console.log(response.data.user)
+      
+  })
+  .catch((error) =>{
+      console.log(error)
+      console.log(error.message=='Request failed with status code 401')
+  }                
+)}
   return (
 
-    <SafeAreaView>
+    <View>
+      <Header />
        <FlatList 
           data = {data}
           keyExtractor = {(item) => item.id}
           renderItem={({item: {id,first_name, last_name}, item}) =>(
               <TouchableOpacity
-              onPress={() =>{
-                  setSelected(item)
-                  fetchUsers()
-              }
+              // onPress={() =>{
+              //     // setSelected(item)
+              //     // fetchUsers()
+              //     // banUser()
+              // }
                 // console.log(item.id)
                 
-                }
+                // }
               style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
                   {/* <Image
                   style={{
@@ -71,16 +102,16 @@ const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMT
                   source = {{uri: "https://links.papareact.com/7pf"}}
                   /> */}
                   <View style={tw`flex flex-row justify-evenly `}>
-                      
+                    <Text>{selected.id}</Text>
                       <Text style={tw`text-xl font-semibold`}>{first_name}  {last_name}</Text>
-                      <Button>Block</Button>
-                      <Button>Unblock</Button>
+                      <Button onPress={()=>{setSelected(id),banUser()}}>Block</Button>
+                      <Button onPress={()=>{setSelected(id),unbanUser()}}>Unblock</Button>
                      
                   </View>
               </TouchableOpacity>
           )}
-        />
-    </SafeAreaView>
+          />
+    </View>
 
 
 
