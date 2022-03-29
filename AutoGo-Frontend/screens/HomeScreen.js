@@ -36,7 +36,7 @@ const HomeScreen = () => {
           > AutoGo</Text>
             <TouchableOpacity onPress={() => navigation.navigate('ProfilePic')}>
                     <Icon 
-                    style={tw`p-2 bg-black rounded-full w-10 mt-4`}
+                    style={[tw`p-2 rounded-full w-10 mt-4`,{backgroundColor:"#58BD29"}]}
                     name="user" 
                     color="white" 
                     type="entypo" />

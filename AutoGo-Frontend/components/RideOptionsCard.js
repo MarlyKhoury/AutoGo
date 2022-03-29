@@ -30,7 +30,7 @@ const RideOptionsCard = () => {
     const destination = useSelector(selectDestination);
    
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTczNzA0LCJleHAiOjE2NDg1NzczMDQsIm5iZiI6MTY0ODU3MzcwNCwianRpIjoibFdOWGpIcElKYmZoTXRJeiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.xZkvn5AvxfjCwtWX9KFy1FK7pObsCwsm1WJSTZ44c7I'
+    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTg2NDM0LCJleHAiOjE2NDg1OTAwMzQsIm5iZiI6MTY0ODU4NjQzNCwianRpIjoiN3VZWXcyUDdDaTZ4clRwQiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4oDWwpVZbvlRtvpI_0Z65b0zuYU8oiv_kUdt9Gqt6h0'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -124,9 +124,9 @@ const RideOptionsCard = () => {
                   }}
                   source = {{uri: "https://links.papareact.com/7pf"}}
                   />
-                  <View style={tw`-ml-6`}>
-                      <Text style={tw`text-xl font-semibold`}>{travel_date}   {travel_time}</Text>
-                      <Text style={tw`text-xl font-semibold`}>  Fees/person: {fees}</Text>
+                  <View style={tw`ml-6`}>
+                      <Text style={tw`text-sm font-semibold`}>{travel_date}   {travel_time}</Text>
+                      <Text style={tw`text-sm font-semibold`}>  Fees/person: {fees}</Text>
                       <Text>{travelTimeInformation?.duration?.text} Travel Time</Text>
                   </View>
               </TouchableOpacity>
@@ -135,7 +135,7 @@ const RideOptionsCard = () => {
         <TouchableOpacity 
             onPress={() => navigation.navigate("ProfilePic")}
             style={tw`mb-20 ml-6`}>
-            <Text>Marly Khoury</Text>
+            <Text style={tw`ml-40`}>Marly Khoury</Text>
         </TouchableOpacity>
         <View style={tw`mt-auto border-t border-gray-200`}>
 

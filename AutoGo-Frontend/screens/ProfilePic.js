@@ -5,7 +5,8 @@ import tw from 'tailwind-react-native-classnames';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useEffect } from 'react'
 import axios from 'react-native-axios';
-import  { useState } from 'react'
+import  { useState } from 'react';
+import Header from '../components/Header';
 
 const ProfilePic = () => {
   useEffect(()=>{
@@ -41,7 +42,10 @@ const ProfilePic = () => {
     )} 
 
   return (
-    <SafeAreaView >
+
+    
+    <View >
+      <Header />
       
       <Text style={tw`items-center max-w-md p-20 mx-auto mt-40 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
       {/* <Text>{data?.user?.last_name}</Text> */}
@@ -90,7 +94,7 @@ const ProfilePic = () => {
               </TouchableOpacity>
           )}
         />
-    </SafeAreaView>
+    </View>
   )
 }
 
