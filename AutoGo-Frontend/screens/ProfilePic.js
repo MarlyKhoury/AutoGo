@@ -20,7 +20,7 @@ const ProfilePic = () => {
 
   
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTgyNDU0LCJleHAiOjE2NDg1ODYwNTQsIm5iZiI6MTY0ODU4MjQ1NCwianRpIjoiSU1CT2ZHdDYyUHVBbVI2WCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.BeGHconh_4gblTXTkj99sQfKzLT7x48KvWLqhZ2t7ZE'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTg2NDM0LCJleHAiOjE2NDg1OTAwMzQsIm5iZiI6MTY0ODU4NjQzNCwianRpIjoiN3VZWXcyUDdDaTZ4clRwQiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4oDWwpVZbvlRtvpI_0Z65b0zuYU8oiv_kUdt9Gqt6h0'
   const headers = {
     'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -41,10 +41,10 @@ const ProfilePic = () => {
     )} 
 
   return (
-    <SafeAreaView style={tw`flex-row justify-evenly`}>
+    <SafeAreaView >
       
-      <Text>{data?.user?.first_name}</Text> 
-      <Text>{data?.user?.last_name}</Text>
+      <Text style={tw`items-center max-w-md p-20 mx-auto mt-40 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
+      {/* <Text>{data?.user?.last_name}</Text> */}
       
       {/* <Icon 
       style={tw`p-2 bg-black rounded-full w-10 mt-40`}
@@ -66,20 +66,26 @@ const ProfilePic = () => {
               setSelected(item)
               fetchUserInfo()
             }
-            
           }
-          style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
-                  <Image
+          style ={tw`flex-row mt-2 items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
+                  {/* <Image
                   style={{
-                    width:100,
-                    height:100,
+                    marginLeft:-12,
+                    width:60,
+                    height:60,
                     resizeMode: "contain",
                   }}
                   source = {{uri: "https://links.papareact.com/7pf"}}
-                  />
-                  <View style={tw`-ml-6`}>
-                      <Text style={tw`text-xl font-medium`}>{comment}</Text>
-                      <Text style={tw`text-xl font-semibold`}>{rating}</Text>                    
+                  /> */}
+                   <Icon 
+                   style={[tw`p-2 rounded-full w-10 mt-2`,{backgroundColor:'#58BD29'}]}
+                   name="rate-review" type="materialicons" color="white" size={16}
+                   />
+
+
+                  <View style={tw`ml-2`}>
+                      <Text style={tw`text-base font-normal`}>{comment}</Text>
+                      {/* <Text style={tw`text-base font-normal`}>{rating}</Text>                     */}
                   </View>
               </TouchableOpacity>
           )}
