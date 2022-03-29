@@ -20,7 +20,7 @@ const ProfilePic = () => {
 
   
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTU1NjY4LCJleHAiOjE2NDg1NTkyNjgsIm5iZiI6MTY0ODU1NTY2OCwianRpIjoiakp2MjkzdmVNUU9ZbW9SaiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.vQBm3ZrHjzC3gPW6uq4M-4Zlw5P_sGAJQbQN_J14lYg'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTgyNDU0LCJleHAiOjE2NDg1ODYwNTQsIm5iZiI6MTY0ODU4MjQ1NCwianRpIjoiSU1CT2ZHdDYyUHVBbVI2WCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.BeGHconh_4gblTXTkj99sQfKzLT7x48KvWLqhZ2t7ZE'
   const headers = {
     'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -46,7 +46,7 @@ const ProfilePic = () => {
       <Text>{data?.user?.first_name}</Text> 
       <Text>{data?.user?.last_name}</Text>
       
-      <Icon 
+      {/* <Icon 
       style={tw`p-2 bg-black rounded-full w-10 mt-40`}
       name="briefcase" type="entypo" color="white" size={16}/>
       <Icon 
@@ -54,7 +54,7 @@ const ProfilePic = () => {
       name="graduation-cap" type="entypo" color="white" size={16}/>
       <Icon 
       style={tw`p-2 bg-black rounded-full w-10 mt-40`}
-      name="home" type="entypo" color="white" size={16}/>
+      name="home" type="entypo" color="white" size={16}/> */}
 
 
 <FlatList 
@@ -78,7 +78,7 @@ const ProfilePic = () => {
                   source = {{uri: "https://links.papareact.com/7pf"}}
                   />
                   <View style={tw`-ml-6`}>
-                      <Text style={tw`text-xl font-semibold`}>{comment}</Text>
+                      <Text style={tw`text-xl font-medium`}>{comment}</Text>
                       <Text style={tw`text-xl font-semibold`}>{rating}</Text>                    
                   </View>
               </TouchableOpacity>

@@ -22,7 +22,7 @@ const [selected, setSelected] = useState("");
 const [data, setData] = React.useState("");
 
 
-const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTcxNTc5LCJleHAiOjE2NDg1NzUxNzksIm5iZiI6MTY0ODU3MTU3OSwianRpIjoiTVFDbXlYdGl4QmYzcmJSaCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.9CPSCmh2O8ocFichanKmT7ay64NQGLeOMb8UOojqQN8'
+const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTgyNDU0LCJleHAiOjE2NDg1ODYwNTQsIm5iZiI6MTY0ODU4MjQ1NCwianRpIjoiSU1CT2ZHdDYyUHVBbVI2WCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.BeGHconh_4gblTXTkj99sQfKzLT7x48KvWLqhZ2t7ZE'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -99,15 +99,15 @@ const unbanUser=(id)=>{
                   }}
                   source = {{uri: "https://links.papareact.com/7pf"}}
                   /> */}
-                  <View style={tw`flex flex-row justify-between`}>
+                  <View style={tw`mt-10 flex flex-row justify-between`}>
                 
                     {/* <Text>{selected.id}</Text> */}
                     
-                      <Text style={[tw`text-lg font-semibold`,{flexGrow:1}]}>{first_name}  {last_name}</Text>
+                      <Text style={[tw`text-lg font-medium`,{flexGrow:1}]}>{first_name}  {last_name}</Text>
                     
-                      <Button style={tw`ml-auto`}onPress={()=>{banUser(id)}}>Block</Button>
+                      <TouchableOpacity onPress={()=>{banUser(id)}}><Text style={[tw`mr-10 text-base font-semibold`,{color:'#58BD29'}]}>Block</Text></TouchableOpacity>
                   
-                      <Button onPress={()=>{setSelected(id),unbanUser(id)}}>Unblock</Button>
+                      <TouchableOpacity onPress={()=>{setSelected(id),unbanUser(id)}}><Text style={[tw`text-base font-semibold`,{color:'#58BD29'}]}>Unblock</Text></TouchableOpacity>
                      
                   </View>
               </TouchableOpacity>
