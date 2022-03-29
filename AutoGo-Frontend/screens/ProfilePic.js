@@ -45,7 +45,8 @@ const ProfilePic = () => {
 
     
     <View >
-      <Header />
+      <Header/>
+    
       
       <Text style={tw`items-center max-w-md p-20 mx-auto mt-40 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
       {/* <Text>{data?.user?.last_name}</Text> */}
@@ -100,4 +101,10 @@ const ProfilePic = () => {
 
 export default ProfilePic
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  acctext:{
+    color: "#454545",
+    textAlign:"center",
+    marginTop:8,
+  }
+})

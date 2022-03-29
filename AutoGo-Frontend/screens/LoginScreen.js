@@ -72,8 +72,9 @@ const LoginScreen = () => {
 
   <View style={styles.square}/>
   <Text style={styles.acctext}>Don't have an account?<TouchableOpacity onPress={() =>
+    navigation.navigate('SignupScreen')}><Text style={[tw`font-bold`,{color:"#454545"}]}> Sign Up</Text></TouchableOpacity>
+    </Text>
     
-    navigation.navigate('SignupScreen')}><Text style={[tw`font-bold`,{color:"#454545"}]}> Sign Up</Text></TouchableOpacity></Text>
   </View>
  
   </SafeAreaView>
