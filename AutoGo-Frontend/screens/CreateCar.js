@@ -13,17 +13,17 @@ const CreateCar = () => {
   const [license_plate, setLicense_plate] = React.useState("");
   const [seats_available, setSeats_available] = React.useState("");
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjcwLjI4OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDgzOTY4OTUsImV4cCI6MTY0ODQwMDQ5NSwibmJmIjoxNjQ4Mzk2ODk1LCJqdGkiOiJvOTh5d0M1UXZaTVBoQjRBIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FNTS6QEHdSBf1RTI35iKBZ153Rh0kI30bqoN0gCjLek'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTU5NDMwLCJleHAiOjE2NDg1NjMwMzAsIm5iZiI6MTY0ODU1OTQzMCwianRpIjoicXI3bHdKOFlSdDlwSFUyWSIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.xwnDhP6C8FvIEtRT1v41WTjq_3uNOCRSaxPrccfvveA'
   const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
   const fetchCars=()=>{
-  axios.post('http://192.168.16.104:8000/api/auth/createCar',{
+  axios.post('http://192.168.16.101:8000/api/auth/createCar',{
     model: car_model,
     license_plate: license_plate,
     seats_available:seats_available
-}, {headers:headers}
+},  {headers:headers}
 )
   .then( function (response) {
     // handle success
@@ -34,7 +34,8 @@ const CreateCar = () => {
     })
     .catch(function (error) {
       console.log(error.response.data)
-      navigation.navigate('CreateRide')//for testing
+      console.log(error)
+      
   })
 }
 
@@ -64,7 +65,7 @@ const CreateCar = () => {
       <Button style={styles.btn} mode="contained" onPress={() => 
         
           fetchCars()}>
-        {/* // navigation.navigate('CreateRide')}> */}
+        
           Create Car
       </Button>
       </View>

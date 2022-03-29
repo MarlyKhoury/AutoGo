@@ -21,26 +21,27 @@ const RideOptionsCard = () => {
     }, [])
 
     const navigation = useNavigation();
-    //keep track of what is selected
     const [selected, setSelected] = useState("");
     const [data, setData] = React.useState("");
+    const [cancel, setCancel] = React.useState();
     const dispatch = useDispatch();
 
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
    
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMDo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NDgwMTExLCJleHAiOjE2NDg0ODM3MTEsIm5iZiI6MTY0ODQ4MDExMSwianRpIjoiVFZGcHBYTHVJSlVVRE9xUyIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.mMJbg0uW8XtrcKXQRegiEe2_7BFkaoz3ej4vvFhuIu4'
+    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTczNzA0LCJleHAiOjE2NDg1NzczMDQsIm5iZiI6MTY0ODU3MzcwNCwianRpIjoibFdOWGpIcElKYmZoTXRJeiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.xZkvn5AvxfjCwtWX9KFy1FK7pObsCwsm1WJSTZ44c7I'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
     const fetchCars=()=>{
-        axios.get('http://192.168.16.100:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://192.168.16.101:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
             setData(response.data.rides)
+            console.log(response.data.rides)
             console.log(origin.description)
             console.log(destination.description)
         }
@@ -48,23 +49,49 @@ const RideOptionsCard = () => {
         )
         .catch((error) =>{
             console.log(error)
-            console.log(error.message=='Request failed with status code 401')
-        }            // setErrorMessage(error.response.data.error)     
+            console.log(error.message =='Request failed with status code 401')
+        }                
     )
-        // useEffect(fetchCars, [])
+    
     }
-    const bookRide=()=>{
-        axios.post('http://192.168.16.100:8000/api/auth/bookRide',{ride_id:selected.id},
-        {headers:headers}
+    const bookRide=(id)=>{
+        axios.post('http://192.168.16.101:8000/api/auth/bookRide',{ride_id:id},
+        {headers:headers} 
+        
         )
         .then((response) => {
             console.log(response.data)
+            console.log("im  booking")
+            console.log(id)
+            setCancel(id)
         })
         .catch((error) =>{
             console.log(error.response.data)
+            console.log("error book")
+            console.log(id)
         })
       
     }
+
+
+    const cancelBooking = ()=>{
+        axios.post('http://192.168.16.101:8000/api/auth/cancelBooking',{ride_id:cancel},
+        {headers:headers}
+        )
+        .then((response) => {
+            console.log("im cancel booking")
+            console.log(cancel)
+            
+
+        })
+        .catch((error) =>{
+            console.log(error.response.data)
+            console.log("error")
+            console.log(cancel)
+        })
+      
+    }
+
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -80,13 +107,12 @@ const RideOptionsCard = () => {
         <FlatList 
           data = {data}
           keyExtractor = {(item) => item.id}
-          renderItem={({item: {id,title, fees,travel_date,travel_time}, item}) =>(
+          renderItem={({item: {id,fees,travel_date,travel_time}, item}) =>(
               <TouchableOpacity
               onPress={() =>{
                   setSelected(item)
-                  bookRide()
+                  bookRide(item.id)
               }
-                // console.log(item.id)
                 
                 }
               style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
@@ -100,20 +126,33 @@ const RideOptionsCard = () => {
                   />
                   <View style={tw`-ml-6`}>
                       <Text style={tw`text-xl font-semibold`}>{travel_date}   {travel_time}</Text>
-                      {/* <Text style={tw`text-xl font-semibold`}>{title}</Text> */}
                       <Text style={tw`text-xl font-semibold`}>  Fees/person: {fees}</Text>
                       <Text>{travelTimeInformation?.duration?.text} Travel Time</Text>
                   </View>
               </TouchableOpacity>
           )}
         />
+        <TouchableOpacity 
+            onPress={() => navigation.navigate("ProfilePic")}
+            style={tw`mb-20 ml-6`}>
+            <Text>Marly Khoury</Text>
+        </TouchableOpacity>
         <View style={tw`mt-auto border-t border-gray-200`}>
-            <TouchableOpacity disabled={!selected} 
-            style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}>
-                <Text style={tw`text-center text-white text-xl`}>Choose {selected?.title}</Text>
-            </TouchableOpacity>
 
+            <TouchableOpacity
+            onPress={
+                
+                cancelBooking
+            }
+              
+              
+             disabled={!selected} 
+            style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}
+            >
+                <Text style={tw`text-center text-white text-xl`}>Delete {selected?.title}</Text>
+            </TouchableOpacity>
         </View>
+        
             {/* <Button mode="contained" onPress={()=>fetchCars()}> */}
         {/* Sign Up
       </Button> */}

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Searchbar, Button } from 'react-native-paper';
+import { Searchbar, Button, Divider } from 'react-native-paper';
 import Header from '../components/Header';
 import { View, SafeAreaView, FlatList, TouchableOpacity, Image, Text } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { useEffect, useState } from 'react';
 import axios from 'react-native-axios';
-import { useNavigation } from '@react-navigation/native';
+
+
 
 const AdminScreen = () => {
 
@@ -13,15 +14,15 @@ const AdminScreen = () => {
     console.log("I am here");
     
     fetchUsers(); 
-    //men 7ot hone banUser? no ha y awal ma t2ali3 nsafha bt3mle functioneh sa7 sorry:p...
+   
     
 }, [])
 
 const [selected, setSelected] = useState("");
 const [data, setData] = React.useState("");
-// const navigation = useNavigation();
 
-const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMDo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NDk0NjYxLCJleHAiOjE2NDg0OTgyNjEsIm5iZiI6MTY0ODQ5NDY2MSwianRpIjoiNFJWcldYZFRBRVNnWVVYTiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.eXoerpr7dILaoye3ILFhlxX3zX48xR68NsFwXmbJRao'
+
+const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTcxNTc5LCJleHAiOjE2NDg1NzUxNzksIm5iZiI6MTY0ODU3MTU3OSwianRpIjoiTVFDbXlYdGl4QmYzcmJSaCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.9CPSCmh2O8ocFichanKmT7ay64NQGLeOMb8UOojqQN8'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -32,7 +33,7 @@ const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMT
         )
         .then((response) => {
             setData(response.data.user)
-            // console.log(response.data.user)
+            
             
         })
         .catch((error) =>{
@@ -40,12 +41,9 @@ const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMT
             console.log(error.message=='Request failed with status code 401')
         }                
     )}
-  // const [searchQuery, setSearchQuery] = React.useState('');
 
-  // const onChangeSearch = query => setSearchQuery(query);
-
-  const banUser=()=>{
-    axios.post('http://192.168.16.101:8000/api/auth/ban',{id:selected},
+  const banUser=(id)=>{
+    axios.post('http://192.168.16.101:8000/api/auth/ban',{id},
     {headers:headers}
     )
     .then((response) => {
@@ -55,24 +53,24 @@ const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMT
       .catch((error) =>{
         console.log("i am ban")
         console.log(selected)
-        // console.log(error.response.data)
+        
     })
   
 }
 
-const unbanUser=()=>{
-  axios.get('http://192.168.16.101:8000/api/auth/unban/'+selected, //akid yala naked lap dance akidd :p
+const unbanUser=(id)=>{
+  axios.get('http://192.168.16.101:8000/api/auth/unban/'+id,
   {headers:headers},
   )
   .then((response) => {
-      // setData(response.data.user)
       
-      // console.log(response.data.user)
+      console.log(response.data)
+      console.log(id) 
       
   })
   .catch((error) =>{
       console.log(error)
-      console.log(error.message=='Request failed with status code 401')
+      console.log('iam '+id)
   }                
 )}
   return (
@@ -101,11 +99,15 @@ const unbanUser=()=>{
                   }}
                   source = {{uri: "https://links.papareact.com/7pf"}}
                   /> */}
-                  <View style={tw`flex flex-row justify-evenly `}>
-                    <Text>{selected.id}</Text>
-                      <Text style={tw`text-xl font-semibold`}>{first_name}  {last_name}</Text>
-                      <Button onPress={()=>{setSelected(id),banUser()}}>Block</Button>
-                      <Button onPress={()=>{setSelected(id),unbanUser()}}>Unblock</Button>
+                  <View style={tw`flex flex-row justify-between`}>
+                
+                    {/* <Text>{selected.id}</Text> */}
+                    
+                      <Text style={[tw`text-lg font-semibold`,{flexGrow:1}]}>{first_name}  {last_name}</Text>
+                    
+                      <Button style={tw`ml-auto`}onPress={()=>{banUser(id)}}>Block</Button>
+                  
+                      <Button onPress={()=>{setSelected(id),unbanUser(id)}}>Unblock</Button>
                      
                   </View>
               </TouchableOpacity>

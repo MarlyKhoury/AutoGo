@@ -105,7 +105,7 @@ class AuthController extends Controller
             
         ));
         return response()->json([
-            'message' => 'Your ride was created successfully',
+            'message' => 'Your car was created successfully',
             'car' => $car,
         ], 201);
     }
@@ -254,7 +254,7 @@ class AuthController extends Controller
              $ride->remaining_seats=$ride->remaining_seats+1;
              $ride->save();
             }
-            echo $ride->remaining_seats;
+            // echo $ride->remaining_seats;
 
          return response()->json([
          'message' => 'Book deleted successfully'
@@ -268,6 +268,7 @@ class AuthController extends Controller
         $number_of_bookings=0;
         $user_id = auth()->user()->id;
         $user = User::findOrFail($user_id);
+        
         $gender = $user->gender;
         $origin_city = $from;
         $destination_city = $to;
@@ -283,13 +284,35 @@ class AuthController extends Controller
                             ->whereIn('origin_city',[$origin_city])
                             ->whereIn('destination_city',[$destination_city])
         ->whereNotIn('remaining_seats',0);
-       
+
+        // $rides = Ride::join('cars','user_car_id','=','cars.user_id')->whereIn('gender_preferences',['OTHER',$gender])
+        //                     ->whereIn('origin_city',[$origin_city])
+        //                     ->whereIn('destination_city',[$destination_city])->get();
+        // ->whereNotIn('remaining_seats',[0]);
+
+
+        // $car=Car::all()->whereIn('user_id',2);
+        // $test=$rides->user_car_id;
+
+        //  join('posts', 'users.id', '=', 'posts.user_id')
+        //        ->get(['users.*', 'posts.descrption']);
+
+        
         return response()->json([
-            // 'number_bookings'=>$number_of_bookings,
+            // 'car' => $car,
+            // 'rides'=> $rides,
             'rides' => array_values($rides->toArray()),
-            'from'=>$orig,
-            'to'=>$dest
    ], 200);
+
+//         $creator_id = Car::where('user_id',$user_id)->get(['user_id']);
+
+//         return response()->json([
+//             // 'number_bookings'=>$number_of_bookings,
+//             'rides' => array_values($rides->toArray()),
+//             'from'=>$orig,
+//             'to'=>$dest,
+//             'creator_id'=>$creator_id,
+//    ], 200);
 
     }
 
@@ -364,7 +387,7 @@ class AuthController extends Controller
     $user_id =$id;
     $user = User::findOrFail($user_id);
     $user->banned_till = null;
-    $user->save();
+    $user->save();//jrbe mn ostman
 }
 }
 

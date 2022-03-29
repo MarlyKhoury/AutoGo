@@ -30,13 +30,13 @@ export default function App() {
         >
         <Stack.Navigator>
 
-          <Stack.Screen 
+          {/* <Stack.Screen 
          name = "AdminScreen"
          component={AdminScreen} 
          options={{
            headerShown:false,
          }}
-         />
+         /> */}
           <Stack.Screen 
           name = "LoginScreen"
           component={LoginScreen} 
