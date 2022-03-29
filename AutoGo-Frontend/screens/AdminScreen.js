@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Searchbar, Button, Divider } from 'react-native-paper';
 import Header from '../components/Header';
-import { View, SafeAreaView, FlatList, TouchableOpacity, Image, Text } from 'react-native';
+import { View, FlatList, TouchableOpacity, Image, Text } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { useEffect, useState } from 'react';
 import axios from 'react-native-axios';
@@ -22,13 +22,13 @@ const [selected, setSelected] = useState("");
 const [data, setData] = React.useState("");
 
 
-const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTgyNDU0LCJleHAiOjE2NDg1ODYwNTQsIm5iZiI6MTY0ODU4MjQ1NCwianRpIjoiSU1CT2ZHdDYyUHVBbVI2WCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.BeGHconh_4gblTXTkj99sQfKzLT7x48KvWLqhZ2t7ZE'
+const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTkxODU5LCJleHAiOjE2NDg1OTU0NTksIm5iZiI6MTY0ODU5MTg1OSwianRpIjoiUURlMFc2d29WVnIyTkRuUiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.KprMBc_Lr566mSFZK_o2RM-idklws7sDRMdAW_xK32k'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
     const fetchUsers=()=>{
-        axios.get('http://192.168.16.101:8000/api/auth/getUsers/',
+        axios.get('http://172.20.10.2:8000/api/auth/getUsers/',
         {headers:headers},
         )
         .then((response) => {

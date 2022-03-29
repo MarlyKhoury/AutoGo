@@ -1,18 +1,16 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env";
-import { useDispatch } from 'react-redux';
-import { setDestination } from '../slices/navSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import NavFavourites from './NavFavourites';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
-import { useSelector } from 'react-redux';
-import { selectOrigin } from '../slices/navSlice';
-import { setOrigin } from '../slices/navSlice';
-import axios from 'react-native-axios';
+import { selectOrigin, setOrigin, setDestination } from '../slices/navSlice';
+
+
 
 const NavigateCard = () => {
   let [disabled, setDisabled] = React.useState(true);
@@ -29,7 +27,7 @@ const NavigateCard = () => {
   return (
       getDataUsingSimpleGetCall(),
     <SafeAreaView style={tw`bg-white flex-1`}>
-      {/* <Text style={tw`text-center py-5 text-xl`}>Good Morning</Text> */}
+      {/* <Text style={tw`text-center py-5 text-xl`}>Hello!</Text> */}
       <View style={tw`border-t border-gray-200 flex-shrink`}>
           <View >
           <GooglePlacesAutocomplete
@@ -105,7 +103,7 @@ const NavigateCard = () => {
 
           <TouchableOpacity style={tw`flex flex-row justify-between w-24 px-4 py-3 rounded-full`}>
               <Icon name="fast-food-outline" type="ionicon" color="black" size={16}/>
-              <Text style={tw`text-center`}>Eats</Text>
+              <Text style={tw`text-center`}>Other</Text>
 
           </TouchableOpacity>
       </View>

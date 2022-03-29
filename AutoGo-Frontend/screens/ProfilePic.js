@@ -21,14 +21,14 @@ const ProfilePic = () => {
 
   
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTg2NDM0LCJleHAiOjE2NDg1OTAwMzQsIm5iZiI6MTY0ODU4NjQzNCwianRpIjoiN3VZWXcyUDdDaTZ4clRwQiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4oDWwpVZbvlRtvpI_0Z65b0zuYU8oiv_kUdt9Gqt6h0'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTkxODU5LCJleHAiOjE2NDg1OTU0NTksIm5iZiI6MTY0ODU5MTg1OSwianRpIjoiUURlMFc2d29WVnIyTkRuUiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.KprMBc_Lr566mSFZK_o2RM-idklws7sDRMdAW_xK32k'
   const headers = {
     'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
       }
 
   const fetchUserInfo=()=>{
-    axios.get('http://192.168.16.101:8000/api/auth/getuserInfo',
+    axios.get('http://172.20.10.2:8000/api/auth/getuserInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -65,6 +65,11 @@ const ProfilePic = () => {
 <FlatList 
           data = {data.review}
           keyExtractor = {(item) => item.id}
+          ItemSeparatorComponent={() =>(
+            <View 
+              style={[tw`bg-gray-200`, {height: 0.5}]}
+            />
+        )}
           renderItem={({item: {id,rating, comment}, item}) =>(
             <TouchableOpacity
             onPress={() =>{
@@ -72,25 +77,17 @@ const ProfilePic = () => {
               fetchUserInfo()
             }
           }
+          
           style ={tw`flex-row mt-2 items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
-                  {/* <Image
-                  style={{
-                    marginLeft:-12,
-                    width:60,
-                    height:60,
-                    resizeMode: "contain",
-                  }}
-                  source = {{uri: "https://links.papareact.com/7pf"}}
-                  /> */}
+            
                    <Icon 
                    style={[tw`p-2 rounded-full w-10 mt-2`,{backgroundColor:'#58BD29'}]}
                    name="rate-review" type="materialicons" color="white" size={16}
                    />
 
-
                   <View style={tw`ml-2`}>
                       <Text style={tw`text-base font-normal`}>{comment}</Text>
-                      {/* <Text style={tw`text-base font-normal`}>{rating}</Text>                     */}
+                      {/* <Text style={tw`text-base font-normal`}>{rating}</Text>*/}
                   </View>
               </TouchableOpacity>
           )}

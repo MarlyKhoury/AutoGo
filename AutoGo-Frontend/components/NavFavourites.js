@@ -8,13 +8,13 @@ const data = [
     {
         id: "123",
         icon: "home",
-        location: "Home",
-        destination: "Code Street, London, UK",
+        location: "Profile",
+        destination: "Click to go to your profile page",
     },
     {
         id: "456",
         icon: "briefcase",
-        location: "Work",
+        location: "Logout",
         destination: "London Eye, London, UK",
         }
 
