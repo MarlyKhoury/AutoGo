@@ -80,8 +80,12 @@ const RideOptionsCard = () => {
       
     }
 
-
-    const cancelBooking = ()=>{
+    const cancelBooking = async()=>{
+        const token = await SecureStore.getItemAsync('token');
+            const headers = {
+                'Content-Type': 'application/json', 
+                'Authorization': 'Bearer '+token,
+            }
         axios.post('http://172.20.10.2:8000/api/auth/cancelBooking',{ride_id:cancel},
         {headers:headers}
         )
