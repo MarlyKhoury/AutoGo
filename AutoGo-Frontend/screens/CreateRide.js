@@ -13,10 +13,6 @@ import { selectDestination, setDestination, setOrigin, selectOrigin } from '../s
 import axios from 'react-native-axios';
 import * as SecureStore from 'expo-secure-store';
 
-async function getToken(){
-  let result = await SecureStore.getItemAsync('token');
-  return result
-}
 
 
 const CreateRide = () => {
@@ -31,19 +27,20 @@ const CreateRide = () => {
   const dispatch = useDispatch();
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination); 
- 
+  const [token, setToken] = React.useState("");
   
+  async function getToken(){
+    let result = await SecureStore.getItemAsync('token');
+    setToken (result)
+  }
   
-const token= getToken()
-  // const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTY3OTIwLCJleHAiOjE2NDg1NzE1MjAsIm5iZiI6MTY0ODU2NzkyMCwianRpIjoieUc3eXpVSHozSnRCTFVHMyIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.lm93h_-Ak_lSAOhaN59-6ylyiWKsqCkgfXao-fjzQEI'
-  const headers = {
-              'Content-Type': 'application/json', 
-              'Authorization': 'Bearer '+token,
-             }
-
-  console.log(car)
-
+ getToken()
+  
   const fetchCars=()=>{
+    const headers = {
+                'Content-Type': 'application/json', 
+                'Authorization': 'Bearer '+token,
+               }
     axios.post('http://192.168.16.102:8000/api/auth/createRide',
     {
       

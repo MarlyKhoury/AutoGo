@@ -7,6 +7,7 @@ import { FlatList } from 'react-native-gesture-handler'
 import { selectTravelTimeInformation, selectDestination, selectOrigin } from '../slices/navSlice'
 import axios from 'react-native-axios';
 import { useDispatch, useSelector } from 'react-redux';
+import * as SecureStore from 'expo-secure-store';
 
 
 const RideOptionsCard = () => {
@@ -20,18 +21,23 @@ const RideOptionsCard = () => {
     const [selected, setSelected] = useState("");
     const [data, setData] = React.useState("");
     const [cancel, setCancel] = React.useState();
+    const [token, setToken] = React.useState("");
     const dispatch = useDispatch();
-
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
-   
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NjYxNDc1LCJleHAiOjE2NDg2NjUwNzUsIm5iZiI6MTY0ODY2MTQ3NSwianRpIjoiMEcwZkk1ZllzOWxYU1hHViIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.swSoLFalayoGxfaPdiiDVvagHZxtARhEbCmqwAF9yeU'
-    const headers = {
-        'Content-Type': 'application/json', 
-        'Authorization': 'Bearer '+token,
-    }
-    const fetchCars=()=>{
+    
+    async function getToken(){
+    
+        setToken(result)
+      } 
+
+      const fetchCars=async()=>{
+          const token = await SecureStore.getItemAsync('token');
+          const headers = {
+              'Content-Type': 'application/json', 
+              'Authorization': 'Bearer '+token,
+          }
         axios.get('http://192.168.16.102:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
