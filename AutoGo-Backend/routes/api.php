@@ -36,17 +36,17 @@ Route::group([
     Route::post('/createRide', [AuthController::class, 'createRide']);
     Route::post('/bookRide', [AuthController::class, 'bookRide']);
     Route::post('/cancelBooking', [AuthController::class, 'cancelBooking']);
-    Route::post('/uploadImg', [AuthController::class, 'uploadImg']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']); 
     Route::get('/bannedStatus/{id}', [AuthController::class, 'bannedStatus']);
     Route::get('/unban/{id}', [AuthController::class, 'unban']);
-Route::get('/getRides/{from}/{to}', [AuthController::class, 'getRides']);
+    Route::get('/getRides/{from}/{to}', [AuthController::class, 'getRides']);
     Route::get('/getUsers', [AuthController::class, 'getUsers']);
     Route::get('/getuserInfo/{id}', [AuthController::class, 'getuserInfo']);
     Route::get('/getuserInfo', [AuthController::class, 'getownInfo']);
     Route::get('/getallReviews/{id}', [AuthController::class, 'getallReviews']);
     Route::delete('/deleteCar', [AuthController::class, 'deleteCar']);
     Route::delete('/deleteReview/{id}', [AuthController::class, 'deleteReview']);
-
-    // Route::post('/Image', [AuthController::class, 'Image']);
+    
+    Route::post('/uploadImg', [AuthController::class, 'uploadImg']);
+    Route::get('/testImg', [AuthController::class, 'testImg']);
 });

@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 function ImgUpload() {
   // The path of the picked image
   const [pickedImagePath, setPickedImagePath] = useState('');
-
+  const[profileImageURL,setProfileImageURL] = useState('');
   // This function is triggered when the "Select an image" button pressed
   const showImagePicker = async () => {
     // Ask the user for the permission to access the media library 
@@ -29,12 +29,34 @@ function ImgUpload() {
     }
   }
 
+  
+  const handleUpload = () => {
+    let Image = {
+      uri: pickedImagePath,
+      type: `${pickedImagePath.split('.')[1]}`,
+      name: `${pickedImagePath.split('.')[1]}`,
+    };
+    const data = new FormData();
+    data.append('file', Image);
+    console.log(data);
+    data.append('upload_preset', 'e0bwupcg');
+    data.append('cloud_name', 'dnqrcc1h6');
+    fetch('https://api.cloudinary.com/v1_1/dnqrcc1h6/image/upload', {
+      method: 'post',
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfileImageURL(data);
+        console.log(data)
+      });
+  };
 
   return (
     <View style={styles.screen}>
       <View style={styles.buttonContainer}>
         <Button onPress={showImagePicker} title="Select an image" />
-        {/* <Button onPress={openCamera} title="Open camera" /> */}
+        <Button onPress={handleUpload} title="Open camera" />
       </View>
 
       <View style={styles.imageContainer}>

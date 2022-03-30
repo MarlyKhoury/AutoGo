@@ -26,13 +26,13 @@ const RideOptionsCard = () => {
     const destination = useSelector(selectDestination);
    
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NjIxMTIzLCJleHAiOjE2NDg2MjQ3MjMsIm5iZiI6MTY0ODYyMTEyMywianRpIjoienZVVE1teDlEVW45NFZlRSIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Pyq335gardEry7klmlFZMBmEY5RQ_OTiV86mToTw_AU'
+    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjEuMTA0OjgwMDBcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDg2NTQ3OTYsImV4cCI6MTY0ODY1ODM5NiwibmJmIjoxNjQ4NjU0Nzk2LCJqdGkiOiJJMERLUDdHa2lMQW0yNVh0Iiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-8XJmpB9NnjcHAAkoBS9c3hGWetCFjqknyhtblfKHDY'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
     const fetchCars=()=>{
-        axios.get('http://192.168.16.102:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://192.168.1.104:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
