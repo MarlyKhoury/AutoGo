@@ -387,7 +387,7 @@ class AuthController extends Controller
     $user_id =$id;
     $user = User::findOrFail($user_id);
     $user->banned_till = null;
-    $user->save();//jrbe mn ostman
+    $user->save();
 }
 }
 
@@ -446,27 +446,26 @@ class AuthController extends Controller
         \File::put(storage_path(). '/' . $imageName, base64_decode($image));
         echo('done');
      }
-  
+
+
+
+
     // Upload Image
     public function uploadImg(Request $request) 
     { 
-         $parametre =$request->all();
+        $picture_path = $request->input('picture_path');
+        $user_id = auth()->user()->id;
+        $profile = Profile::create(array_merge(
+            ['picture_path' =>$picture_path],
+            ['user_id' =>$user_id],
+        ));
 
-        if ($request->hasFile('picture_path')) {
-            if($request->file('picture_path')->isValid()) {
-                try {
-                    $file = $request->file('picture_path');
-                    $image = base64_encode(file_get_contents($request->file('picture_path')));
-                    echo $image;
-    
-                    
-                } catch (FileNotFoundException $e) {
-                    echo "catch";
-    
-                }
-            }
-   
-        }
+        $profile->save();
+        return response()->json([
+            'message'=> 'Image uploaded successfully',
+                   
+   ], 200);
+
     }
   
 
@@ -474,7 +473,7 @@ class AuthController extends Controller
     public function getuserInfo($id){
         $user_id = auth()->user()->id;
         $user= User::find($id, ['first_name','last_name']);
-        $profile=Profile::where('user_id',$id)->get(['address','education','workplace']);
+        $profile=Profile::where('user_id',$id)->get(['picture_path']);
         $review= Review::where('to_id',$id)->get(['rating','comment']);
         return response()->json([
             'user'=> $user,

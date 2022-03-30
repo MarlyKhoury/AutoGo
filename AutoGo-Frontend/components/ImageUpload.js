@@ -47,7 +47,8 @@ function ImgUpload() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setProfileImageURL(data);
+        setProfileImageURL(data.url);
+        
         console.log(data)
       });
   };
