@@ -478,12 +478,11 @@ class AuthController extends Controller
         $profile= Profile::where('user_id',$user_id)->get(['address','education','workplace']);
         $review= Review::where('to_id',$user_id)->get(['id','rating','comment']);
         $user_name= User::where('id',$user_id)->get(['id','first_name','last_name']);
-        // $user_name = User::where('user_id',$user_id)->get(['first_name','last_name']);
         return response()->json([
             'user'=> $user,
             'profile'=> $profile,
             'review'=> $review,
-            // 'user_name'=>$user_name,
+            
    ], 200);
     }
 
@@ -504,7 +503,7 @@ class AuthController extends Controller
         $from_id = auth()->user()->id;
         $to_id = User::findOrFail($validator->validated()['to_id']);
         $input = $request->all();
-        // $input['from_id'] = auth()->user()->id;
+        
     
         Review::create($input);
    
