@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import { useNavigation } from '@react-navigation/native';
 import tw from 'tailwind-react-native-classnames';
 import axios from 'react-native-axios';
+import * as SecureStore from 'expo-secure-store';
+
 
 
 const CreateCar = () => {
@@ -12,14 +14,23 @@ const CreateCar = () => {
   const [car_model, setCar_model] = React.useState("");
   const [license_plate, setLicense_plate] = React.useState("");
   const [seats_available, setSeats_available] = React.useState("");
-
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTg2NDM0LCJleHAiOjE2NDg1OTAwMzQsIm5iZiI6MTY0ODU4NjQzNCwianRpIjoiN3VZWXcyUDdDaTZ4clRwQiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4oDWwpVZbvlRtvpI_0Z65b0zuYU8oiv_kUdt9Gqt6h0'
+  const [token, setToken] = React.useState("");
+  
+  async function getToken(){
+    let result = await SecureStore.getItemAsync('token');
+    setToken(result)
+    // return result
+  }
+getToken()
+  // let token= await getToken()
+  console.log(token)
+  // const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTg2NDM0LCJleHAiOjE2NDg1OTAwMzQsIm5iZiI6MTY0ODU4NjQzNCwianRpIjoiN3VZWXcyUDdDaTZ4clRwQiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4oDWwpVZbvlRtvpI_0Z65b0zuYU8oiv_kUdt9Gqt6h0'
   const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
   const fetchCars=()=>{
-  axios.post('http://192.168.16.101:8000/api/auth/createCar',{
+  axios.post('http://192.168.1.104:8000/api/auth/createCar',{
     model: car_model,
     license_plate: license_plate,
     seats_available:seats_available

@@ -19,9 +19,9 @@
 
 // export const {setCar} = carSlice.actions;
 
-// // Selectors
+// Selectors
 // export const selectOrigin = (state) => state.car.origin;
-// // export const selectDestination = (state) => state.nav.destination;
-// // export const selectTravelTimeInformation = (state) => state.nav.travelTimeInformation;
+// export const selectDestination = (state) => state.nav.destination;
+// export const selectTravelTimeInformation = (state) => state.nav.travelTimeInformation;
 
 // export default carSlice.reducer;

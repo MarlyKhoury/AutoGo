@@ -5,37 +5,36 @@ import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'react-native-axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
+
+async function save(key, value) {
+  await SecureStore.setItemAsync(key, value);
+  // let result = await SecureStore.getItemAsync('token');
+}
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
   const[errorMessage, setErrorMessage] = React.useState("");
-
-  const login=()=>{
+  const login= async ()=>{
 
     axios
-    .post('http://192.168.16.101:8000/api/auth/login',{
+    .post('http://192.168.1.104:8000/api/auth/login',{
       email: email,
       password: password,
   })
     .then(async function (response) {
       // handle success
       let token = response.data.access_token;
-      AsyncStorage.setItem('token',token);
-
-      const data = await AsyncStorage.getItem('token');
-      if (data){
+      save('token',token)   
         navigation.navigate('HomeScreen')
-      } else {
-        setErrorMessage('error occured, Please login again')
-        
-      }
       
-    })
+      })
+      
+   
     .catch(function (error) {
-      navigation.navigate('HomeScreen') // for testing
+      // navigation.navigate('HomeScreen') // for testing
       setErrorMessage(error.response.data.error)
     })
   

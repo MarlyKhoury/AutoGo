@@ -11,10 +11,13 @@ import { Icon } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ProfilePic from './ProfilePic';
 import { useNavigation } from '@react-navigation/native';
+import { SecureStore} from 'expo-secure-store';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    
+  // let result = await SecureStore.getItemAsync(key);
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={tw`p-5`}>

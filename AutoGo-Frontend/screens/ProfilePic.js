@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import axios from 'react-native-axios';
 import  { useState } from 'react';
 import Header from '../components/Header';
+import * as SecureStore from 'expo-secure-store';
+
 
 const ProfilePic = () => {
   useEffect(()=>{
@@ -16,23 +18,29 @@ const ProfilePic = () => {
     
 }, [])
   const [data, setData] = useState("");
-  
   const [selected, setSelected] = useState("");
-
+  const [token, setToken] = React.useState("");
+  async function getToken(){
+    let result = await SecureStore.getItemAsync('token');
+    setToken(result)
+    // return result
+  }
+  let x =token
+  // console.log(token)
+  console.log(x)
+  // const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTkxODU5LCJleHAiOjE2NDg1OTU0NTksIm5iZiI6MTY0ODU5MTg1OSwianRpIjoiUURlMFc2d29WVnIyTkRuUiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.KprMBc_Lr566mSFZK_o2RM-idklws7sDRMdAW_xK32k'
+ 
   
-
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTkxODU5LCJleHAiOjE2NDg1OTU0NTksIm5iZiI6MTY0ODU5MTg1OSwianRpIjoiUURlMFc2d29WVnIyTkRuUiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.KprMBc_Lr566mSFZK_o2RM-idklws7sDRMdAW_xK32k'
-  const headers = {
+  const fetchUserInfo=async ()=>{
+    getToken()
+     const headers = {
     'Content-Type': 'application/json', 
-        'Authorization': 'Bearer '+token,
-      }
-
-  const fetchUserInfo=()=>{
-    axios.get('http://192.168.16.101:8000/api/auth/getuserInfo',
+    'Authorization': 'Bearer '+token,
+  }
+    axios.get('http://192.168.1.104:8000/api/auth/getuserInfo',
     {headers:headers},
     )
     .then(function (response) {
-      let test=response.data
       setData(response.data)
       console.log(data)      
     })

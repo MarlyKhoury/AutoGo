@@ -11,8 +11,12 @@ import DropBtn from '../components/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDestination, setDestination, setOrigin, selectOrigin } from '../slices/navSlice';
 import axios from 'react-native-axios';
+import * as SecureStore from 'expo-secure-store';
 
-
+async function getToken(){
+  let result = await SecureStore.getItemAsync('token');
+  return result
+}
 
 
 const CreateRide = () => {
@@ -29,8 +33,9 @@ const CreateRide = () => {
   const destination = useSelector(selectDestination); 
  
   
-
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTY3OTIwLCJleHAiOjE2NDg1NzE1MjAsIm5iZiI6MTY0ODU2NzkyMCwianRpIjoieUc3eXpVSHozSnRCTFVHMyIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.lm93h_-Ak_lSAOhaN59-6ylyiWKsqCkgfXao-fjzQEI'
+  
+const token= getToken()
+  // const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTY3OTIwLCJleHAiOjE2NDg1NzE1MjAsIm5iZiI6MTY0ODU2NzkyMCwianRpIjoieUc3eXpVSHozSnRCTFVHMyIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.lm93h_-Ak_lSAOhaN59-6ylyiWKsqCkgfXao-fjzQEI'
   const headers = {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
@@ -39,7 +44,7 @@ const CreateRide = () => {
   console.log(car)
 
   const fetchCars=()=>{
-    axios.post('http://192.168.16.101:8000/api/auth/createRide',
+    axios.post('http://192.168.1.104:8000/api/auth/createRide',
     {
       
       user_car_id: Name,//car id from Dropdown component child

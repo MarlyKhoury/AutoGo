@@ -10,7 +10,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.1.1",
     "@reduxjs/toolkit": "^1.8.0",
@@ -35,7 +34,8 @@
     "react-query": "^3.34.18",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
-    "tailwind-react-native-classnames": "^1.5.1"
+    "tailwind-react-native-classnames": "^1.5.1",
+    "expo-secure-store": "~11.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
