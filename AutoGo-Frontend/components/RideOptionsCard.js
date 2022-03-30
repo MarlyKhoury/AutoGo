@@ -38,7 +38,7 @@ const RideOptionsCard = () => {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-        axios.get('http://192.168.16.102:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://172.20.10.2:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
@@ -56,8 +56,13 @@ const RideOptionsCard = () => {
     )
     
     }
-    const bookRide=(id)=>{
-        axios.post('http://192.168.16.102:8000/api/auth/bookRide',{ride_id:id},
+    const bookRide=async(id)=>{
+        const token = await SecureStore.getItemAsync('token');
+        const headers = {
+            'Content-Type': 'application/json', 
+            'Authorization': 'Bearer '+token,
+        }
+        axios.post('http://172.20.10.2:8000/api/auth/bookRide',{ride_id:id},
         {headers:headers} 
         
         )

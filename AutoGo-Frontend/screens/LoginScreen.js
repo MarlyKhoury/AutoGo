@@ -46,7 +46,7 @@ const LoginScreen = () => {
   <View>
   <View style={styles.TriangleCorner} />
   <View>
-  <Text>{errorMessage && <Text className="error">{errorMessage}</Text >}</Text></View>
+  <Text style={tw`text-center`}>{errorMessage && <Text className="error">{errorMessage}</Text >}</Text></View>
     <TextInput
      style={[tw`items-center max-w-md p-2 mx-auto bg-gray-200 rounded-lg`,{width:300,height: 60, marginTop:230,zIndex:1}]}
      placeholder="Email"
