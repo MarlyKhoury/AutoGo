@@ -91,9 +91,11 @@ const SignUpScreen = () => {
       value={password}
       onChangeText={password => setPassword(password)}
       />
-      <RadioBtn />
+
+      <RadioBtn style={tw`mt-10`}/>
       <View>
-  <Text>{errorMessage && <Text className="error">{errorMessage}</Text >}</Text></View>
+  <Text >{errorMessage && <Text style={styles.error}>{errorMessage}</Text >}</Text>
+  </View>
       <Button style={styles.button} mode="contained" onPress={signUp}>
         Sign Up
       </Button>
@@ -115,5 +117,8 @@ const styles = StyleSheet.create({
     color: "#454545",
     textAlign:"center",
     marginTop:8,
+  },
+  error:{
+    color:'red'
   }
 })
