@@ -88,7 +88,7 @@ const NavigateCard = () => {
                 debounce={400}             
              />
           </View>
-          <NavFavourites />
+          {/* <NavFavourites /> */}
       </View>
       <View style={tw`  mt-auto border-t border-gray-100`}>
 

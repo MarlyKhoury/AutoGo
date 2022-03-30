@@ -10,8 +10,6 @@ const RadioBtn = (props) => {
     <RadioButton.Group onValueChange={newValue => {setValue(newValue),props.Changedata(newValue)}} value={value}>
       <View style={tw`flex-row justify-evenly`}>
         <Text>Female</Text>
-      
-
         <RadioButton.Android value="F" />
         <Text>Male</Text>
         <RadioButton.Android value="M" />

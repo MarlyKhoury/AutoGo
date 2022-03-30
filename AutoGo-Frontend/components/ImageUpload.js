@@ -74,7 +74,7 @@ function ImageUpload() {
 
 export default ImageUpload;
 
-// Kindacode.com
+
 // Just some styles
 const styles = StyleSheet.create({
   screen: {

@@ -30,13 +30,6 @@ export default function App() {
         >
         <Stack.Navigator>
 
-        {/* <Stack.Screen 
-          name = "Test"
-          component={Test} 
-          options={{
-            headerShown:false,
-          }}
-          /> */}
 
           {/* <Stack.Screen 
          name = "AdminScreen"
@@ -52,6 +45,13 @@ export default function App() {
             headerShown:false,
           }}
           />
+          {/* <Stack.Screen 
+            name = "Test"
+            component={Test} 
+            options={{
+              headerShown:false,
+            }}
+            /> */}
           <Stack.Screen 
           name = "Screen"
           component={ImgUpload} 
