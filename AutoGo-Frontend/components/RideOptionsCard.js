@@ -77,7 +77,7 @@ const RideOptionsCard = () => {
 
 
     const cancelBooking = ()=>{
-        axios.post('http://192.168.16.102:8000/api/auth/cancelBooking',{ride_id:cancel},
+        axios.post('http://172.20.10.2:8000/api/auth/cancelBooking',{ride_id:cancel},
         {headers:headers}
         )
         .then((response) => {

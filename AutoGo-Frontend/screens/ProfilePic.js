@@ -36,7 +36,7 @@ const ProfilePic = () => {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.102:8000/api/auth/getuserInfo',
+    axios.get('http://172.20.10.2:8000/api/auth/getuserInfo',
     {headers:headers},
     )
     .then(function (response) {

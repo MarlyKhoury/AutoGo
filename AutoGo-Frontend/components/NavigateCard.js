@@ -19,15 +19,14 @@ const NavigateCard = () => {
     const origin = useSelector(selectOrigin);
     // console.log(origin)
 
-
-
     const getDataUsingSimpleGetCall = () => {
 
     }
+
   return (
       getDataUsingSimpleGetCall(),
     <SafeAreaView style={tw`bg-white flex-1`}>
-      <Text style={tw`text-center py-5 text-xl`}>Ride Booking</Text>
+      {/* <Text style={tw`text-center py-2 text-lg`}>Ride Booking</Text> */}
       <View style={tw`border-t border-gray-200 flex-shrink`}>
           <View >
           <GooglePlacesAutocomplete
@@ -82,12 +81,12 @@ const NavigateCard = () => {
           </View>
           {/* <NavFavourites /> */}
       </View>
-      <View style={tw`  mt-auto border-t border-gray-100`}>
+      <View style={tw`mt-auto border-t border-gray-100`}>
 
           <TouchableOpacity 
           disabled={disabled}
           onPress={() => navigation.navigate("RideOptionsCard")}
-          style={[tw` flex-row justify-center  m-4 py-3`,{backgroundColor:"#58BD29"}]}>
+          style={[tw` flex-row justify-center  m-4 py-2`,{backgroundColor:"#58BD29"}]}>
               <Icon name="car" type="font-awesome" color="white" size={20}/>
               <Text style={tw`text-white text-base ml-2`}>Search Rides</Text>
 
@@ -108,7 +107,7 @@ export default NavigateCard
 const toInputBoxStyles = StyleSheet.create({
     container: {
         backgroundColor: "white",
-        paddingTop: 32,
+        paddingTop: 15,
         flex: 0,
     },
     textInput: {
