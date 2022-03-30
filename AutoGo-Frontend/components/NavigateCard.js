@@ -87,9 +87,9 @@ const NavigateCard = () => {
           <TouchableOpacity 
           disabled={disabled}
           onPress={() => navigation.navigate("RideOptionsCard")}
-          style={[tw` m-4 py-1`,{backgroundColor:"#58BD29"}]}>
-              <Icon name="car" type="font-awesome" color="white" size={16}/>
-              <Text style={tw`text-white text-center`}>Rides</Text>
+          style={[tw` flex-row justify-center  m-4 py-3`,{backgroundColor:"#58BD29"}]}>
+              <Icon name="car" type="font-awesome" color="white" size={20}/>
+              <Text style={tw`text-white text-base ml-2`}>Search Rides</Text>
 
           </TouchableOpacity>
 
@@ -108,7 +108,7 @@ export default NavigateCard
 const toInputBoxStyles = StyleSheet.create({
     container: {
         backgroundColor: "white",
-        paddingTop: 20,
+        paddingTop: 32,
         flex: 0,
     },
     textInput: {
