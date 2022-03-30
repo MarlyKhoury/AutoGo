@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Button } from 'react-native';
-
+import { View, StyleSheet, Image, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-function ImgUpload() {
+
+function ImageUpload() {
   // The path of the picked image
   const [pickedImagePath, setPickedImagePath] = useState('');
   const[profileImageURL,setProfileImageURL] = useState('');
@@ -48,7 +48,7 @@ function ImgUpload() {
       .then((res) => res.json())
       .then((data) => {
         setProfileImageURL(data.url);
-        
+
         console.log(data)
       });
   };
@@ -72,7 +72,7 @@ function ImgUpload() {
   );
 }
 
-export default ImgUpload;
+export default ImageUpload;
 
 // Kindacode.com
 // Just some styles

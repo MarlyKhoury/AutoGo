@@ -46,15 +46,15 @@ export default function App() {
          }}
          /> */}
           <Stack.Screen 
-          name = "Screen"
-          component={ImgUpload} 
+          name = "LoginScreen"
+          component={LoginScreen} 
           options={{
             headerShown:false,
           }}
           />
           <Stack.Screen 
-          name = "LoginScreen"
-          component={LoginScreen} 
+          name = "Screen"
+          component={ImgUpload} 
           options={{
             headerShown:false,
           }}

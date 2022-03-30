@@ -6,29 +6,38 @@ import { FlatList } from 'react-native-gesture-handler'
 import  { useState,useEffect } from 'react'
 import axios from 'react-native-axios';
 import { useDispatch } from 'react-redux';
+import * as SecureStore from 'expo-secure-store';
 
 const DropBtn = (props) => {
-  const [expanded, setExpanded] = React.useState(true);
-  const handlePress = () => setExpanded(!expanded);
-  const [selected, setSelected] = useState("");
-  const [data, setData] = React.useState("");
-  const dispatch = useDispatch();
-
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTk3NzkwLCJleHAiOjE2NDg2MDEzOTAsIm5iZiI6MTY0ODU5Nzc5MCwianRpIjoiRG1LeDlsbmpmbmhWeFo2MCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.8QG2VdgY4RtBrX3ATaxueDJ-A_6hCtJNQaSl4x5jqoU'
-    const headers = {
-        'Content-Type': 'application/json', 
-        'Authorization': 'Bearer '+token,
-    }
-
 
   useEffect(()=>{
          console.log("I am here");
           getCar();
     
         }, [])  
-        
-  const getCar=()=>{
-        axios.get('http://192.168.16.101:8000/api/auth/getCar',
+
+  const [expanded, setExpanded] = React.useState(true);
+  const handlePress = () => setExpanded(!expanded);
+  const [selected, setSelected] = useState("");
+  const [data, setData] = React.useState("");
+  const [token, setToken] = React.useState("");
+  const dispatch = useDispatch();
+
+  async function getToken(){
+    
+    setToken(result)
+  } 
+
+  
+  
+  
+  const getCar=async()=>{
+    const token = await SecureStore.getItemAsync('token');
+    const headers = {
+        'Content-Type': 'application/json', 
+        'Authorization': 'Bearer '+token,
+    }
+        axios.get('http://192.168.16.102:8000/api/auth/getCar',
          {headers:headers},  
           )
           .then((response) => {

@@ -8,9 +8,11 @@ import axios from 'react-native-axios';
 import  { useState } from 'react';
 import Header from '../components/Header';
 import * as SecureStore from 'expo-secure-store';
+import ImageUpload from '../components/ImageUpload';
 
 
 const ProfilePic = () => {
+
   useEffect(()=>{
     console.log("I am here");
     
@@ -20,24 +22,21 @@ const ProfilePic = () => {
   const [data, setData] = useState("");
   const [selected, setSelected] = useState("");
   const [token, setToken] = React.useState("");
+
   async function getToken(){
-    let result = await SecureStore.getItemAsync('token');
+    
     setToken(result)
-    // return result
-  }
-  let x =token
-  // console.log(token)
-  console.log(x)
-  // const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTkxODU5LCJleHAiOjE2NDg1OTU0NTksIm5iZiI6MTY0ODU5MTg1OSwianRpIjoiUURlMFc2d29WVnIyTkRuUiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.KprMBc_Lr566mSFZK_o2RM-idklws7sDRMdAW_xK32k'
- 
+  } 
   
   const fetchUserInfo=async ()=>{
-    getToken()
+    // getToken()
+  const token = await SecureStore.getItemAsync('token');
+
      const headers = {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
-  }
-    axios.get('http://192.168.1.104:8000/api/auth/getuserInfo',
+     }
+    axios.get('http://192.168.16.102:8000/api/auth/getuserInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -53,21 +52,14 @@ const ProfilePic = () => {
 
     
     <View >
+
       <Header/>
+
+
+      <ImageUpload />
     
-      
+
       <Text style={tw`items-center max-w-md pt-20 pb-10 mx-auto mt-40 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
-      {/* <Text>{data?.user?.last_name}</Text> */}
-      
-      {/* <Icon 
-      style={tw`p-2 bg-black rounded-full w-10 mt-40`}
-      name="briefcase" type="entypo" color="white" size={16}/>
-      <Icon 
-      style={tw`p-2 bg-black rounded-full w-10 mt-40`}
-      name="graduation-cap" type="entypo" color="white" size={16}/>
-      <Icon 
-      style={tw`p-2 bg-black rounded-full w-10 mt-40`}
-      name="home" type="entypo" color="white" size={16}/> */}
 
 
 <FlatList 

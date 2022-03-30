@@ -48,5 +48,5 @@ Route::group([
     Route::delete('/deleteReview/{id}', [AuthController::class, 'deleteReview']);
     
     Route::post('/uploadImg', [AuthController::class, 'uploadImg']);
-    Route::get('/testImg', [AuthController::class, 'testImg']);
+    
 });

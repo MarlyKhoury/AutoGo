@@ -44,7 +44,7 @@ const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMj
     )}
 
   const banUser=(id)=>{
-    axios.post('http://192.168.16.101:8000/api/auth/ban',{id},
+    axios.post('http://192.168.16.102:8000/api/auth/ban',{id},
     {headers:headers}
     )
     .then((response) => {
