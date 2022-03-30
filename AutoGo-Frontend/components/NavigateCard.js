@@ -32,15 +32,7 @@ const NavigateCard = () => {
           <View >
           <GooglePlacesAutocomplete
               placeholder='Where From?'
-              styles={{
-                container: {
-                  flex:0,
-                },
-                textInput:{
-                  fontSize:18,
-                }
-
-              }}
+              styles={toInputBoxStyles}
               onPress={(data, details = null) => {
                 dispatch(setOrigin({
                   location: details.geometry.location,
