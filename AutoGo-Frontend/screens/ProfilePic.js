@@ -28,7 +28,7 @@ const ProfilePic = () => {
       }
 
   const fetchUserInfo=()=>{
-    axios.get('http://172.20.10.2:8000/api/auth/getuserInfo',
+    axios.get('http://192.168.16.101:8000/api/auth/getuserInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -48,7 +48,7 @@ const ProfilePic = () => {
       <Header/>
     
       
-      <Text style={tw`items-center max-w-md p-20 mx-auto mt-40 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
+      <Text style={tw`items-center max-w-md pt-20 pb-10 mx-auto mt-40 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
       {/* <Text>{data?.user?.last_name}</Text> */}
       
       {/* <Icon 
@@ -67,7 +67,7 @@ const ProfilePic = () => {
           keyExtractor = {(item) => item.id}
           ItemSeparatorComponent={() =>(
             <View 
-              style={[tw`bg-gray-200`, {height: 0.5}]}
+              style={[tw`bg-gray-200`, {height: 0.7}]}
             />
         )}
           renderItem={({item: {id,rating, comment}, item}) =>(
@@ -78,14 +78,14 @@ const ProfilePic = () => {
             }
           }
           
-          style ={tw`flex-row mt-2 items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
+          style ={tw`flex-row  items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
             
                    <Icon 
-                   style={[tw`p-2 rounded-full w-10 mt-2`,{backgroundColor:'#58BD29'}]}
+                   style={[tw`p-2 rounded-full w-8 mb-2 mt-2`,{backgroundColor:'#58BD29'}]}
                    name="rate-review" type="materialicons" color="white" size={16}
                    />
 
-                  <View style={tw`ml-2`}>
+                  <View style={tw`mb-1 ml-4`}>
                       <Text style={tw`text-base font-normal`}>{comment}</Text>
                       {/* <Text style={tw`text-base font-normal`}>{rating}</Text>*/}
                   </View>

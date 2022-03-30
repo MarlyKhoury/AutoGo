@@ -1,21 +1,17 @@
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { StyleSheet, Text, View} from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
 import Header from '../components/Header'
 import { TextInput, Button } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames';
 import RadioBtn from '../components/RadioBtn';
 import { useNavigation } from '@react-navigation/native';
 import DropBtn from '../components/Dropdown';
-import { useDispatch } from 'react-redux';
-import { selectDestination, setDestination } from '../slices/navSlice';
-import { setOrigin } from '../slices/navSlice';
-import { useSelector } from 'react-redux';
-import { selectOrigin } from '../slices/navSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDestination, setDestination, setOrigin, selectOrigin } from '../slices/navSlice';
 import axios from 'react-native-axios';
-import { useEffect } from 'react'
-import { useState } from 'react'
+
 
 
 
@@ -118,19 +114,19 @@ const CreateRide = () => {
               debounce={400}
            />
         <TextInput
-        style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
+        style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Travel Date"
         value={travel_date}
         onChangeText={travel_date => setTravel_date(travel_date)}
         />
         <TextInput
-        style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
+        style={[tw`mt-5 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Travel Time"
         value={travel_time}
         onChangeText={travel_time => setTravel_time(travel_time)}
         />
         <TextInput
-        style={[tw`mt-3 mb-5 justify-center rounded-xl`,{marginLeft:20,width:336}]}
+        style={[tw`mt-5 mb-5 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Fees"
         value={fees}
         onChangeText={fees => setFees(fees)}
@@ -164,16 +160,18 @@ const styles = StyleSheet.create({
 const toInputBoxStyles = StyleSheet.create({
   container: {
       // backgroundColor: "white",
-      paddingTop: 20,
+      paddingTop: 15,
       flex: 0,
   },
   textInput: {
       backgroundColor: "#DDDDDF",
-      borderRadius: 0,
-      fontSize: 18,
+      borderRadius: 10,
+      fontSize: 16,
+      
   },
   textInputContainer: {
       paddingHorizontal: 20,
       paddingBottom: 0,
+
   }
 })

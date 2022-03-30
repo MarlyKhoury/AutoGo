@@ -1,17 +1,13 @@
 import { Text, View, SafeAreaView, TouchableOpacity, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import tw from 'tailwind-react-native-classnames'
 import { Icon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native-gesture-handler'
-import { selectTravelTimeInformation } from '../slices/navSlice'
+import { selectTravelTimeInformation, selectDestination, selectOrigin } from '../slices/navSlice'
 import axios from 'react-native-axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { setOrigin } from '../slices/navSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDestination, selectOrigin, setTravelTimeInformation } from '../slices/navSlice';
-import { TextInput,  Button } from 'react-native-paper';
-import { useEffect } from 'react'
+
 
 const RideOptionsCard = () => {
 
@@ -30,7 +26,7 @@ const RideOptionsCard = () => {
     const destination = useSelector(selectDestination);
    
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTg2NDM0LCJleHAiOjE2NDg1OTAwMzQsIm5iZiI6MTY0ODU4NjQzNCwianRpIjoiN3VZWXcyUDdDaTZ4clRwQiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4oDWwpVZbvlRtvpI_0Z65b0zuYU8oiv_kUdt9Gqt6h0'
+    const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTk3NzkwLCJleHAiOjE2NDg2MDEzOTAsIm5iZiI6MTY0ODU5Nzc5MCwianRpIjoiRG1LeDlsbmpmbmhWeFo2MCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.8QG2VdgY4RtBrX3ATaxueDJ-A_6hCtJNQaSl4x5jqoU'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -147,15 +143,11 @@ const RideOptionsCard = () => {
               
               
              disabled={!selected} 
-            style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}
+            style={tw`bg-black py-2 m-3 ${!selected && "bg-gray-300"}`}
             >
                 <Text style={tw`text-center text-white text-xl`}>Delete {selected?.title}</Text>
             </TouchableOpacity>
         </View>
-        
-            {/* <Button mode="contained" onPress={()=>fetchCars()}> */}
-        {/* Sign Up
-      </Button> */}
     </SafeAreaView>
   );
 };

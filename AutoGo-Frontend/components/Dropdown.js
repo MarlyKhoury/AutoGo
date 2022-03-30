@@ -14,7 +14,7 @@ const DropBtn = (props) => {
   const [data, setData] = React.useState("");
   const dispatch = useDispatch();
 
-  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTU5NDMwLCJleHAiOjE2NDg1NjMwMzAsIm5iZiI6MTY0ODU1OTQzMCwianRpIjoicXI3bHdKOFlSdDlwSFUyWSIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.xwnDhP6C8FvIEtRT1v41WTjq_3uNOCRSaxPrccfvveA'
+  const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTk3NzkwLCJleHAiOjE2NDg2MDEzOTAsIm5iZiI6MTY0ODU5Nzc5MCwianRpIjoiRG1LeDlsbmpmbmhWeFo2MCIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.8QG2VdgY4RtBrX3ATaxueDJ-A_6hCtJNQaSl4x5jqoU'
     const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -65,8 +65,8 @@ const DropBtn = (props) => {
                 }
               style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
                 
-                  <View style={tw`-ml-6`}>
-                      <Text style={tw`text-xl font-semibold`}>{model}</Text>
+                  <View style={tw`ml-6`}>
+                      <Text style={tw`text-base font-semibold`}>{model}</Text>
                       {/* <Text style={tw`text-xl font-semibold`}>{selected.id}</Text> */}
                   </View>
               </TouchableOpacity>

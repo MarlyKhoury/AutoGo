@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useEffect } from 'react';
+import { StyleSheet} from 'react-native';
+import React, { useEffect, useRef } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import tw from 'tailwind-react-native-classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDestination, selectOrigin, setTravelTimeInformation } from '../slices/navSlice';
 import MapViewDirections from 'react-native-maps-directions';
 import { GOOGLE_MAPS_APIKEY } from "@env";
-import { useRef } from 'react';
+
 
 const Map = () => {
     const origin = useSelector(selectOrigin);

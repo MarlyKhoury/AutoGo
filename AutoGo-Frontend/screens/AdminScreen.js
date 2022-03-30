@@ -5,6 +5,7 @@ import { View, FlatList, TouchableOpacity, Image, Text } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { useEffect, useState } from 'react';
 import axios from 'react-native-axios';
+import { Icon } from 'react-native-elements';
 
 
 
@@ -28,7 +29,7 @@ const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMj
         'Authorization': 'Bearer '+token,
     }
     const fetchUsers=()=>{
-        axios.get('http://172.20.10.2:8000/api/auth/getUsers/',
+        axios.get('http://192.168.16.101:8000/api/auth/getUsers/',
         {headers:headers},
         )
         .then((response) => {
@@ -80,6 +81,11 @@ const unbanUser=(id)=>{
        <FlatList 
           data = {data}
           keyExtractor = {(item) => item.id}
+          ItemSeparatorComponent={() =>(
+            <View 
+              style={[tw`bg-gray-200`, {height: 0.8}]}
+            />
+        )}
           renderItem={({item: {id,first_name, last_name}, item}) =>(
               <TouchableOpacity
               // onPress={() =>{
@@ -90,16 +96,12 @@ const unbanUser=(id)=>{
                 // console.log(item.id)
                 
                 // }
-              style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
-                  {/* <Image
-                  style={{
-                      width:100,
-                      height:100,
-                      resizeMode: "contain",
-                  }}
-                  source = {{uri: "https://links.papareact.com/7pf"}}
-                  /> */}
-                  <View style={tw`mt-10 flex flex-row justify-between`}>
+                style ={tw`flex-row items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
+                {/* <Icon 
+                  style={[tw` p-2 rounded-full w-8 mt-10`,{backgroundColor:"#58BD29"}]}
+                  name="user" type="feather" color="white" size={16}/>  */}
+
+              <View style={tw`mt-10 flex-row `}>
                 
                     {/* <Text>{selected.id}</Text> */}
                     
