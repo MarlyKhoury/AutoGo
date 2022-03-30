@@ -15,7 +15,7 @@ import CreateCar from "./screens/CreateCar";
 import AdminScreen from "./screens/AdminScreen";
 import CreateRide from "./screens/CreateRide";
 import Test from "./components/Test";
-
+import ImgUpload from "./components/ImageUpload";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -45,6 +45,13 @@ export default function App() {
            headerShown:false,
          }}
          /> */}
+          <Stack.Screen 
+          name = "Screen"
+          component={ImgUpload} 
+          options={{
+            headerShown:false,
+          }}
+          />
           <Stack.Screen 
           name = "LoginScreen"
           component={LoginScreen} 
