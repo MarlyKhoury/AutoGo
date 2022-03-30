@@ -6,7 +6,7 @@ import tw from 'tailwind-react-native-classnames';
 import { useEffect, useState } from 'react';
 import axios from 'react-native-axios';
 import { Icon } from 'react-native-elements';
-
+import * as SecureStore from 'expo-secure-store';
 
 
 const AdminScreen = () => {
@@ -15,21 +15,26 @@ const AdminScreen = () => {
     console.log("I am here");
     
     fetchUsers(); 
-   
-    
 }, [])
 
 const [selected, setSelected] = useState("");
 const [data, setData] = React.useState("");
+const [token, setToken] = React.useState("");
+
+async function getToken(){
+    
+  setToken(result)
+} 
 
 
-const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMjAuMTAuMjo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTkxODU5LCJleHAiOjE2NDg1OTU0NTksIm5iZiI6MTY0ODU5MTg1OSwianRpIjoiUURlMFc2d29WVnIyTkRuUiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.KprMBc_Lr566mSFZK_o2RM-idklws7sDRMdAW_xK32k'
-    const headers = {
-        'Content-Type': 'application/json', 
-        'Authorization': 'Bearer '+token,
-    }
-    const fetchUsers=()=>{
-        axios.get('http://192.168.16.101:8000/api/auth/getUsers/',
+const fetchUsers=async()=>{
+  const token = await SecureStore.getItemAsync('token');
+
+  const headers = {
+      'Content-Type': 'application/json', 
+      'Authorization': 'Bearer '+token,
+  }
+        axios.get('http://192.168.16.102:8000/api/auth/getUsers/',
         {headers:headers},
         )
         .then((response) => {
@@ -60,7 +65,7 @@ const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNzIuMj
 }
 
 const unbanUser=(id)=>{
-  axios.get('http://192.168.16.101:8000/api/auth/unban/'+id,
+  axios.get('http://192.168.16.102:8000/api/auth/unban/'+id,
   {headers:headers},
   )
   .then((response) => {
