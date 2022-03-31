@@ -69,8 +69,12 @@ const fetchUsers=async()=>{
   
 }
 
-const unbanUser=(id)=>{
-  
+const unbanUser=async(id)=>{
+   const token = await SecureStore.getItemAsync('token');
+    const headers = {
+      'Content-Type': 'application/json', 
+      'Authorization': 'Bearer '+token,
+  }
   axios.get('http://192.168.16.101:8000/api/auth/unban/'+id,
   {headers:headers},
   )
