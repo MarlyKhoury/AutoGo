@@ -25,7 +25,7 @@ const SignUpScreen = () => {
 
   const signUp =() =>{
     axios 
-    .post('http://172.20.10.2:8000/api/auth/register',{
+    .post('http://192.168.16.101:8000/api/auth/register',{
 
       first_name :first_name,
       last_name: last_name,

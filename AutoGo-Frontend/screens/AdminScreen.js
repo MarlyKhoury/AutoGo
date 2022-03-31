@@ -34,7 +34,7 @@ const fetchUsers=async()=>{
       'Content-Type': 'application/json', 
       'Authorization': 'Bearer '+token,
   }
-        axios.get('http://192.168.16.102:8000/api/auth/getUsers/',
+        axios.get('http://192.168.16.101:8000/api/auth/getUsers/',
         {headers:headers},
         )
         .then((response) => {
@@ -48,8 +48,13 @@ const fetchUsers=async()=>{
         }                
     )}
 
-  const banUser=(id)=>{
-    axios.post('http://192.168.16.102:8000/api/auth/ban',{id},
+  const banUser=async(id)=>{
+    const token = await SecureStore.getItemAsync('token');
+    const headers = {
+      'Content-Type': 'application/json', 
+      'Authorization': 'Bearer '+token,
+  }
+    axios.post('http://192.168.16.101:8000/api/auth/ban',{id},
     {headers:headers}
     )
     .then((response) => {
@@ -65,7 +70,8 @@ const fetchUsers=async()=>{
 }
 
 const unbanUser=(id)=>{
-  axios.get('http://192.168.16.102:8000/api/auth/unban/'+id,
+  
+  axios.get('http://192.168.16.101:8000/api/auth/unban/'+id,
   {headers:headers},
   )
   .then((response) => {
