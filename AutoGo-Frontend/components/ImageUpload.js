@@ -25,7 +25,7 @@ function ImageUpload() {
 
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
-      console.log(result.uri);
+      console.log(result.uri);//test hay chway ma3am tbayen l picker aslan 
     }
   }
 
@@ -36,7 +36,7 @@ function ImageUpload() {
       type: `${pickedImagePath.split('.')[1]}`,
       name: `${pickedImagePath.split('.')[1]}`,
     };
-    const data = new FormData();
+    const data = new FormData(); 
     data.append('file', Image);
     console.log(data);
     data.append('upload_preset', 'e0bwupcg');
@@ -47,9 +47,9 @@ function ImageUpload() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setProfileImageURL(data.url);
+        setProfileImageURL(data.secure_url);
 
-        console.log(data)
+        console.log(data.secure_url)
       });
   };
 
@@ -58,6 +58,7 @@ function ImageUpload() {
       <View style={styles.buttonContainer}>
         <Button onPress={showImagePicker} title="Select an image" />
         <Button onPress={handleUpload} title="Open camera" />
+        
       </View>
 
       <View style={styles.imageContainer}>

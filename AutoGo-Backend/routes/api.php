@@ -42,7 +42,7 @@ Route::group([
     Route::get('/getRides/{from}/{to}', [AuthController::class, 'getRides']);
     Route::get('/getUsers', [AuthController::class, 'getUsers']);
     Route::get('/getuserInfo/{id}', [AuthController::class, 'getuserInfo']);
-    Route::get('/getuserInfo', [AuthController::class, 'getownInfo']);
+    Route::get('/getownInfo', [AuthController::class, 'getownInfo']);
     Route::get('/getallReviews/{id}', [AuthController::class, 'getallReviews']);
     Route::delete('/deleteCar', [AuthController::class, 'deleteCar']);
     Route::delete('/deleteReview/{id}', [AuthController::class, 'deleteReview']);

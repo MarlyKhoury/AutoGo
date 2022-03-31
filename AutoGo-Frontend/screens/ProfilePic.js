@@ -15,7 +15,6 @@ const ProfilePic = () => {
 
   useEffect(()=>{
     console.log("I am here");
-    
     fetchUserInfo(); 
     
 }, [])
@@ -29,37 +28,59 @@ const ProfilePic = () => {
   } 
   
   const fetchUserInfo=async ()=>{
-    // getToken()
+    // gettoken()
   const token = await SecureStore.getItemAsync('token');
 
      const headers = {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.101:8000/api/auth/getuserInfo',
+    axios.get('http://172.20.10.2:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
-      setData(response.data)
-      console.log(data)      
+      // setData((response.data.profile[0].picture_path))
+      setData((response.data))
+      console.log(data)
     })
     .catch((error) =>{
-        console.log(error)
+        console.log(error) 
+       
     },
     )} 
+if (!data){
+  return <Text>is loading</Text>
+}
 
-  return (
 
-    
+  return (    
     <View >
 
       <Header/>
 
+      
+          {/* <ImageUpload /> */}
 
-      <ImageUpload />
-    
+          <Image
+                  style={{
+                      width:200,
+                      height:200,
+                      resizeMode: "contain",
+                      marginTop: 30,
+                      marginLeft:85,
+                      
+                  }}
+                  source = {{uri: `${data.profile[0].picture_path}`}}
+                  />
 
-      <Text style={tw`items-center max-w-md pt-20 pb-10 mx-auto mt-40 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
+
+
+
+
+
+          {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
+      {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
+      <Text style={tw`items-center max-w-md pt-10 pb-10 mx-auto mt-20 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
 
 
 <FlatList 
@@ -89,6 +110,8 @@ const ProfilePic = () => {
                       <Text style={tw`text-base font-normal`}>{comment}</Text>
                       {/* <Text style={tw`text-base font-normal`}>{rating}</Text>*/}
                   </View>
+
+                  
               </TouchableOpacity>
           )}
         />

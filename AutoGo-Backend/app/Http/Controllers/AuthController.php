@@ -403,7 +403,7 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 400);
         }
        
-        //  Get id mn token
+        //  Get id from token
         $id = auth()->user()->id;
     
         $user = $request->isMethod('post') ? User::findOrFail($id) : new User;
@@ -434,11 +434,6 @@ class AuthController extends Controller
     }
 }  
 
-
-
-
-
-
     // Upload Image
     public function uploadImg(Request $request) 
     { 
@@ -456,6 +451,12 @@ class AuthController extends Controller
    ], 200);
 
     }
+
+    // Get Image
+    public function getImage(){
+        $user_id = auth()->user()->id;
+    }
+
   
 
     // Get User Info
@@ -475,7 +476,7 @@ class AuthController extends Controller
     public function getownInfo(){
         $user_id = auth()->user()->id;
         $user= User::find($user_id, ['first_name','last_name']);
-        $profile= Profile::where('user_id',$user_id)->get(['address','education','workplace']);
+        $profile= Profile::where('user_id',$user_id)->get(['picture_path']);
         $review= Review::where('to_id',$user_id)->get(['id','rating','comment']);
         $user_name= User::where('id',$user_id)->get(['id','first_name','last_name']);
         return response()->json([
