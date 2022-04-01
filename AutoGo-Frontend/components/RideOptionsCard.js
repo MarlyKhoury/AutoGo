@@ -26,6 +26,7 @@ const RideOptionsCard = () => {
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
+    const[errorMessage, setErrorMessage] = React.useState("");
     
     async function getToken(){
     
@@ -73,6 +74,7 @@ const RideOptionsCard = () => {
             setCancel(id)
         })
         .catch((error) =>{
+            setErrorMessage(error.response.data.error)
             console.log(error.response.data)
             console.log("error book")
             console.log(id)
@@ -113,6 +115,7 @@ const RideOptionsCard = () => {
             >
             <Icon name="chevron-left" type="fontawesome" />
             </TouchableOpacity>
+        {/* <Text style={[tw`text-center`,{color:'red',zIndex:1}]}>{errorMessage && <Text style={{color:'red'}}>{errorMessage}</Text >}</Text> */}
       <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance?.text}</Text>
         </View>
         <FlatList 
@@ -143,11 +146,11 @@ const RideOptionsCard = () => {
               </TouchableOpacity>
           )}
         />
-        <TouchableOpacity 
+        {/* <TouchableOpacity 
             onPress={() => navigation.navigate("ProfilePic")}
             style={tw`mb-20 ml-6`}>
             <Text style={tw`ml-40`}>Marly Khoury</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <View style={tw`mt-auto border-t border-gray-200`}>
 
             <TouchableOpacity

@@ -35,7 +35,7 @@ const ProfilePic = () => {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://172.20.10.2:8000/api/auth/getownInfo',
+    axios.get('http://192.168.16.102:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -80,7 +80,7 @@ if (!data){
 
           {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
       {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
-      <Text style={tw`items-center max-w-md pt-10 pb-10 mx-auto mt-20 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
+      <Text style={tw`items-center max-w-md pt-10 pb-10 mx-auto mt-5 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
 
 
 <FlatList 
