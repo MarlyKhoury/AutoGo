@@ -38,6 +38,7 @@ export default function App() {
            headerShown:false,
          }}
          /> */}
+
           <Stack.Screen 
           name = "LoginScreen"
           component={LoginScreen} 

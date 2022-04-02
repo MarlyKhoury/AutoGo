@@ -13,20 +13,19 @@ import * as SecureStore from 'expo-secure-store';
 const RideOptionsCard = () => {
 
     useEffect(()=>{
-        console.log("I am here");
         fetchCars();
     }, [])
 
     const navigation = useNavigation();
     const [selected, setSelected] = useState("");
-    const [data, setData] = React.useState("");
-    const [cancel, setCancel] = React.useState();
-    const [token, setToken] = React.useState("");
+    const [data, setData] = useState("");
+    const [cancel, setCancel] = useState();
+    const [token, setToken] = useState("");
     const dispatch = useDispatch();
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const[errorMessage, setErrorMessage] = React.useState("");
+    const[errorMessage, setErrorMessage] = useState("");
     
     async function getToken(){
     
@@ -39,7 +38,7 @@ const RideOptionsCard = () => {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-        axios.get('http://192.168.16.102:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://10.5.200.106:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
@@ -63,7 +62,7 @@ const RideOptionsCard = () => {
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer '+token,
         }
-        axios.post('http://192.168.16.102:8000/api/auth/bookRide',{ride_id:id},
+        axios.post('http://10.5.200.106:8000/api/auth/bookRide',{ride_id:id},
         {headers:headers} 
         
         )
@@ -88,7 +87,7 @@ const RideOptionsCard = () => {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
             }
-        axios.post('http://192.168.16.102:8000/api/auth/cancelBooking',{ride_id:cancel},
+        axios.post('http://10.5.200.106:8000/api/auth/cancelBooking',{ride_id:cancel},
         {headers:headers}
         )
         .then((response) => {
@@ -146,11 +145,7 @@ const RideOptionsCard = () => {
               </TouchableOpacity>
           )}
         />
-        {/* <TouchableOpacity 
-            onPress={() => navigation.navigate("ProfilePic")}
-            style={tw`mb-20 ml-6`}>
-            <Text style={tw`ml-40`}>Marly Khoury</Text>
-        </TouchableOpacity> */}
+        
         <View style={tw`mt-auto border-t border-gray-200`}>
 
             <TouchableOpacity
@@ -163,7 +158,7 @@ const RideOptionsCard = () => {
              disabled={!selected} 
             style={tw`bg-black py-2 m-3 ${!selected && "bg-gray-300"}`}
             >
-                <Text style={tw`text-center text-white text-xl`}>Delete {selected?.title}</Text>
+                <Text style={tw`text-center text-white text-lg`}>Cancel Booking {selected?.title}</Text>
             </TouchableOpacity>
         </View>
     </SafeAreaView>

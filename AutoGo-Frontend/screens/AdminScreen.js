@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Searchbar, Button, Divider } from 'react-native-paper';
 import Header from '../components/Header';
-import { View, FlatList, TouchableOpacity, Image, Text } from 'react-native';
+import { View, FlatList, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { useEffect, useState } from 'react';
 import axios from 'react-native-axios';
@@ -34,7 +34,7 @@ const fetchUsers=async()=>{
       'Content-Type': 'application/json', 
       'Authorization': 'Bearer '+token,
   }
-        axios.get('http://192.168.16.102:8000/api/auth/getUsers/',
+        axios.get('http://10.5.200.106:8000/api/auth/getUsers/',
         {headers:headers},
         )
         .then((response) => {
@@ -54,7 +54,7 @@ const fetchUsers=async()=>{
       'Content-Type': 'application/json', 
       'Authorization': 'Bearer '+token,
   }
-    axios.post('http://192.168.16.102:8000/api/auth/ban',{id},
+    axios.post('http://10.5.200.106:8000/api/auth/ban',{id},
     {headers:headers}
     )
     .then((response) => {
@@ -75,7 +75,7 @@ const unbanUser=async(id)=>{
       'Content-Type': 'application/json', 
       'Authorization': 'Bearer '+token,
   }
-  axios.get('http://192.168.16.101:8000/api/auth/unban/'+id,
+  axios.get('http://10.5.200.106:8000/api/auth/unban/'+id,
   {headers:headers},
   )
   .then((response) => {
@@ -93,6 +93,7 @@ const unbanUser=async(id)=>{
 
     <View>
       <Header />
+      <Searchbar />
        <FlatList 
           data = {data}
           keyExtractor = {(item) => item.id}
@@ -122,7 +123,7 @@ const unbanUser=async(id)=>{
                     
                       <Text style={[tw`text-lg font-medium`,{flexGrow:1}]}>{first_name}  {last_name}</Text>
                     
-                      <TouchableOpacity onPress={()=>{banUser(id)}}><Text style={[tw`mr-10 text-base font-semibold`,{color:'#58BD29'}]}>Block</Text></TouchableOpacity>
+                      <Button style={styles.button} mode="contained" onPress={()=>{banUser(id)}}>Block</Button>
                   
                       <TouchableOpacity onPress={()=>{setSelected(id),unbanUser(id)}}><Text style={[tw`text-base font-semibold`,{color:'#58BD29'}]}>Unblock</Text></TouchableOpacity>
                      
@@ -139,31 +140,38 @@ const unbanUser=async(id)=>{
 
 
 
+//  <View>
+//     <Header />
+//   <View style={tw`justify-evenly flex-row`}>
+//     <Button  mode="contained" onPress={() => console.log('Pressed')}>
+//        Block User
+//     </Button>
 
+//     <Button  mode="contained" onPress={() => console.log('Pressed')}>
+//        Unblock User
+//     </Button>
 
-  //  <View>
-  //     <Header />
-  //   <View style={tw`justify-evenly flex-row`}>
-  //     <Button  mode="contained" onPress={() => console.log('Pressed')}>
-  //        Block User
-  //     </Button>
-
-  //     <Button  mode="contained" onPress={() => console.log('Pressed')}>
-  //        Unblock User
-  //     </Button>
-
-  //     <Button  mode="contained" onPress={() => console.log('Pressed')}>
-  //        Delete Post
-  //     </Button>
-  //   </View>
-  //   <Searchbar
-  //     style={[tw`mt-4 bg-gray-200 items-center max-w-md mx-auto`,{width:340}]}
-  //     placeholder="Search"
-  //     onChangeText={onChangeSearch}
-  //     value={searchQuery}
-  //   />
-  // </View>
-  );
+//     <Button  mode="contained" onPress={() => console.log('Pressed')}>
+//        Delete Post
+//     </Button>
+//   </View>
+//   <Searchbar
+//     style={[tw`mt-4 bg-gray-200 items-center max-w-md mx-auto`,{width:340}]}
+//     placeholder="Search"
+//     onChangeText={onChangeSearch}
+//     value={searchQuery}
+//   />
+// </View>
+);
 };
 
 export default AdminScreen;
+const styles = StyleSheet.create({
+    button:{
+       backgroundColor: "#58BD29",
+      //  marginTop:20,
+       width:90,
+       marginLeft:80,
+       borderRadius:20,
+    },
+ })
