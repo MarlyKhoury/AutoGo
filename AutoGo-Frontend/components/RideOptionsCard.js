@@ -28,7 +28,7 @@ const RideOptionsCard = () => {
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    const[errorMessage, setErrorMessage] = useState("");
+    const[errorMessage, setErrorMessage] = React.useState("");
     
     async function getToken(){
     
@@ -95,10 +95,16 @@ Notifications.setNotificationHandler({
         {headers:headers},
         )
         .then((response) => {
-            setData(response.data.rides)
-            console.log(response.data.rides)
-            console.log(origin.description)
-            console.log(destination.description)
+          if(!response.data.rides.length){
+            //empty array
+            console.log("I am error array")
+            setErrorMessage("No available rides")
+            
+          }
+          setData(response.data.rides)
+          console.log(response.data.rides)
+          // setErrorMessage("")
+            
         }
         
         )
@@ -200,9 +206,10 @@ Notifications.setNotificationHandler({
                   </View>
               </TouchableOpacity>
           )}
-        />
+          />
         
         <View style={tw`mt-auto border-t border-gray-200`}>
+          <Text> {errorMessage}</Text>
 
             <TouchableOpacity
             onPress={
