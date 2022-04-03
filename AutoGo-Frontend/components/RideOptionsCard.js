@@ -46,7 +46,18 @@ Notifications.setNotificationHandler({
   
 
 
-    
+      const triggerLocalNotificationHandler = async () => {
+        // Permission for iOS
+        try{
+          let { status } = await Location.requestForegroundPermissionsAsync();
+          if (status !== 'granted') {
+            console.log('Permission to access location was denied');
+            return;
+        }
+      }
+      catch(e){}
+       
+      }
       
 
 
