@@ -174,6 +174,7 @@ const getBannedStatus =async(id) =>{
       title="Admin"
       />
       <Searchbar
+      style={[tw`mt-4 bg-gray-300`,{borderRadius:10, width:350,alignSelf:"center"}]}
       placeholder="Search"
       onChangeText={onChangeSearch}
       value={searchQuery}
@@ -218,12 +219,12 @@ const getBannedStatus =async(id) =>{
               title="Block"
               onPress={() => { banUser(id) }}
               
-            ><Text style={[tw`text-xs`,{color:"white"}]}>Block</Text></Button>
+            ><Text style={{color:"white",fontSize:10}}>Block</Text></Button>
           ): (
             <Button 
             style={styles.button}
               title="Unblock" 
-              onPress={() => { setSelected(id), unbanUser(id) }}><Text style={[tw`text-xs`,{color:"white"}]}>Unblock</Text></Button>
+              onPress={() => { setSelected(id), unbanUser(id) }}><Text style={{color:"white",fontSize:10}}>Unblock</Text></Button>
           )
     }
 
@@ -270,7 +271,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#58BD29",
      marginBottom:30,
-    width: 80,
+    width: 90,
     // marginLeft: 80,
     borderRadius: 20,
     // color:"#ff5c5c"    
