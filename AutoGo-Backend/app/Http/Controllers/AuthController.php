@@ -354,16 +354,18 @@ class AuthController extends Controller
     $user_id = $id;
     $user = User::findOrFail($user_id);
 
-    $message = "The user is not banned";
+    // $message = "The user is not banned";
+    $message = "0";
     if ($user->banned_till != null) {
         if ($user->banned_till == 0) {
-            $message = "Banned Permanently";
+            $message = "1";
         }
 
         if (now()->lessThan($user->banned_till)) { 
 
             $banned_days = now()->diffInDays($user->banned_till) + 1;
-            $message = "Suspended for " . $banned_days . ' ' . Str::plural('day', $banned_days);
+            // $message = "Suspended for " . $banned_days . ' ' . Str::plural('day', $banned_days);
+            $message = "1";
         }
         
         if( now()->lessThan($user->banned_till)==0){
@@ -371,6 +373,7 @@ class AuthController extends Controller
         }
     }
     return response()->json(['message' => $message]);
+
 
 }
 }

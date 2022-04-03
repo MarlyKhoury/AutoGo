@@ -43,7 +43,7 @@ const AdminScreen = () => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
     }
-    axios.get('http://192.168.0.111:8000/api/auth/getUsers/',
+    axios.get('http://192.168.0.100:8000/api/auth/getUsers/',
       { headers: headers },
     )
       .then((response) => {
@@ -66,7 +66,8 @@ const AdminScreen = () => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
     }
-    axios.post('http://192.168.0.111:8000/api/auth/ban', { id },
+    getBannedStatus(id)
+    axios.post('http://192.168.0.100:8000/api/auth/ban', { id },
       { headers: headers }
     )
       .then((response) => {
@@ -88,7 +89,7 @@ const AdminScreen = () => {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
       }
-      axios.get('http://192.168.0.111:8000/api/auth/unban/' + id,
+      axios.get('http://192.168.0.100:8000/api/auth/unban/' + id,
       { headers: headers },
       )
       .then((response) => {
@@ -107,7 +108,29 @@ const AdminScreen = () => {
   }
 
 
-
+const getBannedStatus =async(id) =>{
+  const token = await SecureStore.getItemAsync('token');
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + token,
+  }
+  axios.get('http://192.168.0.100:8000/api/auth/bannedStatus/' + id,
+  { headers: headers },
+  )
+  .then((response) => {
+    
+    console.log(response.data)
+    console.log(id)
+    
+    
+    
+  })
+  .catch((error) => {
+    console.log(error)
+    
+  }
+  )
+}
 
 
 
@@ -195,12 +218,12 @@ const AdminScreen = () => {
               title="Block"
               onPress={() => { banUser(id) }}
               
-            >Block</Button>
+            ><Text style={[tw`text-xs`,{color:"white"}]}>Block</Text></Button>
           ): (
             <Button 
             style={styles.button}
               title="Unblock" 
-              onPress={() => { setSelected(id), unbanUser(id) }}><Text style={[tw`text-xs`,{color:"#454545"}]}>Unblock</Text></Button>
+              onPress={() => { setSelected(id), unbanUser(id) }}><Text style={[tw`text-xs`,{color:"white"}]}>Unblock</Text></Button>
           )
     }
 
