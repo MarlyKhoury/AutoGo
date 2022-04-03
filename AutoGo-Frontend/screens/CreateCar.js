@@ -135,9 +135,12 @@ getToken()
         
           Create Car
       </Button>
-      <Text style={styles.acctext}>Already have a car?<TouchableOpacity onPress={() =>
-    navigation.navigate('CreateRide')}><Text style={[tw`font-bold`,{color:"#58BD29"}]}> Create Ride</Text></TouchableOpacity>
-    </Text>
+      <View style={tw`items-center max-w-md mx-auto flex-row`}>
+      <Text style={styles.acctext}>Already have a car?</Text>
+      <TouchableOpacity onPress={() =>
+    navigation.navigate('CreateRide')}><Text style={[tw`pt-3 font-semibold`,{color:"#58BD29"}]}> Create Ride</Text>
+    </TouchableOpacity>
+    </View>
       </View>
   );
 };
@@ -152,7 +155,7 @@ const styles= StyleSheet.create({
   acctext:{
     color: "#454545",
     textAlign:"center",
-    marginTop:8,
+    marginTop:12,
   }
 })
   export default CreateCar;

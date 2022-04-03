@@ -141,11 +141,9 @@ const CreateRide = () => {
         />
        <RadioBtn Changedata={(gender) => setGender(gender)} />
        <Button style={styles.button} mode="contained" onPress={() =>
-        
         fetchCars()
-        
         }>
-        Create Ride
+          Create Ride
       </Button>
 
       
