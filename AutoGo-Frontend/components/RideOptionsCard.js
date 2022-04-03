@@ -56,7 +56,13 @@ Notifications.setNotificationHandler({
         }
       }
       catch(e){}
-       
+        Notifications.scheduleNotificationAsync({
+          content: {
+            title: "Success!",
+            body: "Your ride was successfully booked =)",
+          },
+          
+        })
       }
       
 
