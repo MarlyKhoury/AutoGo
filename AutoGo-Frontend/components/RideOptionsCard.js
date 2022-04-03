@@ -91,7 +91,7 @@ Notifications.setNotificationHandler({
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-        axios.get('http://192.168.0.100:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://192.168.16.102:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
@@ -121,7 +121,7 @@ Notifications.setNotificationHandler({
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer '+token,
         }
-        axios.post('http://192.168.0.100:8000/api/auth/bookRide',{ride_id:id},
+        axios.post('http://192.168.16.102:8000/api/auth/bookRide',{ride_id:id},
         {headers:headers} 
         
         )
@@ -149,7 +149,7 @@ Notifications.setNotificationHandler({
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
             }
-        axios.post('http://192.168.0.100:8000/api/auth/cancelBooking',{ride_id:cancel},
+        axios.post('http://192.168.16.102:8000/api/auth/cancelBooking',{ride_id:cancel},
         {headers:headers}
         )
         .then((response) => {

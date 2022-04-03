@@ -43,7 +43,7 @@ const AdminScreen = () => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
     }
-    axios.get('http://192.168.0.100:8000/api/auth/getUsers/',
+    axios.get('http://192.168.16.102:8000/api/auth/getUsers/',
       { headers: headers },
     )
       .then((response) => {
@@ -67,7 +67,7 @@ const AdminScreen = () => {
       'Authorization': 'Bearer ' + token,
     }
     getBannedStatus(id)
-    axios.post('http://192.168.0.100:8000/api/auth/ban', { id },
+    axios.post('http://192.168.16.102:8000/api/auth/ban', { id },
       { headers: headers }
     )
       .then((response) => {
@@ -89,7 +89,7 @@ const AdminScreen = () => {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
       }
-      axios.get('http://192.168.0.100:8000/api/auth/unban/' + id,
+      axios.get('http://192.168.16.102:8000/api/auth/unban/' + id,
       { headers: headers },
       )
       .then((response) => {
@@ -114,7 +114,7 @@ const getBannedStatus =async(id) =>{
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + token,
   }
-  axios.get('http://192.168.0.100:8000/api/auth/bannedStatus/' + id,
+  axios.get('http://192.168.16.102:8000/api/auth/bannedStatus/' + id,
   { headers: headers },
   )
   .then((response) => {
@@ -269,10 +269,10 @@ export default AdminScreen;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#58BD29",
-    //  marginTop:20,
-    width: 130,
+     marginBottom:30,
+    width: 80,
     // marginLeft: 80,
-    borderRadius: 10,
+    borderRadius: 20,
     // color:"#ff5c5c"    
   }
   

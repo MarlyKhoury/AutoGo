@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import tw from 'tailwind-react-native-classnames';
 import axios from 'react-native-axios';
 import * as SecureStore from 'expo-secure-store';
-import * as Notifications from "expo-notifications"
+// import * as Notifications from "expo-notifications"
 // import * as Permissions from "expo-permissions"
 import * as Location from 'expo-location';
 
@@ -19,37 +19,37 @@ import { useEffect } from 'react';
 const CreateCar = () => {
 
 // Show notifications when the app is in the foreground
-Notifications.setNotificationHandler({
-  handleNotification: async () => {
-    return {
-      shouldShowAlert: true,
-    }
-  },
-})
+// Notifications.setNotificationHandler({
+//   handleNotification: async () => {
+//     return {
+//       shouldShowAlert: true,
+//     }
+//   },
+// })
 
 
 
 
 
-const triggerLocalNotificationHandler = async () => {
+// const triggerLocalNotificationHandler = async () => {
 
-  // Permission for iOS
-  try{
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      console.log('Permission to access location was denied');
-      return;
-  }
-}
-catch(e){}
-  Notifications.scheduleNotificationAsync({
-    content: {
-      title: "Local Notification",
-      body: "Hello this is a local notification!",
-    },
-    trigger: { seconds: 5 },
-  })
-}
+//   // Permission for iOS
+//   try{
+//     let { status } = await Location.requestForegroundPermissionsAsync();
+//     if (status !== 'granted') {
+//       console.log('Permission to access location was denied');
+//       return;
+//   }
+// }
+// catch(e){}
+//   Notifications.scheduleNotificationAsync({
+//     content: {
+//       title: "Local Notification",
+//       body: "Hello this is a local notification!",
+//     },
+//     trigger: { seconds: 5 },
+//   })
+// }
 
 
 
@@ -123,10 +123,10 @@ getToken()
       />
 
 
-<Button style={styles.btn} mode="contained" onPress={triggerLocalNotificationHandler}>
+{/* <Button style={styles.btn} mode="contained" onPress={triggerLocalNotificationHandler}> */}
       
-        Send Push
-    </Button>
+        {/* Send Push
+    </Button> */}
 
       
       <Button style={styles.btn} mode="contained" onPress={() => 
