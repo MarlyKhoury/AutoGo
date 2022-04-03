@@ -36,7 +36,9 @@ useEffect(()=>{
       }
       
     });
-    
+    console.log(" fil data ----> ", filteredData && JSON.stringify(filteredData))
+    if(filteredData && filteredData !=undefined)
+    props.setData(filteredData);
     
   };
 
