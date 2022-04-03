@@ -475,7 +475,7 @@ class AuthController extends Controller
     // Get own Info
     public function getownInfo(){
         $user_id = auth()->user()->id;
-        $user= User::find($user_id, ['first_name','last_name']);
+        $user= User::find($user_id, ['id','first_name','last_name']);
         $profile= Profile::where('user_id',$user_id)->get(['picture_path']);
         $review= Review::where('to_id',$user_id)->get(['id','rating','comment']);
         $user_name= User::where('id',$user_id)->get(['id','first_name','last_name']);

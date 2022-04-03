@@ -41,7 +41,7 @@ const CreateRide = () => {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
                }
-    axios.post('http://10.5.200.106:8000/api/auth/createRide',
+    axios.post('http://192.168.16.102:8000/api/auth/createRide',
     {
       
       user_car_id: Name,//car id from Dropdown component child
@@ -116,12 +116,15 @@ const CreateRide = () => {
               nearbyPlacesAPI='GooglePlacesSearch'
               debounce={400}
            />
-        <TextInput
+       
+
+        {/* <TextInput
         style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Travel Date"
         value={travel_date}
         onChangeText={travel_date => setTravel_date(travel_date)}
-        />
+        /> */}
+
         <TextInput
         style={[tw`mt-5 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Travel Time"

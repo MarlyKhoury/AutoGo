@@ -8,6 +8,9 @@ import { selectTravelTimeInformation, selectDestination, selectOrigin } from '..
 import axios from 'react-native-axios';
 import { useDispatch, useSelector } from 'react-redux';
 import * as SecureStore from 'expo-secure-store';
+import * as Notifications from "expo-notifications"
+// import * as Permissions from "expo-permissions"
+import * as Location from 'expo-location';
 
 
 const RideOptionsCard = () => {
@@ -32,13 +35,29 @@ const RideOptionsCard = () => {
         setToken(result)
       } 
 
+      // Show notifications when the app is in the foreground
+Notifications.setNotificationHandler({
+    handleNotification: async () => {
+      return {
+        shouldShowAlert: true,
+      }
+    },
+  })
+  
+
+
+    
+      
+
+
+
       const fetchCars=async()=>{
           const token = await SecureStore.getItemAsync('token');
           const headers = {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-        axios.get('http://10.5.200.106:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://192.168.16.102:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
@@ -62,7 +81,7 @@ const RideOptionsCard = () => {
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer '+token,
         }
-        axios.post('http://10.5.200.106:8000/api/auth/bookRide',{ride_id:id},
+        axios.post('http://192.168.16.102:8000/api/auth/bookRide',{ride_id:id},
         {headers:headers} 
         
         )
@@ -70,7 +89,10 @@ const RideOptionsCard = () => {
             console.log(response.data)
             console.log("im  booking")
             console.log(id)
-            setCancel(id)
+            setCancel(id);
+            triggerLocalNotificationHandler();
+
+
         })
         .catch((error) =>{
             setErrorMessage(error.response.data.error)
@@ -87,7 +109,7 @@ const RideOptionsCard = () => {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
             }
-        axios.post('http://10.5.200.106:8000/api/auth/cancelBooking',{ride_id:cancel},
+        axios.post('http://192.168.16.102:8000/api/auth/cancelBooking',{ride_id:cancel},
         {headers:headers}
         )
         .then((response) => {
@@ -152,6 +174,7 @@ const RideOptionsCard = () => {
             onPress={
                 
                 cancelBooking
+                // triggerLocalNotificationHandler
             }
               
               

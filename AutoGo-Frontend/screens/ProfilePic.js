@@ -11,16 +11,18 @@ import * as SecureStore from 'expo-secure-store';
 import ImageUpload from '../components/ImageUpload';
 
 
-const ProfilePic = () => {
-
+const ProfilePic = (props) => {
+console.log("props ", props.userId2 )
   useEffect(()=>{
-    console.log("I am here");
+    // console.log("I am here");
     fetchUserInfo(); 
     
 }, [])
   const [data, setData] = useState("");
   const [selected, setSelected] = useState("");
   const [token, setToken] = React.useState("");
+  const [fullResponse, setFullResponse] = useState([]);
+  const [userId, setUserId] = useState();
 
   async function getToken(){
     
@@ -35,13 +37,15 @@ const ProfilePic = () => {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://10.5.200.106:8000/api/auth/getownInfo',
+    axios.get('http://192.168.16.102:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
       // setData((response.data.profile[0].picture_path))
       setData((response.data))
-      console.log(data)
+      setFullResponse(response);
+      // console.log("data user --------------------------------> ", data)
+      setUserId(response.data?.user?.id);
     })
     .catch((error) =>{
         console.log(error) 
@@ -52,7 +56,7 @@ if (!data){
   return <Text>is loading</Text>
 }
 
-
+// console.log(" datra state ", userId)
   return (    
     <View >
 
