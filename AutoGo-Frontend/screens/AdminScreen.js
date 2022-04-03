@@ -43,7 +43,7 @@ const AdminScreen = () => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
     }
-    axios.get('http://192.168.16.102:8000/api/auth/getUsers/',
+    axios.get('http://192.168.0.111:8000/api/auth/getUsers/',
       { headers: headers },
     )
       .then((response) => {
@@ -66,35 +66,38 @@ const AdminScreen = () => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
     }
-    axios.post('http://192.168.16.102:8000/api/auth/ban', { id },
+    axios.post('http://192.168.0.111:8000/api/auth/ban', { id },
       { headers: headers }
     )
       .then((response) => {
         console.log(response.data)
         console.log(selected)
+        setBan(1)
       })
       .catch((error) => {
         console.log("i am ban")
         console.log(selected)
-
+        
       })
-
-  }
-
-  const unbanUser = async (id) => {
-    const token = await SecureStore.getItemAsync('token');
-    const headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token,
+      
     }
-    axios.get('http://192.168.16.102:8000/api/auth/unban/' + id,
+    
+    const unbanUser = async (id) => {
+      const token = await SecureStore.getItemAsync('token');
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      }
+      axios.get('http://192.168.0.111:8000/api/auth/unban/' + id,
       { headers: headers },
-    )
+      )
       .then((response) => {
-
+        
         console.log(response.data)
         console.log(id)
-
+        console.log("I am unban")
+        setBan(0)
+        
       })
       .catch((error) => {
         console.log(error)
@@ -140,14 +143,6 @@ const AdminScreen = () => {
 
     
   };
-
-
-
-
-
-
-
-
 
   return (
 
@@ -199,14 +194,16 @@ const AdminScreen = () => {
             style={styles.button}
               title="Block"
               onPress={() => { banUser(id) }}
-            />
-          ) : (
+              
+            >Block</Button>
+          ): (
             <Button 
             style={styles.button}
               title="Unblock" 
-              onPress={() => { setSelected(id), unbanUser(id) }} />
+              onPress={() => { setSelected(id), unbanUser(id) }}><Text style={[tw`text-xs`,{color:"#454545"}]}>Unblock</Text></Button>
           )
     }
+
             </View>
           </TouchableOpacity>
         )}
@@ -250,9 +247,10 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#58BD29",
     //  marginTop:20,
-    width: 90,
-    marginLeft: 80,
-    borderRadius: 20,
-    
-  },
-})
+    width: 130,
+    // marginLeft: 80,
+    borderRadius: 10,
+    // color:"#ff5c5c"    
+  }
+  
+});

@@ -388,7 +388,9 @@ class AuthController extends Controller
     $user = User::findOrFail($user_id);
     $user->banned_till = null;
     $user->save();
+    return response()->json(['message' => "user unbanned successfully"]);
 }
+
 }
 
 
