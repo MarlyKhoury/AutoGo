@@ -60,6 +60,7 @@ const SignUpScreen = () => {
   return (
       <View>
       <Header />
+      
       <TextInput
       style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
       label="First Name"
@@ -85,14 +86,15 @@ const SignUpScreen = () => {
       onChangeText={email => setEmail(email)}
       />
       <TextInput
-      style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
+      style={[tw`mt-3 mb-7 justify-center rounded-xl`,{marginLeft:20,width:336}]}
       label="Password"
       secureTextEntry
       value={password}
       onChangeText={password => setPassword(password)}
       />
-
-      <RadioBtn style={tw`mt-10`}/>
+     
+      <RadioBtn />
+     
       <View>
   <Text >{errorMessage && <Text style={styles.error}>{errorMessage}</Text >}</Text>
   </View>
@@ -112,7 +114,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   button:{
      backgroundColor: "#58BD29",
-     marginTop:20,
+     marginTop:12,
      width:336,
      marginLeft:20,
   },

@@ -134,7 +134,7 @@ const CreateRide = () => {
         onChangeText={travel_time => setTravel_time(travel_time)}
         />
         <TextInput
-        style={[tw`mt-5 mb-5 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
+        style={[tw`mt-5 mb-8 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Fees"
         value={fees}
         onChangeText={fees => setFees(fees)}
