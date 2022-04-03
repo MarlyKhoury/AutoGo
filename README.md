@@ -21,7 +21,6 @@
 - As a user, I want to create an account, so that I can save all my information in one place
 - As a user, I want to quickly find and book a ride, so that I can reach my destination early
 - As a user, I want to specify the gender of the people I’m going to share my ride with, so that I feel more comfortable
-- As a user, I want to share my ride in real-time with people I know, so that I feel more safe during the ride
 - As a user, I want to find other people going to the same place as I am, so that we can split the cost between us
 
 
@@ -45,7 +44,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 <img src="./readme/title4.svg"/>
 
-Here's a brief high-level overview of the tech stack the Well app uses:
+Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
 - This project uses the [React Native app development Framework](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android. It is based on React, Facebook's JavaScript library for building user interfaces, but instead of targeting the browser, it targets mobile platforms.
 - For persistent storage (database), the app uses [MySQL](https://www.mysql.com/) which allows the app to create a scalable and reliable database.
