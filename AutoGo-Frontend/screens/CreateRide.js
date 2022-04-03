@@ -69,7 +69,7 @@ const CreateRide = () => {
 
   return (
     <View>
-        <Header />
+        <Header title="                 Create Ride"/>
         <DropBtn  Changedata={(Name) => setName(Name)}/> 
         {/* <Text>{gender}</Text> */}
         <GooglePlacesAutocomplete

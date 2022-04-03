@@ -101,7 +101,7 @@ getToken()
 
   return (
       <View>
-      <Header
+      <Header title="                   Create Car"
       />
       <TextInput
       style={[tw`mt-5 justify-center rounded-xl`,{marginLeft:20,width:336}]}

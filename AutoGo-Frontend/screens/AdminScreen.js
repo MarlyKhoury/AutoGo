@@ -171,10 +171,10 @@ const getBannedStatus =async(id) =>{
 
     <View>
       <Header 
-      title="Admin"
+      title="                   Admin"
       />
       <Searchbar
-      style={[tw`mt-4 bg-gray-300`,{borderRadius:10, width:350,alignSelf:"center"}]}
+      style={[tw`mt-4 bg-gray-200`,{borderRadius:10, width:350,alignSelf:"center"}]}
       placeholder="Search"
       onChangeText={onChangeSearch}
       value={searchQuery}

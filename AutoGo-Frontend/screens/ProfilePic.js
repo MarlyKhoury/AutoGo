@@ -60,7 +60,7 @@ if (!data){
   return (    
     <View >
 
-      <Header/>
+      <Header title="                     Profile"/>
 
       
           {/* <ImageUpload /> */}

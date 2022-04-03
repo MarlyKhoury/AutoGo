@@ -59,7 +59,7 @@ const SignUpScreen = () => {
 
   return (
       <View>
-      <Header />
+      <Header title="                   Sign Up"/>
       
       <TextInput
       style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336}]}
