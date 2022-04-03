@@ -70,10 +70,12 @@ const LoginScreen = () => {
     </Button>
 
   <View style={styles.square}/>
-  <Text style={styles.acctext}>Don't have an account?<TouchableOpacity onPress={() =>
-    navigation.navigate('SignupScreen')}><Text style={[tw`font-bold`,{color:"#454545"}]}> Sign Up</Text></TouchableOpacity>
-    </Text>
+  <View style={tw`items-center max-w-md mx-auto flex-row`}>
+  <Text style={styles.acctext}>Don't have an account?</Text>
+  <TouchableOpacity onPress={() =>
+    navigation.navigate('SignupScreen')}><Text style={[tw`pt-2 font-bold`,{color:"#454545"}]}> Sign Up</Text></TouchableOpacity>
 
+</View>
   </View>
  
   </SafeAreaView>
