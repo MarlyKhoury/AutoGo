@@ -25,7 +25,7 @@ const SignUpScreen = () => {
 
   const signUp =() =>{
     axios 
-    .post('http://10.5.200.106:8000/api/auth/register',{
+    .post('http://192.168.16.102:8000/api/auth/register',{
 
       first_name :first_name,
       last_name: last_name,
@@ -99,7 +99,10 @@ const SignUpScreen = () => {
       <Button style={styles.button} mode="contained" onPress={signUp}>
         Sign Up
       </Button>
-      <Text style={styles.acctext}>Already have an account?<TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} ><Text style={[tw`font-bold`,{color:"#58BD29"}]}> Log In</Text></TouchableOpacity></Text>
+      <View style={tw`items-center max-w-md mx-auto flex-row`}>
+      <Text style={styles.acctext}>Already have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} ><Text style={[tw`pt-2 font-semibold`,{color:"#58BD29"}]}> Log In</Text></TouchableOpacity>
+      </View>
       </View>
   );
 };
