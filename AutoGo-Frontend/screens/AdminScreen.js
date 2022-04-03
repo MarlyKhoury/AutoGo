@@ -27,6 +27,7 @@ const AdminScreen = () => {
   const [token, setToken] = React.useState("");
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredData, setFilteredData] = React.useState([]);
+  const [isBanned, setBan] = useState(0);
 
 
   async function getToken() {
@@ -151,7 +152,9 @@ const AdminScreen = () => {
   return (
 
     <View>
-      <Header />
+      <Header 
+      title="Admin"
+      />
       <Searchbar
       placeholder="Search"
       onChangeText={onChangeSearch}
@@ -187,10 +190,23 @@ const AdminScreen = () => {
 
               <Text style={[tw`text-lg font-medium`, { flexGrow: 1 }]}>{first_name}  {last_name}</Text>
 
-              <Button style={styles.button} mode="contained" onPress={() => { banUser(id) }}>Block</Button>
+              {/* <Button style={styles.button} mode="contained" onPress={() => { banUser(id) }}>Block</Button>
 
-              <TouchableOpacity onPress={() => { setSelected(id), unbanUser(id) }}><Text style={[tw`text-base font-semibold`, { color: '#58BD29' }]}>Unblock</Text></TouchableOpacity>
+              <TouchableOpacity onPress={() => { setSelected(id), unbanUser(id) }}><Text style={[tw`text-base font-semibold`, { color: '#58BD29' }]}>Unblock</Text></TouchableOpacity> */}
 
+            {isBanned === 0 ? (
+            <Button
+            style={styles.button}
+              title="Block"
+              onPress={() => { banUser(id) }}
+            />
+          ) : (
+            <Button 
+            style={styles.button}
+              title="Unblock" 
+              onPress={() => { setSelected(id), unbanUser(id) }} />
+          )
+    }
             </View>
           </TouchableOpacity>
         )}
@@ -237,5 +253,6 @@ const styles = StyleSheet.create({
     width: 90,
     marginLeft: 80,
     borderRadius: 20,
+    
   },
 })

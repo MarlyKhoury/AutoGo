@@ -118,12 +118,14 @@ const CreateRide = () => {
            />
        
 
-        {/* <TextInput
+        <TextInput
         style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Travel Date"
         value={travel_date}
         onChangeText={travel_date => setTravel_date(travel_date)}
-        /> */}
+        />
+
+        
 
         <TextInput
         style={[tw`mt-5 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}

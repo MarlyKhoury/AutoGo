@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Appbar } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 
-const Header = () => {
+const Header = ({title=""},{onPress={}}) => {
   const _goBack = () => console.log('Went back');
 
   const _handleSearch = () => console.log('Searching');
@@ -11,10 +11,10 @@ const Header = () => {
 
   return (
     <Appbar.Header style={styles.header}>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Title" subtitle="Subtitle" />
-      <Appbar.Action icon="magnify" onPress={_handleSearch} />
-      <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
+      <Appbar.BackAction onPress={onPress} />
+      <Appbar.Content title={title} subtitle="" />
+      <Appbar.Action  />
+      <Appbar.Action />
     </Appbar.Header>
   );
 };
