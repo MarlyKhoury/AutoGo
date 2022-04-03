@@ -61,7 +61,7 @@ Notifications.setNotificationHandler({
             title: "Success!",
             body: "Your ride was successfully booked =)",
           },
-          
+          trigger: { seconds: 1 },
         })
       }
       
