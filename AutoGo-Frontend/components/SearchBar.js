@@ -22,7 +22,21 @@ useEffect(()=>{
     let filteredData = [];
     console.log("query ", query);
     setSearchQuery(query)
-   
+    if(InitialData && InitialData!==undefined)
+    InitialData?.filter((item) => {
+      // console.log("item ", JSON.stringify(item.first_name));
+      // console.log("search query ", searchQuery)
+      console.log("-------------------------------")
+      if(item.first_name.toString().toLowerCase().includes(searchQuery?.toString().toLowerCase())){
+        // console.log("item ---> ", JSON.stringify(item));
+        filteredData.push(item);
+        console.log("-------------------------------2")
+
+        
+      }
+      
+    });
+    
     
   };
 
