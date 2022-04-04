@@ -33,11 +33,11 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page.jpg) | ![Home/Search](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page.jpg) |
+| ![Landing](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page.jpg) | ![Home/Search](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking_Page.jpg) |
 
-| Artists results  | Artist's Albums  |
+<!-- | Artists results  | Artist's Albums  |
 | -----------------| -----|
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
+| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) | -->
 
 
 <br><br>
