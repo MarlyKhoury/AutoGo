@@ -65,7 +65,7 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
 | Booking a Ride  | Ride Results  |
 | -----------------| -----|
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
+| ![Booking a Ride](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/IMG_4631.jpeg) | ![Ride Results](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(2).jpg) |
 
 
 <br><br>
