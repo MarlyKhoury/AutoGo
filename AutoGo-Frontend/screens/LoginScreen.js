@@ -20,7 +20,7 @@ const LoginScreen = () => {
   const login= async ()=>{
 
     axios
-    .post('http://192.168.16.102:8000/api/auth/login',{
+    .post('http://192.168.16.101:8000/api/auth/login',{
       email: email,
       password: password,
   })
@@ -42,7 +42,7 @@ const LoginScreen = () => {
   return (
   <SafeAreaView>
     <Text style={[tw`font-bold text-center mt-20 pt-5`,{color:"#58BD29",fontSize:30}]}>AutoGo.</Text>
-    <Text style={[tw`text-center font-semibold mt-5`,{color:"#58BD29"}]}>Where You Can Split a Ride</Text>
+    <Text style={[tw`text-center font-semibold mt-5`,{color:"#58BD29"}]}>Where You Can Split A Ride</Text>
   <View>
   <View style={styles.TriangleCorner} />
   <View>

@@ -10,13 +10,13 @@ import { selectOrigin } from '../slices/navSlice';
 const data = [
 {
     id: "123",
-    title: "Get a Ride",
+    title: "Find A Ride",
     image: "https://links.papareact.com/3pn",
     screen: "MapScreen",
 },
 {
     id: "456",
-    title: "Create a Ride",
+    title: "Create A Ride",
     image: "https://links.papareact.com/7pf",
     screen: "CreateCar",
 },
