@@ -9,7 +9,7 @@ import  { useState } from 'react';
 import Header from '../components/Header';
 import * as SecureStore from 'expo-secure-store';
 import ImageUpload from '../components/ImageUpload';
-
+import { Button } from 'react-native-paper';
 
 const ProfilePic = (props) => {
 console.log("props ", props.userId2 )
@@ -67,11 +67,11 @@ if (!data){
 
           <Image
                   style={{
-                      width:200,
-                      height:200,
+                      width:400,
+                      height:400,
                       resizeMode: "contain",
-                      marginTop: 30,
-                      marginLeft:85,
+                      marginTop: -70,
+                      marginLeft: -10
                       
                   }}
                   source = {{uri: `${data.profile[0].picture_path}`}}
@@ -85,9 +85,17 @@ if (!data){
           {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
       {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
       <Text style={tw`items-center max-w-md pt-10 pb-10 mx-auto text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
-      <TextInput style={[tw`bg-gray-200 ml-4`,{height:50,width:250,borderRadius:10, marginTop:-8}]} multiline={true} />
+      <Text style={[tw`font-semibold ml-4`,{marginTop:-10}]}>
+        
+        Feedback
 
-
+      </Text>
+   <View>
+      <TextInput style={[tw`bg-gray-200 ml-4`,{height:50,width:250,borderRadius:10, marginTop:10}]} multiline={true} />
+      <Button style={styles.button} mode="contained" >
+        post
+      </Button>
+</View>
 <FlatList 
           data = {data.review}
           keyExtractor = {(item) => item.id}
@@ -135,7 +143,7 @@ if (!data){
   }
 </View> */}
 
-<TextInput style={styles.input} multiline={true} />
+
 
                   
               </TouchableOpacity>
@@ -152,5 +160,11 @@ const styles = StyleSheet.create({
     color: "#454545",
     textAlign:"center",
     marginTop:8,
-  }
+  },
+  button:{
+    backgroundColor: "#58BD29",
+    marginTop:12,
+    width:60,
+    marginLeft:20,
+ }
 })

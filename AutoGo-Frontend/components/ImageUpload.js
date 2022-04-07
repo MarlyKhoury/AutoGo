@@ -41,7 +41,7 @@ function ImageUpload() {
     console.log(data);
     data.append('upload_preset', 'e0bwupcg');
     data.append('cloud_name', 'dnqrcc1h6');
-    fetch('https://api.cloudinary.com/v1_1/dnqrcc1h6/Mark/upload', {
+    fetch('https://api.cloudinary.com/v1_1/dnqrcc1h6/mark/upload', {
       method: 'post',
       body: data,
     })
