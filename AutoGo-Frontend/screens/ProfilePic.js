@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, FlatList, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, TextInput, View, FlatList,KeyboardAvoidingView,TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
@@ -12,18 +12,18 @@ import ImageUpload from '../components/ImageUpload';
 import { Button } from 'react-native-paper';
 
 const ProfilePic = (props) => {
-console.log("props ", props.userId2 )
+  console.log("props ", props.userId2 )
   useEffect(()=>{
     // console.log("I am here");
     fetchUserInfo(); 
     
-}, [])
+  }, [])
   const [data, setData] = useState("");
   const [selected, setSelected] = useState("");
   const [token, setToken] = React.useState("");
   const [fullResponse, setFullResponse] = useState([]);
   const [userId, setUserId] = useState();
-
+  
   async function getToken(){
     
     setToken(result)
@@ -31,9 +31,9 @@ console.log("props ", props.userId2 )
   
   const fetchUserInfo=async ()=>{
     // gettoken()
-  const token = await SecureStore.getItemAsync('token');
-
-     const headers = {
+    const token = await SecureStore.getItemAsync('token');
+    
+    const headers = {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
@@ -48,17 +48,22 @@ console.log("props ", props.userId2 )
       setUserId(response.data?.user?.id);
     })
     .catch((error) =>{
-        console.log(error) 
-       
+      console.log(error) 
+      
     },
     )} 
-if (!data){
-  return <Text>is loading</Text>
-}
-
-// console.log(" datra state ", userId)
-  return (    
-    <View >
+    if (!data){
+      return <Text>is loading</Text>
+    }
+    
+    // console.log(" datra state ", userId)
+    return (    
+      <View >
+      <KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={{flex:1}}
+            keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
+            ></KeyboardAvoidingView>
 
       <Header title="                     Profile"/>
 
@@ -71,7 +76,7 @@ if (!data){
                       height:400,
                       resizeMode: "contain",
                       marginTop: -70,
-                      marginLeft: -10
+                      marginLeft: -10,
                       
                   }}
                   source = {{uri: `${data.profile[0].picture_path}`}}
@@ -84,16 +89,15 @@ if (!data){
 
           {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
       {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
-      <Text style={tw`items-center max-w-md pt-10 pb-10 mx-auto text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
-      <Text style={[tw`font-semibold ml-4`,{marginTop:-10}]}>
-        
+      <Text style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-100}]}>
+        {data?.user?.first_name} {data?.user?.last_name}</Text> 
+      <Text style={[tw`font-semibold ml-4`,{marginTop:10}]}>
         Feedback
-
       </Text>
-   <View>
-      <TextInput style={[tw`bg-gray-200 ml-4`,{height:50,width:250,borderRadius:10, marginTop:10}]} multiline={true} />
-      <Button style={styles.button} mode="contained" >
-        post
+   <View style={tw`flex-row`}>
+      <TextInput style={[tw`bg-gray-200 ml-4`,{height:45,width:250,borderRadius:10, marginTop:15}]} multiline={true} />
+      <Button onPress={() => console.log('Pressed')} style={styles.button} mode="contained" >
+       <Text style={{fontSize:20}}>Post</Text>
       </Button>
 </View>
 <FlatList 
@@ -163,8 +167,13 @@ const styles = StyleSheet.create({
   },
   button:{
     backgroundColor: "#58BD29",
-    marginTop:12,
-    width:60,
-    marginLeft:20,
+    marginBottom:30,
+   width: 90,
+   height:45,
+   marginTop: 15,
+   borderRadius: 8,
+   marginLeft:6,
+   // color:"#ff5c5c"    
+ 
  }
 })
