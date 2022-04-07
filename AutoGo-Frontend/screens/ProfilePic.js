@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, TextInput, View, FlatList, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
@@ -37,7 +37,7 @@ console.log("props ", props.userId2 )
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.102:8000/api/auth/getownInfo',
+    axios.get('http://192.168.16.101:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -84,7 +84,8 @@ if (!data){
 
           {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
       {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
-      <Text style={tw`items-center max-w-md pt-10 pb-10 mx-auto mt-5 text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
+      <Text style={tw`items-center max-w-md pt-10 pb-10 mx-auto text-lg font-bold`}>{data?.user?.first_name} {data?.user?.last_name}</Text> 
+      <TextInput style={[tw`bg-gray-200 ml-4`,{height:50,width:250,borderRadius:10, marginTop:-8}]} multiline={true} />
 
 
 <FlatList 
@@ -112,8 +113,29 @@ if (!data){
 
                   <View style={tw`mb-1 ml-4`}>
                       <Text style={tw`text-base font-normal`}>{comment}</Text>
-                      {/* <Text style={tw`text-base font-normal`}>{rating}</Text>*/}
+                      
                   </View>
+
+{/* <View>
+  <Text> Name </Text>
+
+  { this.state.isEditing ?
+    <TextInput
+      value={this.state.txt}
+      onChangeText={(value) => this.setState({ txt: value })}
+      autoFocus
+      onBlur={() => this.setState({ isEditing: false })}
+    /> :
+    <Text
+      // style={styles.t2}
+      onPress={() => this.setState({ isEditing: true })}
+    >
+      {this.state.txt}
+    </Text> 
+  }
+</View> */}
+
+<TextInput style={styles.input} multiline={true} />
 
                   
               </TouchableOpacity>

@@ -201,7 +201,7 @@ Notifications.setNotificationHandler({
                   />
                   <View style={tw`ml-6`}>
                       <Text style={tw`text-sm font-semibold`}>{travel_date}   {travel_time}</Text>
-                      <Text style={tw`text-sm font-semibold`}>  Fees/person: {fees}</Text>
+                      <Text style={tw`text-sm font-semibold`}>Fees/person: {fees}</Text>
                       <Text>{travelTimeInformation?.duration?.text} Travel Time</Text>
                   </View>
               </TouchableOpacity>
