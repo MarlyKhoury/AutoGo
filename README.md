@@ -61,11 +61,11 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(2).jpg) | ![Home/Search](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(3).jpg) |
+| ![Landing](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(3).jpg) | ![Home/Search](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(3).jpg) |
 
 | Booking a Ride  | Ride Results  |
 | -----------------| -----|
-| ![Booking a Ride](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/IMG_4631.jpeg) | ![Ride Results](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed.jpg) |
+| ![Booking a Ride](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/IMG_4631.jpeg) | ![Ride Results](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(2).jpg) |
 
 
 <br><br>
