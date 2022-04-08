@@ -34,7 +34,7 @@ const DateTime = () => {
       {/* The button that used to trigger the date picker */}
       {!isPickerShow && (
         <View style={styles.btnContainer}>
-          <Button title="Show Picker" color="purple" onPress={showPicker} />
+          <Button title="Date/Time Picker" color="black" onPress={showPicker} />
         </View>
       )}
 
@@ -43,7 +43,7 @@ const DateTime = () => {
         <DateTimePicker
           value={date}
           mode={'datetime'}
-          display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+          display={Platform.OS === 'ios' ? 'calendar' : 'default'}
           is24Hour={true}
           onChange={onChange}
           style={styles.datePicker}
@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
 //     flex: 1,
 //     justifyContent: 'center',
 //     padding: 50,
-marginTop: -40,
-marginRight:150,
+    // marginTop: -60,
+   
   },
   pickedDateContainer: {
     padding: 15,
@@ -80,16 +80,17 @@ marginRight:150,
     color: 'black',
   },
   btnContainer: {
-    marginLeft: -40,
-    marginTop:60,
+    marginLeft: -195,
+    marginTop:20,
   },
   // This only works on iOS
   datePicker: {
-    width: 320,
-    height: 260,
+    width: 235,
+    height: 100,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    
    
   },
 });

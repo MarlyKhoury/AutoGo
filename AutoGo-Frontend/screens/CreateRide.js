@@ -1,6 +1,6 @@
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env";
-import { StyleSheet, Text, View} from 'react-native'
+import { StyleSheet, Text, View, ScrollView} from 'react-native'
 import React,{useState} from 'react'
 import Header from '../components/Header'
 import { TextInput, Button } from 'react-native-paper';
@@ -72,6 +72,7 @@ const CreateRide = () => {
         <Header title="                 Create Ride"/>
         <DropBtn  Changedata={(Name) => setName(Name)}/> 
         {/* <Text>{gender}</Text> */}
+        <ScrollView>
         <GooglePlacesAutocomplete
               placeholder='Where From?'
               styles={toInputBoxStyles}
@@ -116,6 +117,13 @@ const CreateRide = () => {
               nearbyPlacesAPI='GooglePlacesSearch'
               debounce={400}
            />
+       <TextInput
+       style={[tw`mt-4 mb-8 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
+       label="Fees"
+       value={fees}
+       onChangeText={fees => setFees(fees)}
+       />
+       <RadioBtn Changedata={(gender) => setGender(gender)} />
        <DateTime />
 
         {/* <TextInput
@@ -133,20 +141,13 @@ const CreateRide = () => {
         value={travel_time}
         onChangeText={travel_time => setTravel_time(travel_time)}
         /> */}
-        <TextInput
-        style={[tw`mt-5 mb-8 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
-        label="Fees"
-        value={fees}
-        onChangeText={fees => setFees(fees)}
-        />
-       <RadioBtn Changedata={(gender) => setGender(gender)} />
        <Button style={styles.button} mode="contained" onPress={() =>
         fetchCars()
         }>
           Create Ride
       </Button>
 
-      
+      </ScrollView>
     </View>
   )
 }
