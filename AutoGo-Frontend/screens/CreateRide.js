@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectDestination, setDestination, setOrigin, selectOrigin } from '../slices/navSlice';
 import axios from 'react-native-axios';
 import * as SecureStore from 'expo-secure-store';
-
+import DateTime from '../components/DateTime';
 
 
 const CreateRide = () => {
@@ -41,7 +41,7 @@ const CreateRide = () => {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
                }
-    axios.post('http://192.168.16.101:8000/api/auth/createRide',
+    axios.post('http://192.168.16.104:8000/api/auth/createRide',
     {
       
       user_car_id: Name,//car id from Dropdown component child
@@ -116,9 +116,9 @@ const CreateRide = () => {
               nearbyPlacesAPI='GooglePlacesSearch'
               debounce={400}
            />
-       
+       <DateTime />
 
-        <TextInput
+        {/* <TextInput
         style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Travel Date"
         value={travel_date}
@@ -132,7 +132,7 @@ const CreateRide = () => {
         label="Travel Time"
         value={travel_time}
         onChangeText={travel_time => setTravel_time(travel_time)}
-        />
+        /> */}
         <TextInput
         style={[tw`mt-5 mb-8 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Fees"

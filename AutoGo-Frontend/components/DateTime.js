@@ -27,9 +27,9 @@ const DateTime = () => {
   return (
     <View style={styles.container}>
       {/* Display the selected date */}
-      <View style={styles.pickedDateContainer}>
+      {/* <View style={styles.pickedDateContainer}>
         <Text style={styles.pickedDate}>{date.toUTCString()}</Text>
-      </View>
+      </View> */}
 
       {/* The button that used to trigger the date picker */}
       {!isPickerShow && (
@@ -60,24 +60,28 @@ const DateTime = () => {
 // This is not the focus of this article
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-    padding: 50,
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center',
+//     flex: 1,
+//     justifyContent: 'center',
+//     padding: 50,
+marginTop: -40,
+marginRight:150,
   },
   pickedDateContainer: {
-    padding: 20,
+    padding: 15,
     backgroundColor: '#eee',
     borderRadius: 10,
+    marginTop:5,
   },
   pickedDate: {
     fontSize: 18,
     color: 'black',
   },
   btnContainer: {
-    padding: 30,
+    marginLeft: -40,
+    marginTop:60,
   },
   // This only works on iOS
   datePicker: {
