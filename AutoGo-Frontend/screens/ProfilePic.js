@@ -37,7 +37,7 @@ const ProfilePic = (props) => {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.101:8000/api/auth/getownInfo',
+    axios.get('http://192.168.16.104:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -63,7 +63,7 @@ const ProfilePic = (props) => {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-      axios.post('http://192.168.16.101:8000/api/auth/postReview',{from_id},
+      axios.post('http://192.168.16.104:8000/api/auth/postReview',{from_id},
       {headers:headers},
       
       )
@@ -104,29 +104,28 @@ const ProfilePic = (props) => {
                       width:400,
                       height:400,
                       resizeMode: "contain",
-                      marginTop: -70,
+                      marginTop: -50,
                       marginLeft: -10,
                       
                   }}
                   source = {{uri: `${data.profile[0].picture_path}`}}
                   />
 
-
-
-
-
-
           {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
       {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
-      <Text style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-100}]}>
+      <Text style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-110}]}>
         {data?.user?.first_name} {data?.user?.last_name}</Text> 
-      <Text style={[tw`font-semibold ml-4`,{marginTop:10}]}>
+      <Text style={[tw`font-semibold ml-4`,{marginTop:20}]}>
         Feedback
       </Text>
    <View style={tw`flex-row`}>
-      <TextInput style={[tw`bg-gray-200 ml-4`,{height:45,width:250,borderRadius:10, marginTop:15}]} multiline={true} />
+      <TextInput 
+      style={[tw`bg-gray-200 ml-4`,{height:40,width:250,borderRadius:10, marginTop:15}]} multiline={true}
+      placeholder='  Write a review'
+      
+      />
       <Button onPress={postReviews} style={styles.button} mode="contained" >
-       <Text style={{fontSize:20}}>Post</Text>
+       <Text style={{fontSize:15}}>Post</Text>
       </Button>
 </View>
 <FlatList 
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#58BD29",
     marginBottom:30,
    width: 90,
-   height:45,
+   height:39,
    marginTop: 15,
    borderRadius: 8,
    marginLeft:6,

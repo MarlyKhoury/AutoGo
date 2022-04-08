@@ -91,7 +91,7 @@ Notifications.setNotificationHandler({
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-        axios.get('http://192.168.16.101:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://192.168.16.104:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
@@ -121,7 +121,7 @@ Notifications.setNotificationHandler({
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer '+token,
         }
-        axios.post('http://192.168.16.102:8000/api/auth/bookRide',{ride_id:id},
+        axios.post('http://192.168.16.104:8000/api/auth/bookRide',{ride_id:id},
         {headers:headers} 
         
         )
@@ -149,7 +149,7 @@ Notifications.setNotificationHandler({
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
             }
-        axios.post('http://192.168.16.102:8000/api/auth/cancelBooking',{ride_id:cancel},
+        axios.post('http://192.168.16.104:8000/api/auth/cancelBooking',{ride_id:cancel},
         {headers:headers}
         )
         .then((response) => {
@@ -183,19 +183,19 @@ Notifications.setNotificationHandler({
           data = {data}
           keyExtractor = {(item) => item.id}
           renderItem={({item: {id,fees,travel_date,travel_time}, item}) =>(
-              <TouchableOpacity
-              onPress={() =>{
-                  setSelected(item)
-                  bookRide(item.id)
-              }
-                
-                }
-              style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
+            <TouchableOpacity
+            onPress={() =>{
+              setSelected(item)
+              bookRide(item.id)
+            }
+            
+          }
+          style ={tw`flex-row justify-between items-center px-10 ${id===selected?.id && "bg-gray-200"}`}>
                   <Image
                   style={{
-                      width:100,
-                      height:100,
-                      resizeMode: "contain",
+                    width:100,
+                    height:100,
+                    resizeMode: "contain",
                   }}
                   source = {{uri: "https://links.papareact.com/7pf"}}
                   />
@@ -207,9 +207,9 @@ Notifications.setNotificationHandler({
               </TouchableOpacity>
           )}
           />
+          <Text> {errorMessage}</Text>
         
         <View style={tw`mt-auto border-t border-gray-200`}>
-          <Text> {errorMessage}</Text>
 
             <TouchableOpacity
             onPress={

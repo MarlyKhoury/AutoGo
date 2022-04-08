@@ -69,7 +69,7 @@ const CreateRide = () => {
 
   return (
     <View>
-        <Header title="                 Create Ride"/>
+        <Header title="                 Create A Ride"/>
         <DropBtn  Changedata={(Name) => setName(Name)}/> 
         {/* <Text>{gender}</Text> */}
         <ScrollView>
@@ -81,9 +81,7 @@ const CreateRide = () => {
                   location: details.geometry.location,
                   description: data.description,
                 }))
-                // console.log(details);
-
-                // dispatch(setDestination(null))
+                
               }}
               fetchDetails={true}
               returnKeyType={"search"}
@@ -144,7 +142,7 @@ const CreateRide = () => {
        <Button style={styles.button} mode="contained" onPress={() =>
         fetchCars()
         }>
-          Create Ride
+          Create a Ride
       </Button>
 
       </ScrollView>

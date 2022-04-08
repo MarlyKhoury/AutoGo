@@ -67,12 +67,12 @@ const CreateCar = () => {
   async function getToken(){
     let result = await SecureStore.getItemAsync('token');
     setToken(result)
-    // return result
+    
   }
 getToken()
-  // let token= await getToken()
+ 
   console.log(token)
-  // const token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjE2LjEwMTo4MDAwXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ4NTg2NDM0LCJleHAiOjE2NDg1OTAwMzQsIm5iZiI6MTY0ODU4NjQzNCwianRpIjoiN3VZWXcyUDdDaTZ4clRwQiIsInN1YiI6MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4oDWwpVZbvlRtvpI_0Z65b0zuYU8oiv_kUdt9Gqt6h0'
+  
   const headers = {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
@@ -138,7 +138,7 @@ getToken()
       <View style={tw`items-center max-w-md mx-auto flex-row`}>
       <Text style={styles.acctext}>Already have a car?</Text>
       <TouchableOpacity onPress={() =>
-    navigation.navigate('CreateRide')}><Text style={[tw`pt-3 font-semibold`,{color:"#58BD29"}]}> Create Ride</Text>
+    navigation.navigate('CreateRide')}><Text style={[tw`pt-3 font-semibold`,{color:"#58BD29"}]}> Create a Ride</Text>
     </TouchableOpacity>
     </View>
       </View>
