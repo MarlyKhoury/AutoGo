@@ -56,6 +56,35 @@ const ProfilePic = (props) => {
       return <Text>is loading</Text>
     }
     
+  
+    const postReviews = async()=>{
+      const token = await SecureStore.getItemAsync('token');
+          const headers = {
+              'Content-Type': 'application/json', 
+              'Authorization': 'Bearer '+token,
+          }
+      axios.post('http://192.168.16.101:8000/api/auth/postReview',{from_id},
+      {headers:headers},
+      
+      )
+      .then((response) => {
+          console.log("im review")
+         
+
+      })
+      .catch((error) =>{
+          console.log(error.response.data)
+          console.log("error")
+          
+      })
+    
+  }
+
+
+
+
+
+
     // console.log(" datra state ", userId)
     return (    
       <View >
@@ -63,7 +92,7 @@ const ProfilePic = (props) => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={{flex:1}}
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
-            ></KeyboardAvoidingView>
+            >
 
       <Header title="                     Profile"/>
 
@@ -96,7 +125,7 @@ const ProfilePic = (props) => {
       </Text>
    <View style={tw`flex-row`}>
       <TextInput style={[tw`bg-gray-200 ml-4`,{height:45,width:250,borderRadius:10, marginTop:15}]} multiline={true} />
-      <Button onPress={() => console.log('Pressed')} style={styles.button} mode="contained" >
+      <Button onPress={postReviews} style={styles.button} mode="contained" >
        <Text style={{fontSize:20}}>Post</Text>
       </Button>
 </View>
@@ -128,24 +157,7 @@ const ProfilePic = (props) => {
                       
                   </View>
 
-{/* <View>
-  <Text> Name </Text>
 
-  { this.state.isEditing ?
-    <TextInput
-      value={this.state.txt}
-      onChangeText={(value) => this.setState({ txt: value })}
-      autoFocus
-      onBlur={() => this.setState({ isEditing: false })}
-    /> :
-    <Text
-      // style={styles.t2}
-      onPress={() => this.setState({ isEditing: true })}
-    >
-      {this.state.txt}
-    </Text> 
-  }
-</View> */}
 
 
 
@@ -153,6 +165,7 @@ const ProfilePic = (props) => {
               </TouchableOpacity>
           )}
         />
+        </KeyboardAvoidingView>
     </View>
   )
 }

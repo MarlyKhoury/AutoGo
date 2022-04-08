@@ -1,34 +1,93 @@
-// import React, { useState } from "react";
-// import { Button, View } from "react-native";
-// import DateTimePickerModal from "react-native-modal-datetime-picker";
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, Button, Platform} from 'react-native';
 
-// const Example = () => {
-//   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-//   const showDatePicker = () => {
-//     setDatePickerVisibility(true);
-//   };
 
-//   const hideDatePicker = () => {
-//     setDatePickerVisibility(false);
-//   };
+const DateTime = () => {
+  const [isPickerShow, setIsPickerShow] = useState(false);
+  const [date, setDate] = useState(new Date(Date.now()));
 
-//   const handleConfirm = (date) => {
-//     console.warn("A date has been picked: ", date);
-//     hideDatePicker();
-//   };
+  const showPicker = () => {
+    setIsPickerShow(true);
+  };
 
-//   return (
-//     <View>
-//       <Button title="Show Date Picker" onPress={showDatePicker} />
-//       <DateTimePickerModal
-//         isVisible={isDatePickerVisible}
-//         mode="date"
-//         onConfirm={handleConfirm}
-//         onCancel={hideDatePicker}
-//       />
-//     </View>
-//   );
-// };
+  const onChange = (event, value) => {
+    setDate(value);
+    if (Platform.OS === 'android') {
+      setIsPickerShow(false);
+    }
+  };
 
-// export default Example;
+  
+
+        
+
+
+  return (
+    <View style={styles.container}>
+      {/* Display the selected date */}
+      <View style={styles.pickedDateContainer}>
+        <Text style={styles.pickedDate}>{date.toUTCString()}</Text>
+      </View>
+
+      {/* The button that used to trigger the date picker */}
+      {!isPickerShow && (
+        <View style={styles.btnContainer}>
+          <Button title="Show Picker" color="purple" onPress={showPicker} />
+        </View>
+      )}
+
+      {/* The date picker */}
+      {isPickerShow && (
+        <DateTimePicker
+          value={date}
+          mode={'datetime'}
+          display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+          is24Hour={true}
+          onChange={onChange}
+          style={styles.datePicker}
+         
+        />
+      )}
+    </View>
+  );
+       
+};
+
+// Kindacode.com
+// just add some styles to make our app look more beautiful
+// This is not the focus of this article
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    padding: 50,
+  },
+  pickedDateContainer: {
+    padding: 20,
+    backgroundColor: '#eee',
+    borderRadius: 10,
+  },
+  pickedDate: {
+    fontSize: 18,
+    color: 'black',
+  },
+  btnContainer: {
+    padding: 30,
+  },
+  // This only works on iOS
+  datePicker: {
+    width: 320,
+    height: 260,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+   
+  },
+});
+
+export default DateTime;
