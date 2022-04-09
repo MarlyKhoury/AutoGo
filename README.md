@@ -4,14 +4,14 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
-**[PROJECT PHILOSOPHY](https://github.com/MarlyKhoury/AutoGo#-project-philosophy) • [WIREFRAMES](https://github.com/MarlyKhoury/AutoGo#-wireframes) • [TECH STACK](https://github.com/MarlyKhoury/AutoGo#-tech-stack) • [IMPLEMENTATION](https://github.com/MarlyKhoury/AutoGo#-impplementation) • [HOW TO RUN?](https://github.com/MarlyKhoury/AutoGo#-how-to-run)**
+**[PROJECT PHILOSOPHY](#philosophy)(https://github.com/MarlyKhoury/AutoGo#-project-philosophy) • [WIREFRAMES](#wireframes)(https://github.com/MarlyKhoury/AutoGo#-wireframes) • [TECH STACK](#stacks)(https://github.com/MarlyKhoury/AutoGo#-tech-stack) • [IMPLEMENTATION](#implementation)(https://github.com/MarlyKhoury/AutoGo#-impplementation) • [HOW TO RUN?](#run)(https://github.com/MarlyKhoury/AutoGo#-how-to-run)**
 
 </div>
 
 <br><br>
 
 
-<img src="./readme/title2.svg"/>
+<img src="./readme/title2.svg" id='philosophy'/>
 
 > AutoGo is a carpooling app built to help people share rides. AutoGo is built on the principle of less cars, less costs and less pollution. Indeed, AutoGo encourages users to carpool, meet new people and share the cost all while staying comfortable and safe.
 > 
@@ -26,7 +26,7 @@
 
 <br><br>
 
-<img src="./readme/title3.svg"/>
+<img src="./readme/title3.svg" id='wireframes'/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
@@ -42,7 +42,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+<img src="./readme/title4.svg" id='stacks'/>
 
 Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
@@ -55,7 +55,7 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
 
 <br><br>
-<img src="./readme/title5.svg"/>
+<img src="./readme/title5.svg" id='implementation'/>
 
 > Using the above mentioned tech stacks and the wireframes built with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
@@ -69,7 +69,7 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
 
 <br><br>
-<img src="./readme/title6.svg"/>
+<img src="./readme/title6.svg" id='run'/>
 
 
 > This is an example of how you may give instructions on setting up your project locally.
