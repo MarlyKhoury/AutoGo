@@ -17,7 +17,7 @@ const SignUpScreen = () => {
 
   const [first_name, setFirst_name] = React.useState("");
   const [last_name, setLast_name] = React.useState("");
-  const [gender, setGender] = React.useState("");
+  const [gender, setGender] = React.useState("Parent");
   const [phone_number, setPhone_number] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -25,7 +25,7 @@ const SignUpScreen = () => {
 
   const signUp =() =>{
     axios 
-    .post('http://192.168.16.102:8000/api/auth/register',{
+    .post('http://192.168.0.123:8000/api/auth/register',{
 
       first_name :first_name,
       last_name: last_name,
@@ -93,7 +93,7 @@ const SignUpScreen = () => {
       onChangeText={password => setPassword(password)}
       />
      
-      <RadioBtn />
+     <RadioBtn Changedata={(gender) => setGender(gender)} />
      
       <View>
   <Text >{errorMessage && <Text style={styles.error}>{errorMessage}</Text >}</Text>
