@@ -4,24 +4,31 @@ import {StyleSheet, View, Text, Button, Platform} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 
-const DateTime = () => {
+const DateTime = (props)  => {
   const [isPickerShow, setIsPickerShow] = useState(false);
   const [date, setDate] = useState("2022-01-02T09:01:01.000Z");
-  const [time, setTime] = useState(new Date(Date.now()));
+  const [trav_date, setTrav_date] = useState("");
   const showPicker = () => {
     setIsPickerShow(true);
   };
 
-  const onChange = (event, value) => {
-    let date = value.toISOString().split('T')[0]
-    let time = value.toString().split(' ')[4]
-    // console.log(value.toISOString().split('T'))
-    console.log(date)
-    // console.log(value.toString())
-    console.log(time)
+  const onChange = ( event,value) => {
+    // const travel_date = value.toISOString().split('T')[0]
+    // const travel_time = value.toString().split(' ')[4]
+    
+    // console.log(typeof(travel_date))
+    // console.log(typeof(travel_time))
+
+    // setTrav_date(travel_date)
+    // console.log(trav_date)
+    // console.log(value)
+    
     if (Platform.OS === 'android') {
       setIsPickerShow(false);
     }
+    console.log(value)
+    setDate(value)
+    props.Changedata(value)
   };
 
   
@@ -48,7 +55,7 @@ const DateTime = () => {
         <DateTimePicker
           value={date}
 
-          mode={'datetime'}
+          mode='datetime'
           display={Platform.OS === 'ios' ? 'calendar' : 'default'}
           is24Hour={true}
           onChange={onChange}

@@ -18,6 +18,7 @@ import DateTime from '../components/DateTime';
 const CreateRide = () => {
   const [Name, setName] = useState("Parent");
   const [gender, setGender] = useState("Parent");
+  const [date, setDate] = useState("Parent");
   const navigation = useNavigation();
   const [travel_date, setTravel_date] = React.useState("");
   const [travel_time, setTravel_time] = React.useState("");
@@ -41,12 +42,12 @@ const CreateRide = () => {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
                }
-    axios.post('http://192.168.70.18:8000/api/auth/createRide',
+    axios.post('http://192.168.0.123:8000/api/auth/createRide',
     {
       
       user_car_id: Name,//car id from Dropdown component child
-      travel_date: travel_date,
-      travel_time: travel_time,
+      travel_date: date.toISOString().split('T')[0],
+      travel_time: date.toString().split(' ')[4],
       origin_city: origin.description,
       destination_city: destination.description,
       fees: fees,
@@ -72,7 +73,7 @@ const CreateRide = () => {
         <Header title="                 Create A Ride"/>
         <DropBtn  Changedata={(Name) => setName(Name)}/> 
         {/* <Text>{gender}</Text> */}
-        <ScrollView>
+        
         <GooglePlacesAutocomplete
               placeholder='Where From?'
               styles={toInputBoxStyles}
@@ -122,8 +123,9 @@ const CreateRide = () => {
        onChangeText={fees => setFees(fees)}
        />
        <RadioBtn Changedata={(gender) => setGender(gender)} />
-       <DateTime />
-
+       <DateTime Changedata={(date) => setDate(date)} />
+{/* <Text>{date.to/////////////////////i/}</Text> */}
+{/* <Text>{date.toString().split(' ')[4]}</Text> */}
         {/* <TextInput
         style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
         label="Travel Date"
@@ -145,7 +147,7 @@ const CreateRide = () => {
           Create a Ride
       </Button>
 
-      </ScrollView>
+      
     </View>
   )
 }
