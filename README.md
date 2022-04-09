@@ -45,7 +45,8 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
-- This project uses the [React Native app development Framework](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendered mobile applications for iOS and Android. It is based on React and Facebook's JavaScript library for building user interfaces. However, instead of targeting the browser, it targets mobile platforms.
+- Frontend: This project uses the [React Native App Development Framework](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendered mobile applications for iOS and Android. It is based on React and Facebook's JavaScript library for building user interfaces. However, instead of targeting the browser, it targets mobile platforms.
+- Backend: This project uses the [Laravel 8 Framework](https://laravel.com/docs/8.x/releases). Laravel is a web application framework with expressive, elegant syntax. A web framework provides a structure and starting point for creating your application, allowing you to focus on creating something amazing while we sweat the details.
 - For persistent storage (database), the app uses [MySQL](https://www.mysql.com/) which allows the app to create a scalable and reliable database.
 - To send local push notifications, the app uses the [Expo Local Notifications](https://docs.expo.dev/versions/latest/sdk/notifications/) package which supports Android and iOS.
 - To get the origin and destination, the calculated travel distance and the calculated travel time, the app uses the Google Places API (Google Autocomplete), the Google Directions API and the Distance Matrix API from [Google Cloud Platform](https://cloud.google.com/).
@@ -70,9 +71,9 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page_Application.jpg" /></td>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/HomeScreen.jpg" /></td>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Origin_Destination.jpeg" /></td>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking.jpg" /></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking.jpg" /></td>
   </tr>
 </table>
 
@@ -80,8 +81,7 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 <img src="./readme/title6.svg" id='run'/>
 
 
-> This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+>To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
