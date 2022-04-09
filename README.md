@@ -58,14 +58,23 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
 > Using the above mentioned tech stacks and the wireframes built with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app.
 
-| Landing  | Home/Search  |
+<!-- | Landing  | Home/Search  |
 | -----------------| -----|
 | ![Landing](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(2).jpg) | ![Home/Search](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(3).jpg) |
 
 | Booking a Ride  | Ride Results  |
 | -----------------| -----|
-| ![Booking a Ride](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/IMG_4631.jpeg) | ![Ride Results](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/booking.jpg) |
-
+| ![Booking a Ride](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/IMG_4631.jpeg) | ![Ride Results](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/booking.jpg) | -->
+<table>
+  <tr>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page_Application.jpg" /></td>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/HomeScreen.jpg" /></td>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Origin_destination.jpeg" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking.jpg" /></td>
+  </tr>
+</table>
 
 <br><br>
 <img src="./readme/title6.svg" id='run'/>
@@ -77,7 +86,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 * Download and install [Laravel 8](https://laravel.com/docs/8.x/installation)
-This is an example of how to list things you need to use the software and how to install them.
+
 * npm
   ```sh
   npm install npm@latest -g
