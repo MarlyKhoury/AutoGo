@@ -4,7 +4,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
-**[PROJECT PHILOSOPHY](#philosophy)• [WIREFRAMES](#wireframes)• [TECH STACK](#stacks)• [IMPLEMENTATION](#implementation)• [HOW TO RUN?](#run)**
+**[PROJECT PHILOSOPHY](#philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#stacks) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#run)**
 
 </div>
 
@@ -15,13 +15,12 @@
 
 > AutoGo is a carpooling app built to help people share rides. AutoGo is built on the principle of less cars, less costs and less pollution. Indeed, AutoGo encourages users to carpool, meet new people and share the cost all while staying comfortable and safe.
 > 
-> There are 2 options that the AutoGo app provides: Create a ride and Book a ride.
+> There are 2 options that AutoGo provides: Create a ride and Book a ride.
 
 ### User Stories
-- As a user, I want to create an account, so that I can save all my information in one place
-- As a user, I want to quickly find and book a ride, so that I can reach my destination early
-- As a user, I want to specify the gender of the people I’m going to share my ride with, so that I feel more comfortable
-- As a user, I want to find other people going to the same place as I am, so that we can split the cost between us
+- As a user, I want to quickly find and book a ride, so that I can reach my destination early.
+- As a user, I want to find other people going to the same destination as mine, so that we can split the cost between us.
+- As a user, I want to specify the gender of the people I’m going to share my ride with, so that I feel more comfortable.
 
 
 <br><br>
@@ -29,7 +28,7 @@
 <img src="./readme/title3.svg" id='wireframes'/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
-Note that i didn't use any styling library or theme, all from scratch and using pure css modules
+Note that i didn't use any styling library or theme, all from scratch and using pure css modules.
 
 | Landing  | Home/Search  |
 | -----------------| -----|
@@ -46,10 +45,10 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
-- This project uses the [React Native app development Framework](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android. It is based on React, Facebook's JavaScript library for building user interfaces, but instead of targeting the browser, it targets mobile platforms.
+- This project uses the [React Native app development Framework](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendered mobile applications for iOS and Android. It is based on React and Facebook's JavaScript library for building user interfaces. However, instead of targeting the browser, it targets mobile platforms.
 - For persistent storage (database), the app uses [MySQL](https://www.mysql.com/) which allows the app to create a scalable and reliable database.
-- To send local push notifications, the app uses the [expo_local_notifications](https://docs.expo.dev/versions/latest/sdk/notifications/) package which supports Android, iOS, and macOS.
-- To get the origin and destination, the calculated travel distance and the calculated travel time, the app uses the Google Places API, the Google Directions API and the Distance Matrix API.
+- To send local push notifications, the app uses the [Expo Local Notifications](https://docs.expo.dev/versions/latest/sdk/notifications/) package which supports Android and iOS.
+- To get the origin and destination, the calculated travel distance and the calculated travel time, the app uses the Google Places API (Google Autocomplete), the Google Directions API and the Distance Matrix API from [Google Cloud Platform](https://cloud.google.com/).
 - The design of the app adheres to the material design guidelines.
 
 
@@ -57,7 +56,7 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 <br><br>
 <img src="./readme/title5.svg" id='implementation'/>
 
-> Using the above mentioned tech stacks and the wireframes built with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes built with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app.
 
 | Landing  | Home/Search  |
 | -----------------| -----|
@@ -77,27 +76,32 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+* Download and install [Laravel 8](https://laravel.com/docs/8.x/installation)
 This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
   npm install npm@latest -g
   ```
+* Expo CLI
+  ```sh
+  npm install --global expo-cli
+  ```
+* Expo Go app for iOS and Android  
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/MarlyKhoury/AutoGo.git
    ```
-3. Install NPM packages
+2. Navigate to the Frontend folder and install dependencies
    ```sh
+   cd AutoGo-Frontend
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Run the start up command
+   ```sh
+   npm start
    ```
+4. Scan the generated QR code with your camera (ios) or through the Expo Go application (android)
 
