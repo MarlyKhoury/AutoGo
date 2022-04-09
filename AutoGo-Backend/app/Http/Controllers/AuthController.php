@@ -444,6 +444,7 @@ class AuthController extends Controller
     { 
         $picture_path = $request->input('picture_path');
         $user_id = auth()->user()->id;
+        //  $user_id =2;
         $profile = Profile::create(array_merge(
             ['picture_path' =>$picture_path],
             ['user_id' =>$user_id],
@@ -481,7 +482,7 @@ class AuthController extends Controller
     public function getownInfo(){
         $user_id = auth()->user()->id;
         $user= User::find($user_id, ['id','first_name','last_name']);
-        $profile= Profile::where('user_id',$user_id)->get(['picture_path']);
+        $profile= Profile::where('user_id',$user_id)->get(['picture_path'])->last();
         $review= Review::where('to_id',$user_id)->get(['id','rating','comment']);
         $user_name= User::where('id',$user_id)->get(['id','first_name','last_name']);
         return response()->json([

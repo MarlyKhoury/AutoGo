@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import * as SecureStore from 'expo-secure-store';
 
 
 function ImageUpload() {
@@ -29,8 +30,31 @@ function ImageUpload() {
     }
   }
 
+  const uploadimg = async (uri_img) => {
+    
+    const data_url = new FormData(); 
+    data_url.append('picture_path', uri_img);
+   console.log('je sis laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+   console.log(data_url)
+   const token = await SecureStore.getItemAsync('token');
+
+    fetch('http://192.168.0.123:8000/api/auth/uploadImg', {
+      method: 'post',
+      body: data_url,
+      headers : {
+        'Content-Type': 'application/json', 
+        'Authorization': 'Bearer '+token,
+    }
+    })
+      .then((res) => res.json())
+      .then((dataa) => {
+      
+        console.log(dataa)
+      });
+  };//https://res.cloudinary.com/dnqrcc1h6/image/upload/v1649324805/pomvjwzdy9nqpho5alir.png
+
   
-  const handleUpload = () => {
+  const handleUpload =  () => {
     let Image = {
       uri: pickedImagePath,
       type: `${pickedImagePath.split('.')[1]}`,
@@ -41,15 +65,17 @@ function ImageUpload() {
     console.log(data);
     data.append('upload_preset', 'e0bwupcg');
     data.append('cloud_name', 'dnqrcc1h6');
-    fetch('https://api.cloudinary.com/v1_1/dnqrcc1h6/mark/upload', {
+    fetch('https://api.cloudinary.com/v1_1/dnqrcc1h6/image/upload', {
       method: 'post',
       body: data,
+       
     })
       .then((res) => res.json())
       .then((data) => {
         setProfileImageURL(data.secure_url);
-
+      
         console.log(data.secure_url)
+        uploadimg(data.secure_url)
       });
   };
 
@@ -61,14 +87,14 @@ function ImageUpload() {
         
       </View>
 
-      <View style={styles.imageContainer}>
+      {/* <View style={styles.imageContainer}>
         {
           pickedImagePath !== '' && <Image
             source={{ uri: pickedImagePath }}
             style={styles.image}
           />
         }
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -79,14 +105,15 @@ export default ImageUpload;
 // Just some styles
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonContainer: {
     width: 400,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    paddingTop:450
   },
   imageContainer: {
     padding: 30

@@ -12,7 +12,7 @@ import ImageUpload from '../components/ImageUpload';
 import { Button } from 'react-native-paper';
 
 const ProfilePic = (props) => {
-  console.log("props ", props.userId2 )
+  // console.log("props ", props.userId2 )
   useEffect(()=>{
     // console.log("I am here");
     fetchUserInfo(); 
@@ -37,12 +37,13 @@ const ProfilePic = (props) => {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.104:8000/api/auth/getownInfo',
+    axios.get('http://192.168.0.123:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
       // setData((response.data.profile[0].picture_path))
       setData((response.data))
+      console.log(response.data)
       setFullResponse(response);
       // console.log("data user --------------------------------> ", data)
       setUserId(response.data?.user?.id);
@@ -63,7 +64,7 @@ const ProfilePic = (props) => {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-      axios.post('http://192.168.16.104:8000/api/auth/postReview',{from_id},
+      axios.post('http://192.168.0.123:8000/api/auth/postReview',{from_id},
       {headers:headers},
       
       )
@@ -108,16 +109,17 @@ const ProfilePic = (props) => {
                       marginLeft: -10,
                       
                   }}
-                  source = {{uri: `${data.profile[0].picture_path}`}}
+                  source = {{uri: `${data.profile.picture_path}`}}
                   />
 
           {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
       {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
       <Text style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-110}]}>
         {data?.user?.first_name} {data?.user?.last_name}</Text> 
-      <Text style={[tw`font-semibold ml-4`,{marginTop:20}]}>
+      {/* <Text style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-110}]}>
         Feedback
-      </Text>
+      </Text> */}
+
    <View style={tw`flex-row`}>
       <TextInput 
       style={[tw`bg-gray-200 ml-4`,{height:40,width:250,borderRadius:10, marginTop:15}]} multiline={true}
@@ -151,7 +153,7 @@ const ProfilePic = (props) => {
                    name="rate-review" type="materialicons" color="white" size={16}
                    />
 
-                  <View style={tw`mb-1 ml-4`}>
+                  <View style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-110}]}>
                       <Text style={tw`text-base font-normal`}>{comment}</Text>
                       
                   </View>
@@ -165,6 +167,9 @@ const ProfilePic = (props) => {
           )}
         />
         </KeyboardAvoidingView>
+        
+         <ImageUpload />
+
     </View>
   )
 }
