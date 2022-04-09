@@ -13,7 +13,7 @@
 
 <img src="./readme/title2.svg" id='philosophy'/>
 
-> AutoGo is a carpooling app built to help people share rides. AutoGo is built on the principle of less cars, less costs and less pollution. Indeed, AutoGo encourages users to carpool, meet new people and share the cost all while staying comfortable and safe.
+> AutoGo is a carpooling app built to help people share rides. AutoGo is built on the principle of less cars, less costs and less pollution. Indeed, AutoGo encourages users to carpool, meet new people and share the cost all while staying comfortable and safe. So the next time you find yourself needing a ride, or wanting to share your ride cost with others, get on AutoGo.
 > 
 > There are 2 options that AutoGo provides: Create a ride and Book a ride.
 
@@ -59,13 +59,6 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
 > Using the above mentioned tech stacks and the wireframes built with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app.
 
-<!-- | Landing  | Home/Search  |
-| -----------------| -----|
-| ![Landing](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(2).jpg) | ![Home/Search](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed%20(3).jpg) |
-
-| Booking a Ride  | Ride Results  |
-| -----------------| -----|
-| ![Booking a Ride](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/IMG_4631.jpeg) | ![Ride Results](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/booking.jpg) | -->
 <table>
   <tr>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page_Application.jpg" /></td>
@@ -74,6 +67,7 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking.jpg" /></td>
   </tr>
   <tr>
+    <td><img src="" /></td>
   </tr>
 </table>
 
@@ -106,11 +100,12 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 2. Navigate to the Frontend folder and install dependencies
    ```sh
    cd AutoGo-Frontend
+
    npm install
    ```
 3. Run the start up command
    ```sh
    npm start
    ```
-4. Scan the generated QR code with your camera (ios) or through the Expo Go application (android)
+4. Scan the generated QR code with your camera (IOS) or through the Expo Go application (Android)
 
