@@ -6,14 +6,19 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 const DateTime = () => {
   const [isPickerShow, setIsPickerShow] = useState(false);
-  const [date, setDate] = useState(new Date(Date.now()));
-
+  const [date, setDate] = useState("2022-01-02T09:01:01.000Z");
+  const [time, setTime] = useState(new Date(Date.now()));
   const showPicker = () => {
     setIsPickerShow(true);
   };
 
   const onChange = (event, value) => {
-    setDate(value);
+    let date = value.toISOString().split('T')[0]
+    let time = value.toString().split(' ')[4]
+    // console.log(value.toISOString().split('T'))
+    console.log(date)
+    // console.log(value.toString())
+    console.log(time)
     if (Platform.OS === 'android') {
       setIsPickerShow(false);
     }
@@ -42,6 +47,7 @@ const DateTime = () => {
       {isPickerShow && (
         <DateTimePicker
           value={date}
+
           mode={'datetime'}
           display={Platform.OS === 'ios' ? 'calendar' : 'default'}
           is24Hour={true}
