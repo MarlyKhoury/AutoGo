@@ -65,7 +65,7 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
 
 | Booking a Ride  | Ride Results  |
 | -----------------| -----|
-| ![Booking a Ride](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/IMG_4631.jpeg) | ![Ride Results](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/unnamed.jpg) |
+| ![Booking a Ride](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/IMG_4631.jpeg) | ![Ride Results](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/booking.jpg) |
 
 
 <br><br>
