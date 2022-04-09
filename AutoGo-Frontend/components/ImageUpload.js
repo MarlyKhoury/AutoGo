@@ -26,7 +26,7 @@ function ImageUpload() {
 
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
-      console.log(result.uri);//test hay chway ma3am tbayen l picker aslan 
+      console.log(result.uri);
     }
   }
 
@@ -83,7 +83,7 @@ function ImageUpload() {
     <View style={styles.screen}>
       <View style={styles.buttonContainer}>
         <Button onPress={showImagePicker} title="Select an image" />
-        <Button onPress={handleUpload} title="Open camera" />
+        <Button onPress={handleUpload} title="Upload Image" />
         
       </View>
 
@@ -109,14 +109,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   buttonContainer: {
-    width: 400,
+    width: 260,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingTop:450
+    paddingTop:250,
+    
   },
   imageContainer: {
-    padding: 30
+    padding: 30,
   },
   image: {
     width: 400,

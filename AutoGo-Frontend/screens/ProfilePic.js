@@ -37,7 +37,7 @@ const ProfilePic = (props) => {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.0.123:8000/api/auth/getownInfo',
+    axios.get('http://192.168.16.102:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -64,7 +64,7 @@ const ProfilePic = (props) => {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-      axios.post('http://192.168.0.123:8000/api/auth/postReview',{from_id},
+      axios.post('http://192.168.16.102:8000/api/auth/postReview',{from_id},
       {headers:headers},
       
       )
@@ -102,23 +102,24 @@ const ProfilePic = (props) => {
 
           <Image
                   style={{
-                      width:400,
-                      height:400,
-                      resizeMode: "contain",
-                      marginTop: -50,
-                      marginLeft: -10,
-                      
+                    width:400,
+                    height:400,
+                    resizeMode: "contain",
+                    marginTop: -50,
+                    marginLeft: -10,
+                    
                   }}
                   source = {{uri: `${data.profile.picture_path}`}}
                   />
 
           {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
       {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
-      <Text style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-110}]}>
-        {data?.user?.first_name} {data?.user?.last_name}</Text> 
-      {/* <Text style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-110}]}>
+      <Text style={[tw`items-center max-w-md pb-10 mx-auto text-xl font-bold`,{marginTop:-70}]}>
+        {data?.user?.first_name} {data?.user?.last_name}
+      </Text> 
+      <Text style={[tw`ml-4 pb-5 text-lg font-semibold`,{marginTop:-10}]}>
         Feedback
-      </Text> */}
+      </Text>
 
    <View style={tw`flex-row`}>
       <TextInput 
@@ -153,22 +154,17 @@ const ProfilePic = (props) => {
                    name="rate-review" type="materialicons" color="white" size={16}
                    />
 
-                  <View style={[tw`items-center max-w-md pb-10 mx-auto text-lg font-bold`,{marginTop:-110}]}>
+                  <View style={[tw`pb-10 text-lg font-bold`,{marginTop:-110}]}>
                       <Text style={tw`text-base font-normal`}>{comment}</Text>
                       
                   </View>
-
-
-
-
-
                   
               </TouchableOpacity>
           )}
         />
         </KeyboardAvoidingView>
+          <ImageUpload />
         
-         <ImageUpload />
 
     </View>
   )
