@@ -4,7 +4,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
-**[PROJECT PHILOSOPHY](#philosophy)(https://github.com/MarlyKhoury/AutoGo#-project-philosophy) • [WIREFRAMES](#wireframes)(https://github.com/MarlyKhoury/AutoGo#-wireframes) • [TECH STACK](#stacks)(https://github.com/MarlyKhoury/AutoGo#-tech-stack) • [IMPLEMENTATION](#implementation)(https://github.com/MarlyKhoury/AutoGo#-impplementation) • [HOW TO RUN?](#run)(https://github.com/MarlyKhoury/AutoGo#-how-to-run)**
+**[PROJECT PHILOSOPHY](#philosophy)• [WIREFRAMES](#wireframes)• [TECH STACK](#stacks)• [IMPLEMENTATION](#implementation)• [HOW TO RUN?](#run)**
 
 </div>
 
