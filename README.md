@@ -30,9 +30,16 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules.
 
-| Landing  | Home/Search  |
+<table>
+  <tr>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page.png" /></td>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Find_a_Ride.png" /></td>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Book_a_Ride.png" /></td>
+  </tr>
+</table>
+<!-- | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page.jpg) | ![Home/Search](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking_Page.jpg) |
+| ![Landing](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page.jpg) | ![Home/Search](https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking_Page.jpg) | -->
 
 <!-- | Artists results  | Artist's Albums  |
 | -----------------| -----|
