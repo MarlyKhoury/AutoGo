@@ -31,7 +31,7 @@ const Map = () => {
           fetch (`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_APIKEY}`).then
           ((res)=> res.json())
           .then(data =>{
-            // console.log(data)
+            
             //storing the data in redux
             dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
           })
@@ -45,12 +45,6 @@ const Map = () => {
     ref={mapRef}
     style={tw`flex-1`}
     mapType="mutedStandard"
-    // initialRegion={{
-    //   latitude: origin.location.lat,
-    //   longitude: origin.location.lng,
-    //   latitudeDelta: 0.005,
-    //   longitudeDelta: 0.005,
-    // }}
   >
       {origin && destination &&(
           <MapViewDirections
@@ -92,4 +86,3 @@ const Map = () => {
 
 export default Map
 
-const styles = StyleSheet.create({})

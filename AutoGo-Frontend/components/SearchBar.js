@@ -7,7 +7,7 @@ const SearchBarComponent = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [InitialData, setInitialData] = useState([]);
 
-  // console.log("search props ", props);
+  
 useEffect(()=>{
   console.log("props data ", JSON.stringify(props?.data))
   setInitialData(props?.data);
@@ -24,13 +24,12 @@ useEffect(()=>{
     setSearchQuery(query)
     if(InitialData && InitialData!==undefined)
     InitialData?.filter((item) => {
-      // console.log("item ", JSON.stringify(item.first_name));
-      // console.log("search query ", searchQuery)
-      console.log("-------------------------------")
+      
+      
       if(item.first_name.toString().toLowerCase().includes(searchQuery?.toString().toLowerCase())){
-        // console.log("item ---> ", JSON.stringify(item));
+       
         filteredData.push(item);
-        console.log("-------------------------------2")
+       
 
         
       }
@@ -54,14 +53,3 @@ useEffect(()=>{
 };
 
 export default SearchBarComponent;
-
-
-  // return searchQuery?.some((newItem) => {
-        // console.log("new item ", newItem)
-          // return (
-          //     item[newItem]
-          //         .toString()
-          //         .toLowerCase()
-          //         .indexOf(q.toLowerCase()) > -1
-          // );
-      // });

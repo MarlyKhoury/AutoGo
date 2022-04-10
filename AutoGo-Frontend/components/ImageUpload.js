@@ -26,7 +26,6 @@ function ImageUpload() {
 
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
-      console.log(result.uri);
     }
   }
 
@@ -34,11 +33,9 @@ function ImageUpload() {
     
     const data_url = new FormData(); 
     data_url.append('picture_path', uri_img);
-   console.log('je sis laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-   console.log(data_url)
-   const token = await SecureStore.getItemAsync('token');
+    const token = await SecureStore.getItemAsync('token');
 
-    fetch('http://192.168.0.123:8000/api/auth/uploadImg', {
+    fetch('http://192.168.16.101:8000/api/auth/uploadImg', {
       method: 'post',
       body: data_url,
       headers : {
@@ -49,9 +46,8 @@ function ImageUpload() {
       .then((res) => res.json())
       .then((dataa) => {
       
-        console.log(dataa)
       });
-  };//https://res.cloudinary.com/dnqrcc1h6/image/upload/v1649324805/pomvjwzdy9nqpho5alir.png
+  };
 
   
   const handleUpload =  () => {
@@ -62,7 +58,6 @@ function ImageUpload() {
     };
     const data = new FormData(); 
     data.append('file', Image);
-    console.log(data);
     data.append('upload_preset', 'e0bwupcg');
     data.append('cloud_name', 'dnqrcc1h6');
     fetch('https://api.cloudinary.com/v1_1/dnqrcc1h6/image/upload', {
@@ -86,15 +81,6 @@ function ImageUpload() {
         <Button onPress={handleUpload} title="Upload Image" />
         
       </View>
-
-      {/* <View style={styles.imageContainer}>
-        {
-          pickedImagePath !== '' && <Image
-            source={{ uri: pickedImagePath }}
-            style={styles.image}
-          />
-        }
-      </View> */}
     </View>
   );
 }
@@ -102,10 +88,9 @@ function ImageUpload() {
 export default ImageUpload;
 
 
-// Just some styles
+
 const styles = StyleSheet.create({
   screen: {
-    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

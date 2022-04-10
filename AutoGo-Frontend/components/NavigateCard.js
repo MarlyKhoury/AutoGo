@@ -17,7 +17,6 @@ const NavigateCard = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const origin = useSelector(selectOrigin);
-    // console.log(origin)
 
     const getDataUsingSimpleGetCall = () => {
 
@@ -26,7 +25,7 @@ const NavigateCard = () => {
   return (
       getDataUsingSimpleGetCall(),
     <SafeAreaView style={tw`bg-white flex-1`}>
-      {/* <Text style={tw`text-center py-2 text-lg`}>Ride Booking</Text> */}
+     
       <View style={tw`border-t border-gray-200 flex-shrink`}>
           <View >
           <GooglePlacesAutocomplete
@@ -36,7 +35,7 @@ const NavigateCard = () => {
                 dispatch(setOrigin({
                   location: details.geometry.location,
                   description: data.description,
-                  // console.log(details);
+                  
                 }))
                 console.log(details.description!=""),
 
@@ -67,7 +66,7 @@ const NavigateCard = () => {
 
                     let is_disabled=(JSON.stringify(origin.description)!="" && JSON.stringify(details.formatted_address)!="")?false:true
                     setDisabled(is_disabled)
-                    // navigation.navigate("RideOptionsCard");
+                  
 
                 }}
                 enablePoweredByContainer={false}
@@ -79,7 +78,7 @@ const NavigateCard = () => {
                 debounce={400}             
              />
           </View>
-          {/* <NavFavourites /> */}
+         
       </View>
       <View style={tw`mt-auto border-t border-gray-100`}>
 
@@ -92,11 +91,6 @@ const NavigateCard = () => {
 
           </TouchableOpacity>
 
-          {/* <TouchableOpacity style={tw`flex flex-row justify-between w-24 px-4 py-3 rounded-full`}>
-              <Icon name="fast-food-outline" type="ionicon" color="black" size={16}/>
-              <Text style={tw`text-center`}>Other</Text>
-
-          </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   )

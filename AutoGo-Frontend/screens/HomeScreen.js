@@ -17,14 +17,12 @@ const HomeScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     
-  // let result = await SecureStore.getItemAsync(key);
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={tw`p-5`}>
       <View style={tw`flex-row justify-between`}>
           <Text 
              style={{
-                //  width:100, 
                  height:80, 
                 marginTop:18,
                 marginLeft:5,
@@ -32,9 +30,6 @@ const HomeScreen = () => {
                  color:'#58BD29',
                  fontWeight: '700'
              }}
-            //  source={{
-            //      uri: "https://links.papareact.com/gzs",
-            //  }}
           
           > AutoGo</Text>
             <TouchableOpacity onPress={() => navigation.navigate('ProfilePic')}>
@@ -45,37 +40,7 @@ const HomeScreen = () => {
                     type="entypo" />
             </TouchableOpacity>
 </View>
-          {/* <GooglePlacesAutocomplete
-              placeholder='Where From?'
-              styles={{
-                container: {
-                  flex:0,
-                },
-                textInput:{
-                  fontSize:18,
-                }
-
-              }}
-              onPress={(data, details = null) => {
-                dispatch(setOrigin({
-                  location: details.geometry.location,
-                  description: data.description,
-                  // console.log(details);
-                }))
-                // console.log(location),
-                dispatch(setDestination(null))
-              }}
-              fetchDetails={true}
-              returnKeyType={"search"}
-              enablePoweredByContainer={false}
-              minLength={2}
-              query= {{
-                key: GOOGLE_MAPS_APIKEY,
-                language:'en'
-              }}
-              nearbyPlacesAPI='GooglePlacesSearch'
-              debounce={400}
-           /> */}
+          
           <NavOptions />
           <NavFavourites />
       </View>

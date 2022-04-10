@@ -9,7 +9,6 @@ import axios from 'react-native-axios';
 import { useDispatch, useSelector } from 'react-redux';
 import * as SecureStore from 'expo-secure-store';
 import * as Notifications from "expo-notifications"
-// import * as Permissions from "expo-permissions"
 import * as Location from 'expo-location';
 
 
@@ -91,26 +90,20 @@ Notifications.setNotificationHandler({
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-        axios.get('http://192.168.16.102:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://192.168.16.101:8000/api/auth/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
           if(!response.data.rides.length){
-            //empty array
-            console.log("I am error array")
             setErrorMessage("No available rides")
             
           }
           setData(response.data.rides)
-          console.log(response.data.rides)
-          // setErrorMessage("")
             
         }
         
         )
         .catch((error) =>{
-            console.log(error)
-            console.log(error.message =='Request failed with status code 401')
         }                
     )
     
@@ -121,7 +114,7 @@ Notifications.setNotificationHandler({
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer '+token,
         }
-        axios.post('http://192.168.16.102:8000/api/auth/bookRide',{ride_id:id},
+        axios.post('http://192.168.16.101:8000/api/auth/bookRide',{ride_id:id},
         {headers:headers} 
         
         )
@@ -149,19 +142,15 @@ Notifications.setNotificationHandler({
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
             }
-        axios.post('http://192.168.16.102:8000/api/auth/cancelBooking',{ride_id:cancel},
+        axios.post('http://192.168.16.101:8000/api/auth/cancelBooking',{ride_id:cancel},
         {headers:headers}
         )
         .then((response) => {
-            console.log("im cancel booking")
-            console.log(cancel)
             triggerCancelNotificationHandler()
 
         })
         .catch((error) =>{
-            console.log(error.response.data)
-            console.log("error")
-            console.log(cancel)
+          
         })
       
     }
@@ -176,7 +165,7 @@ Notifications.setNotificationHandler({
             >
             <Icon name="chevron-left" type="fontawesome" />
             </TouchableOpacity>
-        {/* <Text style={[tw`text-center`,{color:'red',zIndex:1}]}>{errorMessage && <Text style={{color:'red'}}>{errorMessage}</Text >}</Text> */}
+       
       <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance?.text}</Text>
         </View>
         <FlatList 
@@ -215,7 +204,6 @@ Notifications.setNotificationHandler({
             onPress={
                 
                 cancelBooking
-                // triggerLocalNotificationHandler
             }
               
               

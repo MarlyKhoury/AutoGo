@@ -11,7 +11,7 @@ import * as SecureStore from 'expo-secure-store';
 const DropBtn = (props) => {
 
   useEffect(()=>{
-         console.log("I am here");
+         
           getCar();
     
         }, [])  
@@ -37,12 +37,11 @@ const DropBtn = (props) => {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
-        axios.get('http://192.168.16.102:8000/api/auth/getCar',
+        axios.get('http://192.168.16.101:8000/api/auth/getCar',
          {headers:headers},  
           )
           .then((response) => {
          
-              console.log(response.data.cars)
               setData(response.data.cars)
 
           } )
@@ -56,7 +55,6 @@ const DropBtn = (props) => {
       style={tw`p-1 bg-gray-200`}
         title="Cars"
         left={props => <List.Icon {...props} icon="folder" />}
-        // expanded={expanded}
         onPress={handlePress}>
 
         <FlatList 
@@ -65,10 +63,9 @@ const DropBtn = (props) => {
           renderItem={({item: {id,model, fees}, item}) =>(
               <TouchableOpacity
               onPress={() =>{
-                //  setSelected(item)
-                // console.log(item)
+               
                 props.Changedata(item.id)
-                // setExpanded(expanded)
+                
               }
 
                 }
@@ -76,7 +73,7 @@ const DropBtn = (props) => {
                 
                   <View style={tw`ml-6`}>
                       <Text style={tw`text-base font-semibold`}>{model}</Text>
-                      {/* <Text style={tw`text-xl font-semibold`}>{selected.id}</Text> */}
+                     
                   </View>
               </TouchableOpacity>
           )}

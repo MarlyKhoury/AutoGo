@@ -10,7 +10,6 @@ import * as SecureStore from 'expo-secure-store';
 
 async function save(key, value) {
   await SecureStore.setItemAsync(key, value);
-  // let result = await SecureStore.getItemAsync('token');
 }
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -20,7 +19,7 @@ const LoginScreen = () => {
   const login= async ()=>{
 
     axios
-    .post('http://192.168.16.102:8000/api/auth/login',{
+    .post('http://192.168.16.101:8000/api/auth/login',{
       email: email,
       password: password,
   })
@@ -34,7 +33,6 @@ const LoginScreen = () => {
       
    
     .catch(function (error) {
-      // navigation.navigate('HomeScreen') // for testing
       setErrorMessage(error.response.data.error)
     })
   
@@ -63,7 +61,6 @@ const LoginScreen = () => {
     <Button 
     onPress={
       login
-      // () => navigation.navigate('HomeScreen')
     }
     style={[tw`items-center rounded-md mt-4 max-w-md mx-auto`,{zIndex:1, width:300, backgroundColor:'#454545'}]} mode="contained">
         Log In
@@ -117,10 +114,10 @@ const styles= StyleSheet.create({
     zIndex:1,
     justifyContent:'center',
  },
- acctext:{
-  color: "#454545",
-  textAlign:"center",
-  marginTop:8,
+  acctext:{
+    color: "#454545",
+    textAlign:"center",
+    marginTop:8,
 }
 });
 

@@ -43,7 +43,7 @@ const CreateRide = () => {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
                }
-    axios.post('http://192.168.16.102:8000/api/auth/createRide',
+    axios.post('http://192.168.16.101:8000/api/auth/createRide',
     {
       
       user_car_id: Name,//car id from Dropdown component child
@@ -58,13 +58,10 @@ const CreateRide = () => {
 
     )
     .then((response) => {
-        //  navigation.navigate('HomeScreen')
-         console.log(response.data.ride)
          setResponse("Success! People can now book your ride.")
     })
     .catch((error) =>{
-        console.log(error.response.data)
-        console.log(error) 
+         
       })
       
       
@@ -74,7 +71,7 @@ const CreateRide = () => {
     <View>
         <Header title="                 Create A Ride"/>
         <DropBtn  Changedata={(Name) => setName(Name)}/> 
-        {/* <Text>{gender}</Text> */}
+        
         
         <GooglePlacesAutocomplete
               placeholder='Where From?'
@@ -126,23 +123,7 @@ const CreateRide = () => {
        />
        <RadioBtn Changedata={(gender) => setGender(gender)} />
        <DateTime Changedata={(date) => setDate(date)} />
-{/* <Text>{date.to/////////////////////i/}</Text> */}
-{/* <Text>{date.toString().split(' ')[4]}</Text> */}
-        {/* <TextInput
-        style={[tw`mt-3 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
-        label="Travel Date"
-        value={travel_date}
-        onChangeText={travel_date => setTravel_date(travel_date)}
-        />
 
-        
-
-        <TextInput
-        style={[tw`mt-5 justify-center rounded-xl`,{marginLeft:20,width:336,height:46}]}
-        label="Travel Time"
-        value={travel_time}
-        onChangeText={travel_time => setTravel_time(travel_time)}
-        /> */}
        <Text style={styles.error}>{response}</Text >
        <Button style={styles.button} mode="contained" onPress={() =>
         fetchCars()
@@ -173,7 +154,6 @@ const styles = StyleSheet.create({
 
 const toInputBoxStyles = StyleSheet.create({
   container: {
-      // backgroundColor: "white",
       paddingTop: 15,
       flex: 0,
   },

@@ -12,9 +12,9 @@ import ImageUpload from '../components/ImageUpload';
 import { Button } from 'react-native-paper';
 
 const ProfilePic = (props) => {
-  // console.log("props ", props.userId2 )
+  
   useEffect(()=>{
-    // console.log("I am here");
+    
     fetchUserInfo(); 
     
   }, [])
@@ -30,26 +30,24 @@ const ProfilePic = (props) => {
   } 
   
   const fetchUserInfo=async ()=>{
-    // gettoken()
     const token = await SecureStore.getItemAsync('token');
     
     const headers = {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.102:8000/api/auth/getownInfo',
+    axios.get('http://192.168.16.101:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
-      // setData((response.data.profile[0].picture_path))
+    
       setData((response.data))
-      console.log(response.data)
+    
       setFullResponse(response);
-      // console.log("data user --------------------------------> ", data)
+     
       setUserId(response.data?.user?.id);
     })
     .catch((error) =>{
-      console.log(error) 
       
     },
     )} 
@@ -64,29 +62,20 @@ const ProfilePic = (props) => {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-      axios.post('http://192.168.16.102:8000/api/auth/postReview',{from_id},
+      axios.post('http://192.168.16.101:8000/api/auth/postReview',{from_id},
       {headers:headers},
       
       )
-      .then((response) => {
-          console.log("im review")
-         
+      .then((response) => {         
 
       })
       .catch((error) =>{
-          console.log(error.response.data)
-          console.log("error")
           
       })
     
   }
 
 
-
-
-
-
-    // console.log(" datra state ", userId)
     return (    
       <View >
       <KeyboardAvoidingView 
@@ -96,9 +85,6 @@ const ProfilePic = (props) => {
             >
 
       <Header title="                     Profile"/>
-
-      
-          {/* <ImageUpload /> */}
 
           <Image
                   style={{
@@ -112,8 +98,6 @@ const ProfilePic = (props) => {
                   source = {{uri: `${data.profile.picture_path}`}}
                   />
 
-          {/* <Image source = {{uri:{data}}} style = {{height: 20, resizeMode : 'stretch', margin: 5 }} /> */}
-      {/* <View style={tw`justify-center max-w-md`}>{data?.profile?.picture_path}</View> */}
       <Text style={[tw`items-center max-w-md pb-10 mx-auto text-xl font-bold`,{marginTop:-70}]}>
         {data?.user?.first_name} {data?.user?.last_name}
       </Text> 
@@ -185,8 +169,7 @@ const styles = StyleSheet.create({
    height:39,
    marginTop: 15,
    borderRadius: 8,
-   marginLeft:6,
-   // color:"#ff5c5c"    
+   marginLeft:6,   
  
  }
 })

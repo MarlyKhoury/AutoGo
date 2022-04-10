@@ -14,9 +14,7 @@ import ProfilePic from "./screens/ProfilePic";
 import CreateCar from "./screens/CreateCar";
 import AdminScreen from "./screens/AdminScreen";
 import CreateRide from "./screens/CreateRide";
-import Test from "./components/Test";
 import ImageUpload from "./components/ImageUpload";
-// import registerNNPushToken from 'native-notify';
 import { useEffect } from "react";
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
@@ -24,7 +22,7 @@ import Constants from 'expo-constants';
 import { useState } from "react";
 import axios from 'react-native-axios';
 import * as SecureStore from 'expo-secure-store';
-import DateTime from "./components/DateTime";
+
 
 
 
@@ -46,19 +44,17 @@ export default function App() {
 
 
   const fetchUserInfo=async ()=>{
-    // gettoken()
   const token = await SecureStore.getItemAsync('token');
 
      const headers = {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.102:8000/api/auth/getownInfo',
+    axios.get('http://192.168.16.101:8000/api/auth/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
-      // setData((response.data.profile[0].picture_path))
-      // console.log("data user --------------------------------> ", response)
+      
       setUserId(response.data?.user?.id);
     })
     .catch((error) =>{
@@ -66,10 +62,6 @@ export default function App() {
        
     },
     )} 
-
-
-  // registerNNPushToken(2413, 'GdsxWIl5a5Mrg3L2iP5Ldw');
-
 
   const registerForPushNotificationsAsync = async () => {
     let token;
@@ -105,7 +97,6 @@ export default function App() {
 
 
   const Stack = createStackNavigator();
-  console.log("user idd app ", userId)
 
   return (
     <Provider store={store}>
@@ -117,7 +108,38 @@ export default function App() {
         keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
         >
         <Stack.Navigator>
-          
+
+          <Stack.Screen 
+            name = "LoginScreen"
+            component={LoginScreen} 
+            options={{
+            headerShown:false,
+          }}
+          />
+        
+          <Stack.Screen 
+            name = "SignupScreen"
+            component={SignUpScreen} 
+            options={{
+            headerShown:false,
+            }}
+            />
+
+          <Stack.Screen 
+            name = "CreateCar"
+            component={CreateCar} 
+            options={{
+            headerShown:false,
+          }}
+          />
+
+          <Stack.Screen 
+            name = "CreateRide"
+            component={CreateRide} 
+            options={{
+            headerShown:false,
+          }}
+          />
 
           {/* <Stack.Screen 
          name = "AdminScreen"
@@ -126,86 +148,35 @@ export default function App() {
            headerShown:false,
          }}
          /> */}
+       
 
-          <Stack.Screen 
-          name = "LoginScreen"
-          component={LoginScreen} 
+        <Stack.Screen name = "ProfilePic"
           options={{
-            headerShown:false,
-          }}
-          />
-          {/* <Stack.Screen 
-            name = "Test"
-            component={Test} 
-            options={{
-              headerShown:false,
-            }}
-            <Stack.Screen 
-            name = "Screen"
-            component={ImageUpload} 
-            options={{
-              headerShown:false,
-            }}
-            />
-          /> */}
-          <Stack.Screen 
-            name = "SignupScreen"
-            component={SignUpScreen} 
-            options={{
-              headerShown:false,
-            }}
-          />
-           <Stack.Screen 
-          name = "CreateCar"
-          component={CreateCar} 
-          options={{
-            headerShown:false,
-          }}
-        />
-          <Stack.Screen 
-          name = "CreateRide"
-          component={CreateRide} 
-          options={{
-            headerShown:false,
-          }}
-          />
-        {/* <Stack.Screen
-        // initialParams={{'key':'value'}} 
-        userId2={userId}
-        
-       name = "ProfilePic"
-       component={ProfilePic} 
-       options={{
-         headerShown:false,
-        }}
-        
-       /> */}
-
-<Stack.Screen   name = "ProfilePic"
-       options={{
-         headerShown:false,
-        }}
-        >
-  {(props) => <ProfilePic {...props}  userId2={userId} />}
-</Stack.Screen>
+          headerShown:false,
+         }}
+         >
+          {(props) => <ProfilePic {...props}  userId2={userId} />}
+        </Stack.Screen>
 
 
 
        
-          <Stack.Screen 
+        <Stack.Screen 
           name = "HomeScreen"
           component={HomeScreen} 
           options={{
-            headerShown:false,
-          }}
-          />
-          <Stack.Screen 
+          headerShown:false,
+        }}
+        />
+
+        <Stack.Screen 
           name = "MapScreen"
           component={MapScreen} 
           options={{
-            headerShown:false,
+          headerShown:false,
           }}
           />
+
         </Stack.Navigator>
 
         </KeyboardAvoidingView>

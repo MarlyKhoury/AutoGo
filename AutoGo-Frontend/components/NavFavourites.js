@@ -60,4 +60,3 @@ const NavFavourites = () => {
 
 export default NavFavourites
 
-const styles = StyleSheet.create({})
