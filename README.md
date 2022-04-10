@@ -65,12 +65,12 @@ Here's a brief high-level overview of the tech stack the AutoGo app uses:
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/HomeScreen.jpg" /></td>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Origin_Destination.jpeg" /></td>
   </tr>
-    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking.jpg" /></td>
-    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Animation1.gif" /></td>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Animation2.gif" /></td>
-  <tr>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Animation3.gif" /></td>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Animation4.gif" /></td>
+  <tr>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Ride_Booking.jpg" /></td>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Animation1.gif" /></td>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Animation6.gif" /></td>
   </tr>
 </table>
