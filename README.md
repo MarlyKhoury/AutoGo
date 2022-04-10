@@ -13,14 +13,14 @@
 
 <img src="./readme/title2.svg" id='philosophy'/>
 
-> AutoGo is a carpooling app built to help people share rides. AutoGo is built on the principle of less cars, less costs and less pollution. Indeed, AutoGo encourages users to carpool, meet new people and share the cost all while staying comfortable and safe. So the next time you find yourself needing a ride, or wanting to share your ride cost with others, get on AutoGo.
+> AutoGo is a carpooling app built to help people share rides and split costs.
 > 
-> There are 2 options that AutoGo provides: Create a ride and Book a ride.
+> AutoGo is built on the principle of less cars, less costs and less pollution. Indeed, AutoGo encourages users to carpool, meet new people and share the cost all while staying comfortable and safe. So the next time you find yourself needing a ride, or wanting to share your ride costs with others, get on AutoGo.
 
 ### User Stories
 - As a user, I want to quickly find and book a ride, so that I can reach my destination early.
 - As a user, I want to find other people going to the same destination as mine, so that we can split the cost between us.
-- As a user, I want to specify the gender of the people I’m going to share my ride with, so that I feel more comfortable.
+- As a user, I want to specify the gender of the people I’m going to share my ride with, so that I feel more comfortable and safe.
 
 
 <br><br>

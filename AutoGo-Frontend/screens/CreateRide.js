@@ -19,6 +19,7 @@ const CreateRide = () => {
   const [Name, setName] = useState("Parent");
   const [gender, setGender] = useState("Parent");
   const [date, setDate] = useState("Parent");
+  const [response, setResponse]= React.useState("");
   const navigation = useNavigation();
   const [travel_date, setTravel_date] = React.useState("");
   const [travel_time, setTravel_time] = React.useState("");
@@ -57,8 +58,9 @@ const CreateRide = () => {
 
     )
     .then((response) => {
-         navigation.navigate('HomeScreen')
+        //  navigation.navigate('HomeScreen')
          console.log(response.data.ride)
+         setResponse("Success! People can now book your ride.")
     })
     .catch((error) =>{
         console.log(error.response.data)
@@ -141,12 +143,12 @@ const CreateRide = () => {
         value={travel_time}
         onChangeText={travel_time => setTravel_time(travel_time)}
         /> */}
+       <Text style={styles.error}>{response}</Text >
        <Button style={styles.button} mode="contained" onPress={() =>
         fetchCars()
         }>
           Create a Ride
       </Button>
-
       
     </View>
   )
@@ -161,6 +163,11 @@ const styles = StyleSheet.create({
      marginTop:20,
      width:336,
      marginLeft:20,
+    },
+    error:{
+      color:'green',
+      alignSelf:'center'
+
     }
 })
 
@@ -180,5 +187,6 @@ const toInputBoxStyles = StyleSheet.create({
       paddingHorizontal: 20,
       paddingBottom: 0,
 
-  }
+  },
+
 })
