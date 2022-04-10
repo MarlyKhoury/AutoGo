@@ -33,6 +33,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 <table>
   <tr>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Landing_Page.png" /></td>
+    <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Home_Page.png" /></td>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Find_a_Ride.png" /></td>
     <td><img src="https://github.com/MarlyKhoury/AutoGo/blob/main/Demo/Book_a_Ride.png" /></td>
   </tr>
