@@ -43,7 +43,7 @@ const AdminScreen = () => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
     }
-    axios.get('http://192.168.16.101:8000/api/auth/getUsers/',
+    axios.get('http://192.168.16.101:8000/api/admin/getUsers/',
       { headers: headers },
     )
       .then((response) => {
@@ -63,7 +63,7 @@ const AdminScreen = () => {
       'Authorization': 'Bearer ' + token,
     }
     getBannedStatus(id)
-    axios.post('http://192.168.16.101:8000/api/auth/ban', { id },
+    axios.post('http://192.168.16.101:8000/api/admin/ban', { id },
       { headers: headers }
     )
       .then((response) => {
@@ -85,7 +85,7 @@ const AdminScreen = () => {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
       }
-      axios.get('http://192.168.16.101:8000/api/auth/unban/' + id,
+      axios.get('http://192.168.16.101:8000/api/admin/unban/' + id,
       { headers: headers },
       )
       .then((response) => {
@@ -105,7 +105,7 @@ const getBannedStatus =async(id) =>{
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + token,
   }
-  axios.get('http://192.168.16.101:8000/api/auth/bannedStatus/' + id,
+  axios.get('http://192.168.16.101:8000/api/admin/bannedStatus/' + id,
   { headers: headers },
   )
   .then((response) => {   

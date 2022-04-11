@@ -14,10 +14,8 @@ import ProfilePic from "./screens/ProfilePic";
 import CreateCar from "./screens/CreateCar";
 import AdminScreen from "./screens/AdminScreen";
 import CreateRide from "./screens/CreateRide";
-import ImageUpload from "./components/ImageUpload";
 import { useEffect } from "react";
 import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 import { useState } from "react";
 import axios from 'react-native-axios';
@@ -58,7 +56,7 @@ export default function App() {
       setUserId(response.data?.user?.id);
     })
     .catch((error) =>{
-        console.log(error) 
+        // console.log(error) 
        
     },
     )} 
@@ -77,7 +75,6 @@ export default function App() {
         return;
       }
       token = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log(token);
     } else {
       alert('Must use physical device for Push Notifications');
     }

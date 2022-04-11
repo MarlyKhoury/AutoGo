@@ -9,7 +9,7 @@ const SearchBarComponent = (props) => {
 
   
 useEffect(()=>{
-  console.log("props data ", JSON.stringify(props?.data))
+  // console.log("props data ", JSON.stringify(props?.data))
   setInitialData(props?.data);
 }, [])
 
@@ -18,9 +18,9 @@ useEffect(()=>{
 }, [searchQuery])
 
   const onChangeSearch = (query) => {
-    console.log("InitialData ", InitialData)
+    // console.log("InitialData ", InitialData)
     let filteredData = [];
-    console.log("query ", query);
+    // console.log("query ", query);
     setSearchQuery(query)
     if(InitialData && InitialData!==undefined)
     InitialData?.filter((item) => {
@@ -35,7 +35,7 @@ useEffect(()=>{
       }
       
     });
-    console.log(" fil data ----> ", filteredData && JSON.stringify(filteredData))
+    // console.log(" fil data ----> ", filteredData && JSON.stringify(filteredData))
     if(filteredData && filteredData !=undefined)
     props.setData(filteredData);
     

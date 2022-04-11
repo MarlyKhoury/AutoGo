@@ -36,7 +36,7 @@ const ProfilePic = (props) => {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.101:8000/api/auth/getownInfo',
+    axios.get('http://192.168.16.101:8000/api/user/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -62,7 +62,7 @@ const ProfilePic = (props) => {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-      axios.post('http://192.168.16.101:8000/api/auth/postReview',{from_id},
+      axios.post('http://192.168.16.101:8000/api/user/postReview',{from_id},
       {headers:headers},
       
       )

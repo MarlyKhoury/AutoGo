@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,34 +20,43 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
-], function ($router) {
+Route::group(['middleware' => ['auth:api']], function () {
+
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('/logout', [AuthController::class, 'logout']); 
+        Route::post('/refresh', [AuthController::class, 'refresh']);
+    
+});
+
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/user-profile', [UserController::class, 'userProfile']); 
+        Route::post('/postReview', [UserController::class, 'postReview']);
+        Route::post('/createCar', [UserController::class, 'createCar']);
+        Route::post('/bookRide', [UserController::class, 'bookRide']);
+        Route::get('/getCar', [UserController::class, 'getCar']);
+        Route::post('/updateInfo', [UserController::class, 'updateInfo']);
+        Route::post('/editReview', [UserController::class, 'editReview']);
+        Route::post('/createRide', [UserController::class, 'createRide']);
+        Route::get('/getownInfo', [UserController::class, 'getownInfo']);
+        Route::get('/getallReviews/{id}', [UserController::class, 'getallReviews']);
+        Route::delete('/deleteCar', [UserController::class, 'deleteCar']);
+        Route::delete('/deleteReview/{id}', [UserController::class, 'deleteReview']);
+        Route::post('/uploadImg', [UserController::class, 'uploadImg']);
+        Route::get('/getRides/{from}/{to}', [UserController::class, 'getRides']);
+        Route::get('/getuserInfo/{id}', [UserController::class, 'getuserInfo']);
+        Route::post('/cancelBooking', [UserController::class, 'cancelBooking']);    
+    });
+
+    Route::group(['prefix' => 'admin'], function () {
+        Route::post('/ban', [AdminController::class, 'ban']);   
+        Route::get('/bannedStatus/{id}', [AdminController::class, 'bannedStatus']);
+        Route::get('/unban/{id}', [AdminController::class, 'unban']);
+        Route::get('/getUsers', [AdminController::class, 'getUsers']);
+    });
+});
+
+Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/logout', [AuthController::class, 'logout']); 
-    Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::post('/postReview', [AuthController::class, 'postReview']);
-    Route::post('/ban', [AuthController::class, 'ban']);   
-    Route::post('/createCar', [AuthController::class, 'createCar']);
-    Route::get('/getCar', [AuthController::class, 'getCar']);
-    Route::post('/updateInfo', [AuthController::class, 'updateInfo']);
-    Route::post('/editReview', [AuthController::class, 'editReview']);
-    Route::post('/createRide', [AuthController::class, 'createRide']);
-    Route::post('/bookRide', [AuthController::class, 'bookRide']);
-    Route::post('/cancelBooking', [AuthController::class, 'cancelBooking']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']); 
-    Route::get('/bannedStatus/{id}', [AuthController::class, 'bannedStatus']);
-    Route::get('/unban/{id}', [AuthController::class, 'unban']);
-    Route::get('/getRides/{from}/{to}', [AuthController::class, 'getRides']);
-    Route::get('/getUsers', [AuthController::class, 'getUsers']);
-    Route::get('/getuserInfo/{id}', [AuthController::class, 'getuserInfo']);
-    Route::get('/getownInfo', [AuthController::class, 'getownInfo']);
-    Route::get('/getallReviews/{id}', [AuthController::class, 'getallReviews']);
-    Route::delete('/deleteCar', [AuthController::class, 'deleteCar']);
-    Route::delete('/deleteReview/{id}', [AuthController::class, 'deleteReview']);
-    
-    Route::post('/uploadImg', [AuthController::class, 'uploadImg']);
-    
+    Route::get('/notFound', [AuthController::class, 'notFound'])->name('not-found');
 });

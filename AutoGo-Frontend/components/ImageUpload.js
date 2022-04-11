@@ -35,7 +35,7 @@ function ImageUpload() {
     data_url.append('picture_path', uri_img);
     const token = await SecureStore.getItemAsync('token');
 
-    fetch('http://192.168.16.101:8000/api/auth/uploadImg', {
+    fetch('http://192.168.16.101:8000/api/user/uploadImg', {
       method: 'post',
       body: data_url,
       headers : {
