@@ -59,7 +59,7 @@ class UserController extends Controller
 
     public function deleteCar(Request $request){
 
-      //  Get id mn token
+      //  Get id from token
       $id = auth()->car()->id;
       $car= Car::findOrFail($id);
       if ($car)
