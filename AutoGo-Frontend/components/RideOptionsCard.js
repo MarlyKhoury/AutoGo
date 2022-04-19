@@ -90,7 +90,7 @@ Notifications.setNotificationHandler({
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-        axios.get('http://192.168.16.101:8000/api/user/getRides/'+origin.description+'/'+destination.description,
+        axios.get('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/user/getRides/'+origin.description+'/'+destination.description,
         {headers:headers},
         )
         .then((response) => {
@@ -114,14 +114,11 @@ Notifications.setNotificationHandler({
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer '+token,
         }
-        axios.post('http://192.168.16.101:8000/api/user/bookRide',{ride_id:id},
+        axios.post('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/user/bookRide',{ride_id:id},
         {headers:headers} 
         
         )
         .then((response) => {
-            console.log(response.data)
-            console.log("im  booking")
-            console.log(id)
             setCancel(id);
             triggerLocalNotificationHandler();
 
@@ -129,9 +126,7 @@ Notifications.setNotificationHandler({
         })
         .catch((error) =>{
             setErrorMessage(error.response.data.error)
-            console.log(error.response.data)
-            console.log("error book")
-            console.log(id)
+      
         })
       
     }
@@ -142,7 +137,7 @@ Notifications.setNotificationHandler({
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
             }
-        axios.post('http://192.168.16.101:8000/api/user/cancelBooking',{ride_id:cancel},
+        axios.post('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/user/cancelBooking',{ride_id:cancel},
         {headers:headers}
         )
         .then((response) => {

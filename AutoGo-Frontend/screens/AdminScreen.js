@@ -43,7 +43,7 @@ const AdminScreen = () => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
     }
-    axios.get('http://192.168.16.101:8000/api/admin/getUsers/',
+    axios.get('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/admin/getUsers/',
       { headers: headers },
     )
       .then((response) => {
@@ -63,7 +63,7 @@ const AdminScreen = () => {
       'Authorization': 'Bearer ' + token,
     }
     getBannedStatus(id)
-    axios.post('http://192.168.16.101:8000/api/admin/ban', { id },
+    axios.post('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/admin/ban', { id },
       { headers: headers }
     )
       .then((response) => {
@@ -85,7 +85,7 @@ const AdminScreen = () => {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
       }
-      axios.get('http://192.168.16.101:8000/api/admin/unban/' + id,
+      axios.get('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/admin/unban/' + id,
       { headers: headers },
       )
       .then((response) => {
@@ -105,7 +105,7 @@ const getBannedStatus =async(id) =>{
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + token,
   }
-  axios.get('http://192.168.16.101:8000/api/admin/bannedStatus/' + id,
+  axios.get('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/admin/bannedStatus/' + id,
   { headers: headers },
   )
   .then((response) => {   
@@ -136,7 +136,7 @@ const getBannedStatus =async(id) =>{
       }
       
     });
-    console.log(" fil data ----> ", filteredData && JSON.stringify(filteredData))
+    
     if(filteredData && filteredData !=undefined){
       if(searchQuery?.length<1){
         setFilteredData(data);

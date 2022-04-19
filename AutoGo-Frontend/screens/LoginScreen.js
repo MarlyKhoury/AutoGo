@@ -19,7 +19,7 @@ const LoginScreen = () => {
   const login= async ()=>{
 
     axios
-    .post('http://192.168.16.101:8000/api/auth/login',{
+    .post('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/auth/login',{
       email: email,
       password: password,
   })

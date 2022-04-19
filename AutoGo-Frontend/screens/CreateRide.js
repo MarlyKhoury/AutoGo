@@ -43,7 +43,7 @@ const CreateRide = () => {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer '+token,
                }
-    axios.post('http://192.168.16.101:8000/api/user/createRide',
+    axios.post('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/user/createRide',
     {
       
       user_car_id: Name,//car id from Dropdown component child

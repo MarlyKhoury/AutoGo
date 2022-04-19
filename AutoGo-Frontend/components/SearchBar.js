@@ -9,7 +9,8 @@ const SearchBarComponent = (props) => {
 
   
 useEffect(()=>{
-  // console.log("props data ", JSON.stringify(props?.data))
+  // console.log("props data ", JSON.stringify(props?.data))as u wish bas hay global anyone now can use the api
+  //local ma hadan fi to test ur app yostoflo :p bkra bes2al eza ghayarouon aslan ma  marly8 chaklo l pass nesyeto
   setInitialData(props?.data);
 }, [])
 

@@ -48,7 +48,7 @@ export default function App() {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.101:8000/api/auth/getownInfo',
+    axios.get('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/user/getownInfo',
     {headers:headers},
     )
     .then(function (response) {

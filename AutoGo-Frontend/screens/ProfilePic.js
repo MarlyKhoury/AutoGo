@@ -36,7 +36,7 @@ const ProfilePic = (props) => {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer '+token,
      }
-    axios.get('http://192.168.16.101:8000/api/user/getownInfo',
+    axios.get('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/user/getownInfo',
     {headers:headers},
     )
     .then(function (response) {
@@ -62,7 +62,7 @@ const ProfilePic = (props) => {
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer '+token,
           }
-      axios.post('http://192.168.16.101:8000/api/user/postReview',{from_id},
+      axios.post('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/user/postReview',{from_id},
       {headers:headers},
       
       )
@@ -95,7 +95,7 @@ const ProfilePic = (props) => {
                     marginLeft: -10,
                     
                   }}
-                  source = {{uri: `${data.profile.picture_path}`}}
+                  source = {{uri: `${data?.profile?.picture_path}`}}
                   />
 
       <Text style={[tw`items-center max-w-md pb-10 mx-auto text-xl font-bold`,{marginTop:-70}]}>

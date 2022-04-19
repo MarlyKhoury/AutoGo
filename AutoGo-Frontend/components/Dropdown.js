@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { List } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames';
-import { StyleSheet, Text, View, SafeAreaView, TextInput ,TouchableOpacity,Image} from 'react-native';
+import { Text, View, TouchableOpacity} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler'
 import  { useState,useEffect } from 'react'
 import axios from 'react-native-axios';
@@ -37,7 +37,7 @@ const DropBtn = (props) => {
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer '+token,
     }
-        axios.get('http://192.168.16.101:8000/api/user/getCar',
+        axios.get('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/user/getCar',
          {headers:headers},  
           )
           .then((response) => {
