@@ -2,7 +2,6 @@ import { StyleSheet, Text, TextInput, View, FlatList,KeyboardAvoidingView,Toucha
 import React from 'react'
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useEffect } from 'react'
 import axios from 'react-native-axios';
 import  { useState } from 'react';
@@ -10,7 +9,7 @@ import Header from '../components/Header';
 import * as SecureStore from 'expo-secure-store';
 import ImageUpload from '../components/ImageUpload';
 import { Button } from 'react-native-paper';
-
+import { styles } from "../Styles";
 const ProfilePic = (props) => {
   
   useEffect(()=>{
@@ -111,7 +110,7 @@ const ProfilePic = (props) => {
       placeholder='  Write a review'
       
       />
-      <Button onPress={postReviews} style={styles.button} mode="contained" >
+      <Button onPress={postReviews} style={styles.post_button} mode="contained" >
        <Text style={{fontSize:15}}>Post</Text>
       </Button>
 </View>
@@ -156,20 +155,3 @@ const ProfilePic = (props) => {
 
 export default ProfilePic
 
-const styles = StyleSheet.create({
-  acctext:{
-    color: "#454545",
-    textAlign:"center",
-    marginTop:8,
-  },
-  button:{
-    backgroundColor: "#58BD29",
-    marginBottom:30,
-   width: 90,
-   height:39,
-   marginTop: 15,
-   borderRadius: 8,
-   marginLeft:6,   
- 
- }
-})

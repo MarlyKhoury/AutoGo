@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Image, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as SecureStore from 'expo-secure-store';
-
+import { styles } from "../Styles";
 
 function ImageUpload() {
   // The path of the picked image
@@ -87,27 +87,3 @@ function ImageUpload() {
 
 export default ImageUpload;
 
-
-
-const styles = StyleSheet.create({
-  screen: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  buttonContainer: {
-    width: 260,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingTop:250,
-    
-  },
-  imageContainer: {
-    padding: 30,
-  },
-  image: {
-    width: 400,
-    height: 300,
-    resizeMode: 'cover'
-  }
-});

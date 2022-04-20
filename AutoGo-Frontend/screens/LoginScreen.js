@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'react-native-axios';
 import * as SecureStore from 'expo-secure-store';
-
+import { styles } from "../Styles";
 
 async function save(key, value) {
   await SecureStore.setItemAsync(key, value);
@@ -16,7 +16,7 @@ const LoginScreen = () => {
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
   const[errorMessage, setErrorMessage] = React.useState("");
-  const login= async ()=>{
+  const login = async ()=>{
 
     axios
     .post('http://ec2-3-89-74-59.compute-1.amazonaws.com:3000/api/auth/login',{
@@ -81,43 +81,4 @@ const LoginScreen = () => {
 
 
 export default LoginScreen
-
-const styles= StyleSheet.create({
-  TriangleCorner: {
-    width: 0,
-    height: 0,
-    position: 'absolute', 
-    zIndex: 0 ,
-    backgroundColor: "transparent",
-    borderStyle: "solid",
-    borderRightWidth: 375,
-    borderTopWidth: 180,    
-    marginTop: 40,
-    borderRightColor: "transparent",
-    borderTopColor: "#58BD29",
-    transform: [{ rotate: "180deg" }],
-  },
-  square: {
-  marginTop:220,
-    width: 400,
-    height: 300,
-    backgroundColor: "#58BD29",
-    position: 'absolute', 
-    zIndex: 0 ,
-  },
-
-  button:{
-    backgroundColor: "#454545",
-    marginTop:20,
-    width:310,
-    marginLeft:20,
-    zIndex:1,
-    justifyContent:'center',
- },
-  acctext:{
-    color: "#454545",
-    textAlign:"center",
-    marginTop:8,
-}
-});
 

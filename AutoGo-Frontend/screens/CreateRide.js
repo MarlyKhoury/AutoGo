@@ -1,6 +1,6 @@
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env";
-import { StyleSheet, Text, View, ScrollView} from 'react-native'
+import { StyleSheet, Text, View} from 'react-native'
 import React,{useState} from 'react'
 import Header from '../components/Header'
 import { TextInput, Button } from 'react-native-paper';
@@ -13,7 +13,7 @@ import { selectDestination, setDestination, setOrigin, selectOrigin } from '../s
 import axios from 'react-native-axios';
 import * as SecureStore from 'expo-secure-store';
 import DateTime from '../components/DateTime';
-
+import { styles } from "../Styles";
 
 const CreateRide = () => {
   const [Name, setName] = useState("Parent");
@@ -125,7 +125,7 @@ const CreateRide = () => {
        <DateTime Changedata={(date) => setDate(date)} />
 
        <Text style={styles.error}>{response}</Text >
-       <Button style={styles.button} mode="contained" onPress={() =>
+       <Button style={styles.ride_button} mode="contained" onPress={() =>
         fetchCars()
         }>
           Create a Ride
@@ -138,19 +138,6 @@ const CreateRide = () => {
 export default CreateRide
 
 
-const styles = StyleSheet.create({
-    button:{
-     backgroundColor: "#58BD29",
-     marginTop:20,
-     width:336,
-     marginLeft:20,
-    },
-    error:{
-      color:'green',
-      alignSelf:'center'
-
-    }
-})
 
 const toInputBoxStyles = StyleSheet.create({
   container: {

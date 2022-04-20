@@ -56,7 +56,7 @@ export default function App() {
       setUserId(response.data?.user?.id);
     })
     .catch((error) =>{
-        // console.log(error) 
+        
        
     },
     )} 
@@ -138,13 +138,13 @@ export default function App() {
           }}
           />
 
-          {/* <Stack.Screen 
+          <Stack.Screen 
          name = "AdminScreen"
          component={AdminScreen} 
          options={{
            headerShown:false,
          }}
-         /> */}
+         />
        
 
         <Stack.Screen name = "ProfilePic"

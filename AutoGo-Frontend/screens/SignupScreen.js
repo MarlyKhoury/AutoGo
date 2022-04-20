@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'react-native-axios';
 import RadioBtn from '../components/RadioBtn';
 import {value} from '../components/RadioBtn'
-
+import { styles } from "../Styles";
 
 
 
@@ -110,19 +110,3 @@ const SignUpScreen = () => {
 
 export default SignUpScreen;
 
-const styles = StyleSheet.create({
-  button:{
-     backgroundColor: "#58BD29",
-     marginTop:12,
-     width:336,
-     marginLeft:20,
-  },
-  acctext:{
-    color: "#454545",
-    textAlign:"center",
-    marginTop:8,
-  },
-  error:{
-    color:'red'
-  }
-})

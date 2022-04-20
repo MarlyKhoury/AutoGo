@@ -6,8 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import tw from 'tailwind-react-native-classnames';
 import axios from 'react-native-axios';
 import * as SecureStore from 'expo-secure-store';
-import * as Location from 'expo-location';
-import { useEffect } from 'react';
+import { styles } from "../Styles";
 
 
 const CreateCar = () => {
@@ -87,17 +86,5 @@ getToken()
   );
 };
 
-const styles= StyleSheet.create({
-  btn:{
-    backgroundColor: '#58BD29',
-    marginTop:10,
-    width:336,
-    marginLeft:20,
-  },
-  acctext:{
-    color: "#454545",
-    textAlign:"center",
-    marginTop:12,
-  }
-})
+
   export default CreateCar;

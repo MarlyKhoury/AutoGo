@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Searchbar, Button, Divider } from 'react-native-paper';
+import { Searchbar, Button } from 'react-native-paper';
 import Header from '../components/Header';
 import { View, FlatList, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
